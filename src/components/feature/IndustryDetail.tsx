@@ -37,8 +37,44 @@ export default function IndustryDetail({ data }: Props) {
     description: data
       ? `${data.meta.description} Call +91 9990390519.`
       : 'Industry-specific IT and custom software solutions by AI Software Technology — A Brand of Digi India Solutions.',
-    keywords: data ? data.meta.keywords : 'industry software solutions, AI Software Technology',
+    ogTitle: data ? data.meta.title : 'Industry Solutions | AI Software Technology',
+    ogDescription: data?.meta.description,
+    ogImage: data?.heroImage,
     canonical: data ? data.meta.canonicalUrl : 'https://aisoftwaretechnology.in/industries',
+    jsonLd: data
+      ? [
+          {
+            '@context': 'https://schema.org',
+            '@type': 'Service',
+            name: `Custom ${data.title} Software Solutions`,
+            description: data.meta.description,
+            url: data.meta.canonicalUrl,
+            image: data.heroImage,
+            serviceType: `${data.title} Software Development`,
+            provider: {
+              '@type': 'ProfessionalService',
+              name: 'AI Software Technology',
+              alternateName: 'AI Software Technology — A Brand of Digi India Solutions',
+              url: 'https://aisoftwaretechnology.in',
+              telephone: '+91-9990390519',
+              email: 'aisoftwaretechnology2026@gmail.com',
+            },
+            areaServed: [
+              { '@type': 'City', name: 'New Delhi' },
+              { '@type': 'Country', name: 'India' },
+            ],
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aisoftwaretechnology.in/' },
+              { '@type': 'ListItem', position: 2, name: 'Industries', item: 'https://aisoftwaretechnology.in/industries' },
+              { '@type': 'ListItem', position: 3, name: data.title, item: data.meta.canonicalUrl },
+            ],
+          },
+        ]
+      : undefined,
   });
 
   if (!data) {
@@ -68,8 +104,9 @@ export default function IndustryDetail({ data }: Props) {
               alt={`${data.title} Software Solutions — AI Software Technology`}
               title={data.title}
               loading="eager"
-              width="1200"
-              height="500"
+              decoding="async"
+              width="1400"
+              height="760"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-dark-500 via-dark-500/90 to-dark-500/60"></div>
@@ -225,7 +262,7 @@ export default function IndustryDetail({ data }: Props) {
               <h3 className="font-heading text-xl md:text-2xl font-bold text-white mb-8">
                 Core {data.title} Modules We Deliver
               </h3>
-              <div className="flex flex-wrap justify-center gap-2.5">
+              <div className="flex flex-wrap justify-center gap-2.5 mb-8">
                 {data.modules.map((m) => (
                   <span
                     key={m}
@@ -234,6 +271,39 @@ export default function IndustryDetail({ data }: Props) {
                     {m}
                   </span>
                 ))}
+              </div>
+              <div className="flex flex-wrap justify-center gap-3 pt-4 border-t border-white/[0.05]">
+                <a
+                  href="/services/custom-software"
+                  onClick={(e) => { e.preventDefault(); navigate('/services/custom-software'); }}
+                  className="text-xs text-accent-400 hover:underline font-medium"
+                >
+                  Custom Software Development →
+                </a>
+                <span className="text-white/20">•</span>
+                <a
+                  href="/services/erp-solutions"
+                  onClick={(e) => { e.preventDefault(); navigate('/services/erp-solutions'); }}
+                  className="text-xs text-accent-400 hover:underline font-medium"
+                >
+                  ERP Software Solutions →
+                </a>
+                <span className="text-white/20">•</span>
+                <a
+                  href="/services/crm-solutions"
+                  onClick={(e) => { e.preventDefault(); navigate('/services/crm-solutions'); }}
+                  className="text-xs text-accent-400 hover:underline font-medium"
+                >
+                  CRM & Lead Management →
+                </a>
+                <span className="text-white/20">•</span>
+                <a
+                  href="/services/hrms-software"
+                  onClick={(e) => { e.preventDefault(); navigate('/services/hrms-software'); }}
+                  className="text-xs text-accent-400 hover:underline font-medium"
+                >
+                  HRMS & Attendance Software →
+                </a>
               </div>
             </motion.div>
           </div>

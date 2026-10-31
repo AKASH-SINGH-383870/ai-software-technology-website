@@ -110,9 +110,9 @@ export default function Navbar() {
             {/* Logo */}
             <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center gap-2.5 group flex-shrink-0">
               <img
-                src="/logo.png"
+                src="https://i.ibb.co/GvYrMC4M/Chat-GPT-Image-Oct-30-2026-07-57-59-PM.png"
                 onError={(e) => {
-                  e.currentTarget.src = 'https://i.ibb.co/8g96Y6FF/Chat-GPT-Image-Oct-30-2026-07-57-59-PM-Photoroom.png';
+                  e.currentTarget.src = '/logo.png';
                 }}
                 alt="AI Software Technology — A Brand of Digi India Solutions"
                 title="AI Software Technology — A Brand of Digi India Solutions"
@@ -289,9 +289,9 @@ export default function Navbar() {
               <div className="px-4 sm:px-6 py-5 space-y-1">
                 <div className="px-4 pb-3 mb-2 border-b border-white/[0.08] flex items-center gap-3">
                   <img
-                    src="/logo.png"
+                    src="https://i.ibb.co/GvYrMC4M/Chat-GPT-Image-Oct-30-2026-07-57-59-PM.png"
                     onError={(e) => {
-                      e.currentTarget.src = 'https://i.ibb.co/8g96Y6FF/Chat-GPT-Image-Oct-30-2026-07-57-59-PM-Photoroom.png';
+                      e.currentTarget.src = '/logo.png';
                     }}
                     alt="AI Software Technology"
                     className="h-9 w-auto object-contain"

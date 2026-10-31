@@ -20,11 +20,45 @@ export default function BlogDetail() {
   usePageSEO({
     title: post ? `${post.title} | AI Software Technology Blog` : 'Blog | AI Software Technology',
     description: post?.excerpt || 'Practical insights on custom software development, ERP, CRM, HRMS, SaaS, and AI automation from AI Software Technology (A Brand of Digi India Solutions).',
-    keywords: post ? `${post.tags.join(', ')}, ${post.category}, AI Software Technology, Digi India Solutions` : 'software blog, custom software, ERP, CRM, HRMS, AI automation',
     ogTitle: post?.title || 'AI Software Technology Blog',
     ogDescription: post?.excerpt || 'Practical B2B software and technology guides.',
-    ogImage: post?.image || 'https://aisoftwaretechnology.in/og-image.jpg',
+    ogImage: post?.image || 'https://i.ibb.co/GvYrMC4M/Chat-GPT-Image-Oct-30-2026-07-57-59-PM.png',
+    ogType: 'article',
     canonical: post ? `https://aisoftwaretechnology.in/blogs/${post.slug}` : 'https://aisoftwaretechnology.in/blogs',
+    jsonLd: post
+      ? [
+          {
+            '@context': 'https://schema.org',
+            '@type': 'BlogPosting',
+            headline: post.title,
+            description: post.excerpt,
+            author: { '@type': 'Person', name: post.author.name },
+            datePublished: post.date,
+            image: post.image,
+            mainEntityOfPage: `https://aisoftwaretechnology.in/blogs/${post.slug}`,
+            publisher: {
+              '@type': 'Organization',
+              name: 'AI Software Technology',
+              url: 'https://aisoftwaretechnology.in',
+              parentOrganization: {
+                '@type': 'Organization',
+                name: 'Digi India Solutions',
+              },
+            },
+            url: `https://aisoftwaretechnology.in/blogs/${post.slug}`,
+            keywords: post.tags.join(', '),
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aisoftwaretechnology.in/' },
+              { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://aisoftwaretechnology.in/blogs' },
+              { '@type': 'ListItem', position: 3, name: post.title, item: `https://aisoftwaretechnology.in/blogs/${post.slug}` },
+            ],
+          },
+        ]
+      : undefined,
   });
 
   useEffect(() => {
@@ -85,32 +119,6 @@ export default function BlogDetail() {
 
       <main className="pt-16">
         <Breadcrumb />
-
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'BlogPosting',
-              headline: post.title,
-              description: post.excerpt,
-              author: { '@type': 'Person', name: post.author.name },
-              datePublished: post.date,
-              image: post.image,
-              publisher: {
-                '@type': 'Organization',
-                name: 'AI Software Technology',
-                url: 'https://aisoftwaretechnology.in',
-                parentOrganization: {
-                  '@type': 'Organization',
-                  name: 'Digi India Solutions',
-                },
-              },
-              url: `https://aisoftwaretechnology.in/blogs/${post.slug}`,
-              keywords: post.tags.join(', '),
-            }),
-          }}
-        />
 
         {/* Hero Image */}
         <motion.div
@@ -343,6 +351,34 @@ export default function BlogDetail() {
                   </div>
                 </div>
               )}
+
+              {/* Related Services */}
+              <div className="glass-card rounded-xl p-5">
+                <h4 className="font-heading font-semibold text-white text-sm mb-3">Explore Software Solutions</h4>
+                <div className="space-y-2 text-xs">
+                  {[
+                    { name: 'Custom Software Development', slug: 'custom-software' },
+                    { name: 'ERP Software Solutions', slug: 'erp-solutions' },
+                    { name: 'CRM & Lead Management', slug: 'crm-solutions' },
+                    { name: 'HRMS & Attendance Software', slug: 'hrms-software' },
+                    { name: 'Order Management Software', slug: 'order-management-software' },
+                    { name: 'AI & Workflow Automation', slug: 'ai-automation' },
+                  ].map((srv) => (
+                    <a
+                      key={srv.slug}
+                      href={`/services/${srv.slug}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        navigate(`/services/${srv.slug}`);
+                      }}
+                      className="flex items-center justify-between py-1.5 text-white/55 hover:text-accent-400 transition-colors border-b border-white/[0.04] last:border-0"
+                    >
+                      <span>{srv.name}</span>
+                      <i className="ri-arrow-right-s-line text-accent-400"></i>
+                    </a>
+                  ))}
+                </div>
+              </div>
             </motion.aside>
           </div>
         </div>

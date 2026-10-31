@@ -124,6 +124,10 @@ const routes: RouteObject[] = [
     element: <RealEstate />,
   },
   {
+    path: "/industries/realestate",
+    element: <RealEstate />,
+  },
+  {
     path: "/ai-features",
     element: <AIFeatures />,
   },

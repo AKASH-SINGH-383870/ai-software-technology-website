@@ -4,9 +4,39 @@ import Navbar from '@/components/feature/Navbar';
 import Footer from '@/components/feature/Footer';
 import FloatingCTA from '@/components/feature/FloatingCTA';
 import ScrollToTop from '@/components/feature/ScrollToTop';
+import { usePageSEO } from '@/hooks/usePageSEO';
 
 export default function FlutterVsReactNative() {
   const navigate = useNavigate();
+
+  usePageSEO({
+    title: 'Flutter vs React Native Comparison | Cross-Platform Mobile App Guide — AI Software Technology',
+    description:
+      'Compare Flutter vs React Native for Android and iOS mobile app development. Evaluate rendering performance, development speed, native integration, and maintenance with AI Software Technology.',
+    ogType: 'article',
+    canonical: 'https://aisoftwaretechnology.in/comparisons/flutter-vs-react-native',
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: 'Flutter vs React Native: Cross-Platform Mobile App Framework Comparison',
+        description:
+          'Technical comparison of Flutter and React Native for building Android and iOS business and consumer mobile applications.',
+        author: { '@type': 'Organization', name: 'AI Software Technology', url: 'https://aisoftwaretechnology.in' },
+        publisher: { '@id': 'https://aisoftwaretechnology.in/#organization' },
+        url: 'https://aisoftwaretechnology.in/comparisons/flutter-vs-react-native',
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aisoftwaretechnology.in/' },
+          { '@type': 'ListItem', position: 2, name: 'Mobile App Development', item: 'https://aisoftwaretechnology.in/services/mobile-app-development' },
+          { '@type': 'ListItem', position: 3, name: 'Flutter vs React Native', item: 'https://aisoftwaretechnology.in/comparisons/flutter-vs-react-native' },
+        ],
+      },
+    ],
+  });
 
   return (
     <div className="min-h-screen bg-dark-500 text-white overflow-x-hidden">

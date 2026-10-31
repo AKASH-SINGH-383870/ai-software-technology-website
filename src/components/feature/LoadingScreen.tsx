@@ -29,9 +29,9 @@ export default function LoadingScreen() {
             className="relative mb-6 flex flex-col items-center"
           >
             <img
-              src="/logo.png"
+              src="https://i.ibb.co/GvYrMC4M/Chat-GPT-Image-Oct-30-2026-07-57-59-PM.png"
               onError={(e) => {
-                e.currentTarget.src = 'https://i.ibb.co/8g96Y6FF/Chat-GPT-Image-Oct-30-2026-07-57-59-PM-Photoroom.png';
+                e.currentTarget.src = '/logo.png';
               }}
               alt="AI Software Technology — A Brand of Digi India Solutions"
               className="h-16 w-auto object-contain mb-3"

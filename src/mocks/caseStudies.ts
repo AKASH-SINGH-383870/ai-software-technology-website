@@ -74,10 +74,10 @@ export const caseStudies: CaseStudy[] = [
     ],
     liveUrl: 'http://order.maxmol.in/',
     relatedServices: [
-      { name: 'Custom Software Development', slug: 'custom-software' },
+      { name: 'Order Management Software', slug: 'order-management-software' },
       { name: 'ERP Software Development', slug: 'erp-solutions' },
-      { name: 'Inventory & Billing Software', slug: 'inventory-billing-software' },
-      { name: 'Web Application Development', slug: 'web-application-development' },
+      { name: 'Inventory Management Software', slug: 'inventory-management-software' },
+      { name: 'Custom Software Development', slug: 'custom-software' },
     ],
     techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Node.js', 'REST APIs', 'Cloud Web Hosting'],
     tags: ['Order Management', 'Manufacturing Software', 'Dealer Portal', 'Dispatch Coordination'],
@@ -128,7 +128,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     liveUrl: 'https://astromilaan.ai.studio/',
     relatedServices: [
-      { name: 'Web Application Development', slug: 'web-application-development' },
+      { name: 'Website & Portal Development', slug: 'website-development' },
       { name: 'Custom Software Development', slug: 'custom-software' },
       { name: 'SaaS Application Development', slug: 'saas-development' },
       { name: 'UI/UX Design', slug: 'ui-ux-design' },
@@ -183,8 +183,8 @@ export const caseStudies: CaseStudy[] = [
     ],
     liveUrl: 'https://gatepass-orcin.vercel.app/admin/attendance',
     relatedServices: [
+      { name: 'Attendance & Workforce Software', slug: 'attendance-workforce-software' },
       { name: 'HRMS Software Development', slug: 'hrms-software' },
-      { name: 'Payroll Management System', slug: 'payroll-management-system' },
       { name: 'ERP Software Development', slug: 'erp-solutions' },
       { name: 'Custom Software Development', slug: 'custom-software' },
     ],
@@ -236,7 +236,7 @@ export const caseStudies: CaseStudy[] = [
       'Gives clinic owners real-time visibility into daily OPD collections across branches',
     ],
     relatedServices: [
-      { name: 'Hospital / Clinic Management Software', slug: 'hospital-clinic-management-software' },
+      { name: 'Hospital & Clinic Management Software', slug: 'hospital-management-software' },
       { name: 'Custom Software Development', slug: 'custom-software' },
       { name: 'CRM Software Development', slug: 'crm-solutions' },
     ],
@@ -289,7 +289,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     relatedServices: [
       { name: 'CRM Software Development', slug: 'crm-solutions' },
-      { name: 'Lead Management System', slug: 'lead-management-system' },
+      { name: 'WhatsApp Automation Systems', slug: 'whatsapp-automation' },
       { name: 'AI Automation Solutions', slug: 'ai-automation' },
     ],
     techStack: ['React', 'Node.js', 'PostgreSQL', 'Redis', 'WhatsApp Integration', 'Webhook Integrations'],
@@ -341,7 +341,8 @@ export const caseStudies: CaseStudy[] = [
     ],
     relatedServices: [
       { name: 'ERP Software Development', slug: 'erp-solutions' },
-      { name: 'Inventory & Billing Software', slug: 'inventory-billing-software' },
+      { name: 'Inventory Management Software', slug: 'inventory-management-software' },
+      { name: 'Billing & GST Software', slug: 'billing-gst-software' },
       { name: 'Custom Software Development', slug: 'custom-software' },
     ],
     techStack: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Docker', 'AWS', 'Redis'],
@@ -445,7 +446,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     relatedServices: [
       { name: 'HRMS Software Development', slug: 'hrms-software' },
-      { name: 'Payroll Management System', slug: 'payroll-management-system' },
+      { name: 'Attendance & Workforce Software', slug: 'attendance-workforce-software' },
       { name: 'Mobile App Development', slug: 'mobile-app-development' },
     ],
     techStack: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Flutter', 'AWS', 'REST APIs'],
@@ -496,7 +497,7 @@ export const caseStudies: CaseStudy[] = [
       'Provides management with consolidated insights across admissions, fee dues, and batch performance',
     ],
     relatedServices: [
-      { name: 'School Management Software', slug: 'school-management-software' },
+      { name: 'Custom Software Development', slug: 'custom-software' },
       { name: 'Mobile App Development', slug: 'mobile-app-development' },
       { name: 'ERP Software Development', slug: 'erp-solutions' },
     ],

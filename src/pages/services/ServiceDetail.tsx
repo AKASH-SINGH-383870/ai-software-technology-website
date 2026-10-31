@@ -8,13 +8,23 @@ import ScrollToTop from '@/components/feature/ScrollToTop';
 import Breadcrumb from '@/components/feature/Breadcrumb';
 import { servicesData } from '@/mocks/services';
 import { servicePricing } from '@/mocks/pricing';
-import { testimonials } from '@/mocks/testimonials';
+import { caseStudies } from '@/mocks/caseStudies';
+import ServiceTestimonialsSection from '@/components/feature/ServiceTestimonialsSection';
 import { usePageSEO } from '@/hooks/usePageSEO';
 import {
   validateEnquiryForm,
   openWhatsAppEnquiry,
   getWhatsAppEnquiryUrl,
 } from '@/utils/whatsappEnquiry';
+
+const SERVICE_SLUG_ALIASES: Record<string, string> = {
+  'inventory-billing-software': 'inventory-management-software',
+  'web-application-development': 'website-development',
+  'payroll-management-system': 'hrms-software',
+  'hospital-clinic-management-software': 'hospital-management-software',
+  'lead-management-system': 'crm-solutions',
+  'school-management-software': 'erp-solutions',
+};
 
 const defaultServicePricing = [
   {
@@ -84,10 +94,13 @@ export default function ServiceDetail() {
   const [enqWaOpened, setEnqWaOpened] = useState(false);
   const [enqLastUrl, setEnqLastUrl] = useState('');
 
-  const service = servicesData.find((s) => s.slug === slug);
-  const pricing = slug && servicePricing[slug]?.length ? servicePricing[slug] : defaultServicePricing;
-  const relatedTestimonials = testimonials.filter((t) => t.service === slug);
-  const otherServices = servicesData.filter((s) => s.slug !== slug).slice(0, 4);
+  const resolvedSlug = slug ? SERVICE_SLUG_ALIASES[slug] || slug : undefined;
+  const service = servicesData.find((s) => s.slug === resolvedSlug);
+  const pricing = resolvedSlug && servicePricing[resolvedSlug]?.length ? servicePricing[resolvedSlug] : defaultServicePricing;
+  const relatedCaseStudies = caseStudies.filter(
+    (cs) => cs.service === resolvedSlug || cs.relatedServices.some((rs) => rs.slug === resolvedSlug)
+  ).slice(0, 3);
+  const otherServices = servicesData.filter((s) => s.slug !== resolvedSlug).slice(0, 4);
 
   usePageSEO({
     title: service
@@ -96,12 +109,68 @@ export default function ServiceDetail() {
     description: service
       ? `${service.heroDesc} Call +91 9990390519 for a free consultation with AI Software Technology — A Brand of Digi India Solutions.`
       : 'Explore custom software development, ERP, CRM, HRMS, SaaS, mobile apps, and AI automation services from AI Software Technology.',
-    keywords: service
-      ? `${service.name.toLowerCase()}, ${service.name.toLowerCase()} company India, ${service.technologies.join(', ').toLowerCase()}, AI Software Technology, Digi India Solutions`
-      : 'software development services, AI Software Technology',
     ogTitle: service ? `${service.name} — AI Software Technology` : 'Services — AI Software Technology',
     ogDescription: service?.heroDesc || 'Custom software development and business technology solutions.',
+    ogImage: service?.bannerImage,
     canonical: service ? `https://aisoftwaretechnology.in/services/${service.slug}` : 'https://aisoftwaretechnology.in/services',
+    jsonLd: service
+      ? [
+          {
+            '@context': 'https://schema.org',
+            '@type': 'Service',
+            name: service.name,
+            description: service.heroDesc,
+            url: `https://aisoftwaretechnology.in/services/${service.slug}`,
+            image: service.bannerImage,
+            serviceType: service.name,
+            provider: {
+              '@type': 'ProfessionalService',
+              name: 'AI Software Technology',
+              alternateName: 'AI Software Technology — A Brand of Digi India Solutions',
+              url: 'https://aisoftwaretechnology.in',
+              telephone: '+91-9990390519',
+              email: 'aisoftwaretechnology2026@gmail.com',
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: 'Rohini Sector-24',
+                addressLocality: 'New Delhi',
+                addressRegion: 'Delhi',
+                postalCode: '110085',
+                addressCountry: 'IN',
+              },
+            },
+            areaServed: [
+              { '@type': 'City', name: 'New Delhi' },
+              { '@type': 'Country', name: 'India' },
+            ],
+          },
+          ...(service.faqs && service.faqs.length > 0
+            ? [
+                {
+                  '@context': 'https://schema.org',
+                  '@type': 'FAQPage',
+                  mainEntity: service.faqs.map((f) => ({
+                    '@type': 'Question',
+                    name: f.q,
+                    acceptedAnswer: {
+                      '@type': 'Answer',
+                      text: f.a,
+                    },
+                  })),
+                },
+              ]
+            : []),
+          {
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aisoftwaretechnology.in/' },
+              { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://aisoftwaretechnology.in/services' },
+              { '@type': 'ListItem', position: 3, name: service.name, item: `https://aisoftwaretechnology.in/services/${service.slug}` },
+            ],
+          },
+        ]
+      : undefined,
   });
 
   useEffect(() => {
@@ -202,29 +271,19 @@ export default function ServiceDetail() {
           }}
         />
 
-        {/* Service-Specific Banner Hero Section (Section 9) */}
+        {/* Service-Specific Banner Hero Section */}
         <section className="relative min-h-[420px] md:min-h-[480px] flex items-center py-12 md:py-20 overflow-hidden border-b border-white/[0.06]">
-          {/* Service-Specific Background Banner Image + Readable Dark/Gradient Overlay */}
-          <div className="absolute inset-0 z-0">
-            <img
-              src={service.bannerImage}
-              alt={`${service.name} Banner — AI Software Technology`}
-              title={service.name}
-              loading="eager"
-              width="1400"
-              height="600"
-              className="w-full h-full object-cover object-center opacity-35 scale-105 transition-transform duration-1000"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#07111F] via-[#07111F]/90 to-[#07111F]/70"></div>
-            <div className="absolute inset-0 bg-gradient-to-b from-[#07111F]/65 via-transparent to-dark-500"></div>
-          </div>
+          {/* Ambient Dark Gradient Backdrop (avoids placing duplicate text over the banner image's title) */}
+          <div className="absolute inset-0 aurora-bg z-0"></div>
+          <div className="absolute inset-0 grid-bg opacity-25 z-0"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#07111F] via-[#07111F]/95 to-[#07111F]/80 z-0"></div>
 
           <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full bg-primary-500/10 blur-[150px] pointer-events-none"></div>
           <div className="absolute bottom-0 right-1/4 w-[350px] h-[350px] rounded-full bg-accent-500/8 blur-[130px] pointer-events-none"></div>
 
           <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 md:px-10 w-full">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
-              {/* Left: Heading & CTAs over Banner */}
+              {/* Left: Heading & CTAs */}
               <motion.div
                 className="lg:col-span-7"
                 initial={{ opacity: 0, y: 30 }}
@@ -277,34 +336,42 @@ export default function ServiceDetail() {
                 </div>
               </motion.div>
 
-              {/* Right: Framed Visual Service Banner Card */}
+              {/* Right: Official 640x427 Service Banner Image Showcase (Uncropped & Unobstructed) */}
               <motion.div
                 className="lg:col-span-5"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.7, delay: 0.15 }}
               >
-                <div className="relative rounded-2xl overflow-hidden border border-white/15 shadow-[0_24px_60px_rgba(0,0,0,0.7)] bg-[#0A1628] group">
-                  <div className="relative h-56 sm:h-64 md:h-72 overflow-hidden">
+                <div className="relative rounded-2xl overflow-hidden border border-white/15 shadow-[0_24px_60px_rgba(0,0,0,0.7)] bg-[#060D1A] group">
+                  <div className="relative w-full aspect-[640/427] bg-[#060D1A] overflow-hidden">
                     <img
                       src={service.bannerImage}
-                      alt={`${service.name} Dashboard Visual`}
-                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                      alt={service.imageAlt || `${service.name} Services — AI Software Technology`}
+                      title={service.name}
+                      loading="eager"
+                      decoding="async"
+                      width="640"
+                      height="427"
+                      onError={(e) => {
+                        if (service.fallbackImage && e.currentTarget.src !== service.fallbackImage) {
+                          e.currentTarget.src = service.fallbackImage;
+                        }
+                      }}
+                      className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.02]"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#07111F] via-[#07111F]/25 to-transparent"></div>
-                    <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#07111F]/85 backdrop-blur-md border border-white/15 text-[11px] font-semibold text-accent-400 flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                      100% Custom Engineered
-                    </div>
                   </div>
                   <div className="p-4 sm:p-5 bg-[#07111F]/95 border-t border-white/[0.08] flex items-center justify-between gap-3">
-                    <div>
-                      <div className="text-xs font-bold text-white">{service.name}</div>
-                      <div className="text-[11px] text-white/50">Web Dashboard • Mobile App • API Ready</div>
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-2 mb-0.5">
+                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0"></span>
+                        <span className="text-xs font-bold text-white truncate">{service.name}</span>
+                      </div>
+                      <div className="text-[11px] text-white/50">100% Custom Engineered • Web • Mobile • API</div>
                     </div>
                     <button
                       onClick={scrollToEnquiryForm}
-                      className="px-3.5 py-2 rounded-xl bg-accent-500/15 border border-accent-400/30 text-accent-400 text-xs font-semibold hover:bg-accent-500/25 transition-colors cursor-pointer whitespace-nowrap"
+                      className="px-3.5 py-2 rounded-xl bg-accent-500/15 border border-accent-400/30 text-accent-400 text-xs font-semibold hover:bg-accent-500/25 transition-colors cursor-pointer whitespace-nowrap flex-shrink-0"
                     >
                       Request Demo
                     </button>
@@ -734,43 +801,8 @@ export default function ServiceDetail() {
           </div>
         </section>
 
-        {/* Client Testimonials */}
-        {relatedTestimonials.length > 0 && (
-          <section className="py-16 md:py-24 bg-dark-600">
-            <div className="max-w-[1400px] mx-auto px-6 md:px-10">
-              <div className="text-center mb-12">
-                <div className="section-tag mx-auto">
-                  <i className="ri-chat-quote-line"></i> Client Feedback
-                </div>
-                <h2 className="section-title text-white">
-                  What Clients Say About Our <span className="text-gradient">{service.name}</span>
-                </h2>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                {relatedTestimonials.map((t) => (
-                  <div key={t.id} className="glass-card rounded-2xl p-7">
-                    <div className="flex gap-1 mb-4">
-                      {[...Array(t.rating)].map((_, j) => (
-                        <i key={j} className="ri-star-fill text-amber-400 text-sm"></i>
-                      ))}
-                    </div>
-                    <p className="text-sm text-white/55 leading-relaxed mb-6 italic">&ldquo;{t.quote}&rdquo;</p>
-                    <div className="flex items-center gap-3 pt-4 border-t border-white/[0.05]">
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center font-heading font-bold text-white text-xs">
-                        {t.avatar}
-                      </div>
-                      <div>
-                        <div className="font-heading text-sm font-semibold text-white">{t.name}</div>
-                        <div className="text-xs text-white/35">{t.role}, {t.company}</div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
+        {/* Client Testimonials — 6 Service-Specific Feedback Slots with Responsive 3/2/1 Carousel */}
+        <ServiceTestimonialsSection serviceSlug={service.slug} serviceName={service.name} />
 
         {/* Service Enquiry Form — Free WhatsApp Click-to-Chat Integration (Section 10) */}
         <section id="service-enquiry-section" className="py-16 md:py-24 bg-dark-600/60 border-y border-white/[0.05]">
@@ -975,21 +1007,94 @@ export default function ServiceDetail() {
                 <div
                   key={s.slug}
                   onClick={() => navigate(`/services/${s.slug}`)}
-                  className="glass-card-hover rounded-2xl p-6 group cursor-pointer"
+                  className="glass-card-hover rounded-2xl overflow-hidden flex flex-col justify-between group cursor-pointer"
                 >
-                  <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary-500/15 to-accent-500/10 border border-primary-400/15 flex items-center justify-center mb-4 group-hover:border-accent-400/30 transition-all">
-                    <i className={`${s.icon} text-accent-400 text-lg`}></i>
+                  <div>
+                    <div className="relative w-full aspect-[640/427] bg-[#060D1A] overflow-hidden border-b border-white/[0.06]">
+                      <img
+                        src={s.bannerImage}
+                        alt={s.imageAlt || `${s.name} Services — AI Software Technology`}
+                        title={s.name}
+                        loading="lazy"
+                        decoding="async"
+                        width="640"
+                        height="427"
+                        onError={(e) => {
+                          if (s.fallbackImage && e.currentTarget.src !== s.fallbackImage) {
+                            e.currentTarget.src = s.fallbackImage;
+                          }
+                        }}
+                        className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-[1.03]"
+                      />
+                    </div>
+                    <div className="p-5 pb-3">
+                      <div className="flex items-center gap-2.5 mb-2">
+                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500/15 to-accent-500/10 border border-primary-400/15 flex items-center justify-center flex-shrink-0 group-hover:border-accent-400/30 transition-all">
+                          <i className={`${s.icon} text-accent-400 text-sm`}></i>
+                        </div>
+                        <h3 className="font-heading text-sm font-bold text-white group-hover:text-accent-300 transition-colors leading-snug">
+                          {s.name}
+                        </h3>
+                      </div>
+                      <p className="text-xs text-white/40 line-clamp-2 mb-2">{s.tagline}</p>
+                    </div>
                   </div>
-                  <h3 className="font-heading text-sm font-bold text-white mb-1.5 group-hover:text-accent-300 transition-colors">
-                    {s.name}
-                  </h3>
-                  <p className="text-xs text-white/35 line-clamp-2 mb-4">{s.tagline}</p>
-                  <span className="text-xs font-semibold text-accent-400 flex items-center gap-1">
-                    Learn More <i className="ri-arrow-right-s-line"></i>
-                  </span>
+                  <div className="px-5 pb-4 pt-2 border-t border-white/[0.04]">
+                    <span className="text-xs font-semibold text-accent-400 flex items-center gap-1">
+                      Learn More <i className="ri-arrow-right-s-line"></i>
+                    </span>
+                  </div>
                 </div>
               ))}
             </div>
+            {relatedCaseStudies.length > 0 && (
+              <div className="mt-14 pt-12 border-t border-white/[0.06]">
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <div className="section-tag">
+                      <i className="ri-file-list-3-line"></i> Proven Implementations
+                    </div>
+                    <h2 className="font-heading text-xl md:text-2xl font-bold text-white">
+                      Related <span className="text-gradient">Case Studies</span>
+                    </h2>
+                  </div>
+                  <a
+                    href="/case-studies"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      navigate('/case-studies');
+                    }}
+                    className="text-xs font-semibold text-accent-400 hover:underline"
+                  >
+                    View All Case Studies →
+                  </a>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                  {relatedCaseStudies.map((cs) => (
+                    <a
+                      key={cs.slug}
+                      href={`/case-studies/${cs.slug}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        navigate(`/case-studies/${cs.slug}`);
+                      }}
+                      className="glass-card-hover rounded-2xl p-5 block group"
+                    >
+                      <span className="inline-block px-2.5 py-0.5 rounded-full bg-accent-500/10 text-accent-400 text-[10px] font-semibold uppercase tracking-wider mb-3">
+                        {cs.industry}
+                      </span>
+                      <h3 className="font-heading text-sm font-bold text-white mb-2 group-hover:text-accent-300 transition-colors line-clamp-2">
+                        {cs.title}
+                      </h3>
+                      <p className="text-xs text-white/40 line-clamp-2 mb-3">{cs.overview}</p>
+                      <span className="text-xs font-semibold text-accent-400 flex items-center gap-1">
+                        Read Case Study <i className="ri-arrow-right-s-line"></i>
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </section>
 

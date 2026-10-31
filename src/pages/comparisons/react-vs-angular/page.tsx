@@ -4,9 +4,39 @@ import Navbar from '@/components/feature/Navbar';
 import Footer from '@/components/feature/Footer';
 import FloatingCTA from '@/components/feature/FloatingCTA';
 import ScrollToTop from '@/components/feature/ScrollToTop';
+import { usePageSEO } from '@/hooks/usePageSEO';
 
 export default function ReactVsAngular() {
   const navigate = useNavigate();
+
+  usePageSEO({
+    title: 'React vs Angular Comparison Guide | Frontend Architecture — AI Software Technology',
+    description:
+      'Compare React vs Angular for custom web applications, ERP dashboards, and SaaS platforms. Evaluate performance, learning curve, ecosystem flexibility, and enterprise scalability with AI Software Technology.',
+    ogType: 'article',
+    canonical: 'https://aisoftwaretechnology.in/comparisons/react-vs-angular',
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: 'React vs Angular: Frontend Framework Comparison for Business Web Applications',
+        description:
+          'Detailed technical comparison between React and Angular for custom web application, ERP, CRM, and SaaS frontend architecture.',
+        author: { '@type': 'Organization', name: 'AI Software Technology', url: 'https://aisoftwaretechnology.in' },
+        publisher: { '@id': 'https://aisoftwaretechnology.in/#organization' },
+        url: 'https://aisoftwaretechnology.in/comparisons/react-vs-angular',
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aisoftwaretechnology.in/' },
+          { '@type': 'ListItem', position: 2, name: 'Knowledge Center', item: 'https://aisoftwaretechnology.in/knowledge-center' },
+          { '@type': 'ListItem', position: 3, name: 'React vs Angular', item: 'https://aisoftwaretechnology.in/comparisons/react-vs-angular' },
+        ],
+      },
+    ],
+  });
 
   return (
     <div className="min-h-screen bg-dark-500 text-white overflow-x-hidden">

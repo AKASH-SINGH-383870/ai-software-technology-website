@@ -4,9 +4,39 @@ import Navbar from '@/components/feature/Navbar';
 import Footer from '@/components/feature/Footer';
 import FloatingCTA from '@/components/feature/FloatingCTA';
 import ScrollToTop from '@/components/feature/ScrollToTop';
+import { usePageSEO } from '@/hooks/usePageSEO';
 
 export default function CustomSoftwareVsSaaS() {
   const navigate = useNavigate();
+
+  usePageSEO({
+    title: 'Custom Software vs SaaS Comparison | Build vs Buy Guide — AI Software Technology',
+    description:
+      'Compare Custom Software Development vs Ready-Made SaaS for ERP, CRM, HRMS, and business operations. Analyze long-term ownership cost, workflow fit, data security, and scalability.',
+    ogType: 'article',
+    canonical: 'https://aisoftwaretechnology.in/comparisons/custom-software-vs-saas',
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: 'Custom Software vs SaaS: Complete Build vs Buy Comparison for Growing Businesses',
+        description:
+          'Compare custom software engineering with off-the-shelf SaaS subscriptions across cost of ownership, customization, workflow fit, and security.',
+        author: { '@type': 'Organization', name: 'AI Software Technology', url: 'https://aisoftwaretechnology.in' },
+        publisher: { '@id': 'https://aisoftwaretechnology.in/#organization' },
+        url: 'https://aisoftwaretechnology.in/comparisons/custom-software-vs-saas',
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aisoftwaretechnology.in/' },
+          { '@type': 'ListItem', position: 2, name: 'Custom Software Development', item: 'https://aisoftwaretechnology.in/services/custom-software' },
+          { '@type': 'ListItem', position: 3, name: 'Custom Software vs SaaS', item: 'https://aisoftwaretechnology.in/comparisons/custom-software-vs-saas' },
+        ],
+      },
+    ],
+  });
 
   return (
     <div className="min-h-screen bg-dark-500 text-white overflow-x-hidden">

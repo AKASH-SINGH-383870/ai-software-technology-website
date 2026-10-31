@@ -135,21 +135,21 @@ export const testimonials = [
     role: 'Manufacturing & Distribution Enterprise',
     quote: 'Moving from disconnected spreadsheets to a custom ERP and inventory system built around our exact dispatch workflow gave us real-time visibility across warehouses and billing.',
     rating: 5,
-    image: 'https://readdy.ai/api/search-image?query=Professional%20Indian%20male%20CTO%20headshot%2C%20confident%20expression%2C%20navy%20suit%2C%20clean%20white%20studio%20background%2C%20warm%20natural%20lighting%2C%20high%20quality%20corporate%20portrait%20photography&width=200&height=200&seq=testimonial-vikram&orientation=squarish',
+    image: 'https://readdy.ai/api/search-image?query=Professional%20Indian%20male%20executive%20headshot%2C%20confident%20expression%2C%20navy%20suit%2C%20clean%20white%20studio%20background%2C%20warm%20natural%20lighting%2C%20corporate%20portrait%20photography&width=200&height=200&seq=test-vikram-2&orientation=squarish',
   },
   {
     name: 'Sales & Growth Head',
     role: 'Real Estate & Service Organization',
     quote: 'With automated WhatsApp lead capture, follow-up reminders, and counselor pipeline tracking in our custom CRM, our response time dropped significantly and lead leakage stopped.',
     rating: 5,
-    image: 'https://readdy.ai/api/search-image?query=Professional%20Indian%20female%20executive%20headshot%2C%20warm%20smile%2C%20cream%20blazer%2C%20clean%20white%20studio%20background%2C%20natural%20lighting%2C%20high%20quality%20corporate%20portrait%20photography&width=200&height=200&seq=testimonial-priya&orientation=squarish',
+    image: 'https://readdy.ai/api/search-image?query=Professional%20Indian%20female%20executive%20headshot%2C%20warm%20smile%2C%20cream%20blazer%2C%20clean%20white%20studio%20background%2C%20natural%20lighting%2C%20corporate%20portrait%20photography&width=200&height=200&seq=test-priya-2&orientation=squarish',
   },
   {
     name: 'HR & Administration Lead',
     role: 'Multi-Branch Service Company',
     quote: 'Our HRMS portal simplified biometric attendance, shift scheduling, leave approvals, and monthly payslip generation into one clean system for both management and staff.',
     rating: 5,
-    image: 'https://readdy.ai/api/search-image?query=Professional%20Indian%20male%20managing%20director%20headshot%2C%20distinguished%20grey%20hair%2C%20charcoal%20suit%2C%20clean%20white%20studio%20background%2C%20soft%20lighting%2C%20high%20quality%20corporate%20portrait%20photography&width=200&height=200&seq=testimonial-rajesh&orientation=squarish',
+    image: 'https://readdy.ai/api/search-image?query=Professional%20Indian%20male%20managing%20director%20headshot%2C%20distinguished%20grey%20hair%2C%20charcoal%20suit%2C%20clean%20white%20studio%20background%2C%20soft%20lighting%2C%20corporate%20portrait%20photography&width=200&height=200&seq=test-rajesh-2&orientation=squarish',
   },
 ];
 

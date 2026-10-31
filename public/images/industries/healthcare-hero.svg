@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 760" width="1400" height="760">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040B14"/>
+      <stop offset="55%" stop-color="#082032"/>
+      <stop offset="100%" stop-color="#0D3550"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14B8A6"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#14B8A6" stop-opacity="0.24"/>
+      <stop offset="100%" stop-color="#14B8A6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#3B82F6" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="techGrid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="#ffffff" stroke-width="0.6" stroke-opacity="0.05"/>
+    </pattern>
+  </defs>
+
+  <!-- Deep Enterprise Background -->
+  <rect width="1400" height="760" fill="url(#bgGrad)"/>
+  <rect width="1400" height="760" fill="url(#techGrid)"/>
+
+  <!-- Ambient Aurora Glows -->
+  <circle cx="847" cy="216" r="420" fill="url(#glow1)"/>
+  <circle cx="553" cy="544" r="380" fill="url(#glow2)"/>
+
+  <!-- Subtle Outer Frame -->
+  <rect x="44" y="44" width="1312" height="672" rx="28" fill="#030712" fill-opacity="0.45" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1.5"/>
+
+  <!-- Top Brand Telemetry Bar -->
+  <rect x="88" y="68" width="310" height="34" rx="17" fill="#0B1930" stroke="#14B8A6" stroke-opacity="0.4"/>
+  <circle cx="110" cy="85" r="5" fill="#14B8A6"/>
+  <text x="126" y="90" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="1.2">AI SOFTWARE TECHNOLOGY</text>
+
+  
+      <!-- Hospital Management System (HMS) & Clinical EMR Console -->
+      <rect x="88" y="128" width="1224" height="524" rx="20" fill="#061626" fill-opacity="0.94" stroke="#14B8A6" stroke-opacity="0.4" stroke-width="1.5"/>
+      <text x="124" y="174" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="20" font-weight="800">Healthcare Software Solutions</text>
+      <text x="124" y="198" fill="#5EEAD4" font-family="system-ui, sans-serif" font-size="13">AI Software Technology (A Brand of Digi India Solutions) provide</text>
+
+      <!-- Top Clinical Modules -->
+      
+        <rect x="124" y="222" width="272" height="106" rx="14" fill="#0A2339" stroke="#14B8A6" stroke-opacity="0.4" stroke-width="1.5"/>
+        <text x="146" y="256" fill="#14B8A6" font-family="system-ui, sans-serif" font-size="11" font-weight="800" letter-spacing="1">OPD / IPD QUEUE</text>
+        <text x="146" y="294" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="20" font-weight="800">142 Active Patients</text>
+      
+        <rect x="416" y="222" width="272" height="106" rx="14" fill="#0A2339" stroke="#38BDF8" stroke-opacity="0.4" stroke-width="1.5"/>
+        <text x="438" y="256" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="11" font-weight="800" letter-spacing="1">DIGITAL EMR & RX</text>
+        <text x="438" y="294" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="20" font-weight="800">Zero Paper Records</text>
+      
+        <rect x="708" y="222" width="272" height="106" rx="14" fill="#0A2339" stroke="#818CF8" stroke-opacity="0.4" stroke-width="1.5"/>
+        <text x="730" y="256" fill="#818CF8" font-family="system-ui, sans-serif" font-size="11" font-weight="800" letter-spacing="1">LAB & RADIOLOGY</text>
+        <text x="730" y="294" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="20" font-weight="800">Auto Report Sync</text>
+      
+        <rect x="1000" y="222" width="272" height="106" rx="14" fill="#0A2339" stroke="#10B981" stroke-opacity="0.4" stroke-width="1.5"/>
+        <text x="1022" y="256" fill="#10B981" font-family="system-ui, sans-serif" font-size="11" font-weight="800" letter-spacing="1">PHARMACY & TPA BILL</text>
+        <text x="1022" y="294" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="20" font-weight="800">99.9% Claim Accuracy</text>
+      
+
+      <!-- Left: ECG / Vitals & Patient Flow Chart -->
+      <rect x="124" y="352" width="680" height="268" rx="16" fill="#091E32" stroke="#14B8A6" stroke-opacity="0.3"/>
+      <text x="152" y="388" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="15" font-weight="700">Live Hospital Department Telemetry &amp; OPD Flow</text>
+      <path d="M 152 490 L 240 490 L 265 430 L 290 555 L 320 410 L 350 530 L 375 490 L 520 490 L 545 435 L 570 545 L 600 420 L 625 490 L 760 490" fill="none" stroke="#14B8A6" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="152" y1="575" x2="760" y2="575" stroke="#1E3A5F" stroke-width="1.5"/>
+
+      <!-- Right: Ward & Doctor Schedule Matrix -->
+      <rect x="828" y="352" width="448" height="268" rx="16" fill="#091E32" stroke="#38BDF8" stroke-opacity="0.3"/>
+      <text x="856" y="388" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="15" font-weight="700">Doctor Portal, Pharmacy &amp; Lab Status</text>
+      
+        <rect x="856" y="410" width="392" height="36" rx="8" fill="#0F2D4A"/>
+        <circle cx="878" cy="428" r="6" fill="#14B8A6"/>
+        <text x="896" y="433" fill="#F1F5F9" font-family="system-ui, sans-serif" font-size="13" font-weight="600">Centralized Patient EMR & History</text>
+      
+        <rect x="856" y="456" width="392" height="36" rx="8" fill="#0F2D4A"/>
+        <circle cx="878" cy="474" r="6" fill="#14B8A6"/>
+        <text x="896" y="479" fill="#F1F5F9" font-family="system-ui, sans-serif" font-size="13" font-weight="600">Automated WhatsApp Appointment Alerts</text>
+      
+        <rect x="856" y="502" width="392" height="36" rx="8" fill="#0F2D4A"/>
+        <circle cx="878" cy="520" r="6" fill="#14B8A6"/>
+        <text x="896" y="525" fill="#F1F5F9" font-family="system-ui, sans-serif" font-size="13" font-weight="600">Barcode Sample & Diagnostics LIMS</text>
+      
+        <rect x="856" y="548" width="392" height="36" rx="8" fill="#0F2D4A"/>
+        <circle cx="878" cy="566" r="6" fill="#14B8A6"/>
+        <text x="896" y="571" fill="#F1F5F9" font-family="system-ui, sans-serif" font-size="13" font-weight="600">Multi-Branch Billing & Insurance MIS</text>
+      
+    
+</svg>

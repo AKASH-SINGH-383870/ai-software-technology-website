@@ -20,12 +20,50 @@ export default function CaseStudyDetail() {
     description: study
       ? `${study.overview} Explore business challenges, solution architecture, key features, workflow, and technology stack by AI Software Technology.`
       : 'Explore software implementation case studies by AI Software Technology (A Brand of Digi India Solutions).',
-    keywords: study
-      ? `${study.tags.join(', ')}, ${study.industry}, AI Software Technology case study, Digi India Solutions`
-      : 'software case study, AI Software Technology',
+    ogTitle: study ? `${study.title} — Case Study` : 'Case Studies — AI Software Technology',
+    ogDescription: study?.overview,
+    ogImage: study?.image,
+    ogType: 'article',
     canonical: study
       ? `https://aisoftwaretechnology.in/case-studies/${study.slug}`
       : 'https://aisoftwaretechnology.in/case-studies',
+    jsonLd: study
+      ? [
+          {
+            '@context': 'https://schema.org',
+            '@type': 'Article',
+            headline: study.title,
+            description: study.overview,
+            url: `https://aisoftwaretechnology.in/case-studies/${study.slug}`,
+            image: study.image,
+            author: {
+              '@type': 'Organization',
+              name: 'AI Software Technology',
+              url: 'https://aisoftwaretechnology.in',
+            },
+            publisher: {
+              '@type': 'Organization',
+              name: 'AI Software Technology',
+              url: 'https://aisoftwaretechnology.in',
+              parentOrganization: {
+                '@type': 'Organization',
+                name: 'Digi India Solutions',
+              },
+            },
+            about: { '@type': 'Thing', name: study.industry },
+            keywords: study.tags.join(', '),
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aisoftwaretechnology.in/' },
+              { '@type': 'ListItem', position: 2, name: 'Case Studies', item: 'https://aisoftwaretechnology.in/case-studies' },
+              { '@type': 'ListItem', position: 3, name: study.title, item: `https://aisoftwaretechnology.in/case-studies/${study.slug}` },
+            ],
+          },
+        ]
+      : undefined,
   });
 
   if (!study) {
@@ -93,6 +131,10 @@ export default function CaseStudyDetail() {
           <img
             src={study.image}
             alt={study.title}
+            loading="eager"
+            decoding="async"
+            width="1400"
+            height="760"
             className="absolute inset-0 w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-dark-500/50 via-dark-500/75 to-dark-500"></div>

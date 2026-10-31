@@ -94,9 +94,9 @@ export default function Footer() {
           <div className="lg:col-span-5">
             <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="inline-block mb-4">
               <img
-                src="/logo.png"
+                src="https://i.ibb.co/GvYrMC4M/Chat-GPT-Image-Oct-30-2026-07-57-59-PM.png"
                 onError={(e) => {
-                  e.currentTarget.src = 'https://i.ibb.co/8g96Y6FF/Chat-GPT-Image-Oct-30-2026-07-57-59-PM-Photoroom.png';
+                  e.currentTarget.src = '/logo.png';
                 }}
                 alt="AI Software Technology — A Brand of Digi India Solutions"
                 title="AI Software Technology — A Brand of Digi India Solutions"

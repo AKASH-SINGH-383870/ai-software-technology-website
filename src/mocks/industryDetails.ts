@@ -28,10 +28,10 @@ export const industriesData = {
       'Inventory & Supply Chain', 'Staff & Doctor Management', 'Analytics Dashboard',
     ],
     benefits: [
-      { value: '40%', label: 'Reduced Wait Times' },
-      { value: '30%', label: 'Operational Cost Savings' },
-      { value: '99.9%', label: 'Data Accuracy' },
-      { value: '60%', label: 'Faster Claims Processing' },
+      { value: 'OPD & IPD', label: 'Unified Hospital Workflows' },
+      { value: 'Role-Based', label: 'Doctor, Lab & Pharmacy Portals' },
+      { value: 'Automated', label: 'WhatsApp Patient Reminders' },
+      { value: 'Centralized', label: 'EMR & Billing Records' },
     ],
     caseStudies: [
       { title: 'MedLife Hospital Chain', desc: 'Migrated 12 hospitals to unified EMR, reducing patient wait times by 40% and improving claims accuracy to 99.9%.', image: 'https://readdy.ai/api/search-image?query=Modern%20hospital%20interior%20with%20doctors%20using%20digital%20tablets%2C%20clean%20bright%20medical%20facility%2C%20electronic%20medical%20records%20dashboard%20on%20screen%2C%20professional%20healthcare%20environment%2C%20white%20and%20teal%20color%20scheme&width=800&height=450&seq=cs-healthcare-medlife&orientation=landscape' },
@@ -66,10 +66,10 @@ export const industriesData = {
       'Customer 360 Portal', 'Mobile Banking App', 'Analytics & BI',
     ],
     benefits: [
-      { value: '80%', label: 'Faster Loan Processing' },
-      { value: '₹50Cr+', label: 'Fraud Prevented' },
-      { value: '5 mins', label: 'Digital Onboarding' },
-      { value: '99.95%', label: 'System Uptime' },
+      { value: 'Audit-Ready', label: 'Role & Ledger Governance' },
+      { value: 'Real-Time', label: 'Transaction & Billing Logs' },
+      { value: 'Digital', label: 'Onboarding & KYC Workflows' },
+      { value: 'Automated', label: 'MIS & Compliance Reports' },
     ],
     caseStudies: [
       { title: 'Prime Finance Group', desc: 'Modernized core banking for 5M+ accounts, reducing transaction processing time from hours to seconds while achieving RBI compliance.', image: 'https://readdy.ai/api/search-image?query=Sleek%20modern%20banking%20technology%20center%2C%20financial%20data%20analytics%20dashboards%2C%20fraud%20detection%20system%20screens%2C%20corporate%20banking%20environment%2C%20gold%20and%20navy%20color%20scheme%2C%20professional%20atmosphere&width=800&height=450&seq=cs-finance-prime&orientation=landscape' },
@@ -104,10 +104,10 @@ export const industriesData = {
       'Shop Floor Control', 'HR & Shift Management', 'Real-time OEE Dashboard',
     ],
     benefits: [
-      { value: '35%', label: 'Efficiency Improvement' },
-      { value: '25%', label: 'Cost Reduction' },
-      { value: '60%', label: 'Less Downtime' },
-      { value: '99.5%', label: 'Quality Rate' },
+      { value: 'BOM & MRP', label: 'Structured Production Planning' },
+      { value: 'Multi-Godown', label: 'Real-Time Stock Accuracy' },
+      { value: 'Multi-Shift', label: 'Workforce & Gate-Pass Logs' },
+      { value: 'Dealer Portal', label: 'Order & Dispatch Coordination' },
     ],
     caseStudies: [
       { title: 'Apex Manufacturing Ltd.', desc: 'Deployed IoT sensors across 5 factories, reducing machine downtime by 60% and improving overall equipment effectiveness to 92%.', image: 'https://readdy.ai/api/search-image?query=Smart%20factory%20with%20digital%20dashboards%20showing%20production%20metrics%2C%20modern%20manufacturing%20floor%20with%20machines%20and%20workers%2C%20industrial%20LED%20screens%2C%20clean%20organized%20facility%2C%20warm%20industrial%20lighting&width=800&height=450&seq=cs-manufacturing-apex&orientation=landscape' },
@@ -142,10 +142,10 @@ export const industriesData = {
       'Gamification Engine', 'Attendance & Scheduling', 'Analytics Dashboard',
     ],
     benefits: [
-      { value: '92%', label: 'Course Completion Rate' },
-      { value: '3x', label: 'Student Engagement' },
-      { value: '50%', label: 'Less Admin Workload' },
-      { value: '4.8/5', label: 'Student Satisfaction' },
+      { value: 'End-to-End', label: 'Admissions, Fees & Academics' },
+      { value: 'Web + App', label: 'Parent, Student & Faculty Access' },
+      { value: 'Automated', label: 'Fee Reminders & E-Receipts' },
+      { value: 'Digital', label: 'Exams & Report Card Engine' },
     ],
     caseStudies: [
       { title: 'EduLearn Academy', desc: 'Deployed gamified learning platform for 50K+ students, increasing course completion from 35% to 92% while reducing teacher admin workload by 50%.', image: 'https://readdy.ai/api/search-image?query=Modern%20classroom%20with%20students%20using%20tablets%20showing%20colorful%20educational%20app%2C%20interactive%20learning%20dashboard%20on%20screen%2C%20bright%20natural%20light%2C%20diverse%20students%20engaged%2C%20warm%20educational%20environment%2C%20high%20detail%20photography&width=800&height=450&seq=cs-education-edulearn&orientation=landscape' },
@@ -180,10 +180,10 @@ export const industriesData = {
       'Warehouse Management', 'Analytics & Forecasting', 'CRM Integration',
     ],
     benefits: [
-      { value: '35%', label: 'Higher Basket Size' },
-      { value: '60%', label: 'Less Stockouts' },
-      { value: '25%', label: 'Operating Cost Reduction' },
-      { value: '99.5%', label: 'Inventory Accuracy' },
+      { value: 'Omnichannel', label: 'POS, Web & Warehouse Sync' },
+      { value: 'Barcode-Ready', label: 'Fast Counter GST Billing' },
+      { value: 'Real-Time', label: 'SKU & Reorder Alerts' },
+      { value: 'Centralized', label: 'Multi-Store MIS Reporting' },
     ],
     caseStudies: [
       { title: 'ShopNow Retail Chain', desc: 'Unified 50 stores and online into single commerce platform, achieving 99.5% inventory accuracy and 35% basket size increase through AI recommendations.', image: 'https://readdy.ai/api/search-image?query=Modern%20retail%20store%20with%20digital%20checkout%20kiosks%20and%20inventory%20management%20screens%2C%20bright%20contemporary%20interior%2C%20products%20organized%20on%20shelves%2C%20retail%20technology%20in%20action%2C%20warm%20commercial%20lighting%2C%20professional%20photography&width=800&height=450&seq=cs-retail-shopnow&orientation=landscape' },
@@ -218,10 +218,10 @@ export const industriesData = {
       'Channel Manager', 'CRM & Loyalty', 'Analytics Dashboard',
     ],
     benefits: [
-      { value: '22%', label: 'Revenue Increase' },
-      { value: '40%', label: 'Faster Room Turnaround' },
-      { value: '4.9/5', label: 'Guest Satisfaction' },
-      { value: '30%', label: 'Labor Cost Savings' },
+      { value: 'Front-Desk', label: 'Room & Reservation Calendar' },
+      { value: 'Integrated', label: 'Restaurant KOT & POS Billing' },
+      { value: 'Real-Time', label: 'Housekeeping & Room Status' },
+      { value: 'Multi-Property', label: 'Centralized Guest CRM' },
     ],
     caseStudies: [
       { title: 'Grand Vista Hotels', desc: 'Implemented unified guest platform across 15 properties, increasing direct bookings by 45% and achieving 4.9/5 guest satisfaction through personalized experiences.', image: 'https://readdy.ai/api/search-image?query=Luxury%20hotel%20room%20with%20digital%20tablet%20controlling%20room%20amenities%2C%20smart%20hospitality%20technology%2C%20elegant%20modern%20interior%20with%20warm%20lighting%2C%20premium%20hotel%20experience%2C%20high%20detail%20interior%20photography&width=800&height=450&seq=cs-hospitality-vista&orientation=landscape' },
@@ -256,10 +256,10 @@ export const industriesData = {
       'Document Control', 'Quality Inspection', 'Stakeholder Dashboard',
     ],
     benefits: [
-      { value: '25%', label: 'Cost Overrun Reduction' },
-      { value: '35%', label: 'Faster Project Delivery' },
-      { value: '60%', label: 'Fewer Safety Incidents' },
-      { value: '99%', label: 'Document Accuracy' },
+      { value: 'Multi-Site', label: 'Material & PO Tracking' },
+      { value: 'Structured', label: 'Contractor & RA Billing' },
+      { value: 'Daily DPR', label: 'Site Progress & Labour Logs' },
+      { value: 'Centralized', label: 'Budget vs Actual Control' },
     ],
     caseStudies: [
       { title: 'MetroCity Infrastructure', desc: 'Deployed digital project control tower across 3 major projects, reducing cost overruns by 25% and completing 2 months ahead of schedule.', image: 'https://readdy.ai/api/search-image?query=Construction%20project%20manager%20viewing%20BIM%203D%20model%20on%20large%20screen%2C%20modern%20site%20office%20with%20digital%20dashboards%2C%20architectural%20visualization%2C%20professional%20engineering%20environment%2C%20clean%20industrial%20aesthetic&width=800&height=450&seq=cs-construction-metro&orientation=landscape' },
@@ -294,10 +294,10 @@ export const industriesData = {
       'Virtual Tour Platform', 'Agent Performance', 'Market Analytics',
     ],
     benefits: [
-      { value: '40%', label: 'Lead Conversion Increase' },
-      { value: '60%', label: 'Faster Maintenance Resolution' },
-      { value: '95%', label: 'Valuation Accuracy' },
-      { value: '50%', label: 'Admin Time Saved' },
+      { value: 'Zero Leakage', label: 'Multi-Channel Lead Capture' },
+      { value: 'Automated', label: 'Site-Visit & Follow-Up Alerts' },
+      { value: 'Real-Time', label: 'Tower & Unit Inventory Status' },
+      { value: 'Role-Based', label: 'Sales & Channel Partner Portals' },
     ],
     caseStudies: [
       { title: 'PropView Realty Group', desc: 'Implemented unified property OS across 5000+ managed units, achieving 40% lead conversion increase and reducing maintenance resolution time from 4 days to 4 hours.', image: 'https://readdy.ai/api/search-image?query=Modern%20real%20estate%20office%20with%20agents%20viewing%20property%20management%20software%20on%20screens%2C%20luxury%20residential%20building%20visualization%2C%20contemporary%20professional%20workspace%2C%20warm%20lighting%2C%20high%20detail%20commercial%20photography&width=800&height=450&seq=cs-realestate-propview&orientation=landscape' },

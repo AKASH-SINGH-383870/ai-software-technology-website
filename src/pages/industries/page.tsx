@@ -15,9 +15,34 @@ export default function Industries() {
     title: 'Industries We Serve | AI Software Technology — Healthcare, Education, Real Estate, Manufacturing',
     description:
       'AI Software Technology (A Brand of Digi India Solutions) delivers custom ERP, CRM, HRMS, and industry-specific management software across Healthcare, Education, Real Estate, Manufacturing, Retail, Finance, Hospitality, and Construction.',
-    keywords:
-      'industry software solutions, hospital management software, school ERP software, real estate CRM, manufacturing ERP, retail POS billing, hotel management software, AI Software Technology',
     canonical: 'https://aisoftwaretechnology.in/industries',
+    jsonLd: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: 'Industries We Serve — AI Software Technology',
+        url: 'https://aisoftwaretechnology.in/industries',
+        description:
+          'Industry-specific custom software, ERP, CRM, HRMS, and automation solutions across Healthcare, Manufacturing, Education, Retail, Real Estate, Finance, Hospitality, and Construction.',
+        mainEntity: {
+          '@type': 'ItemList',
+          itemListElement: industries.map((ind, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            name: ind.title,
+            url: `https://aisoftwaretechnology.in/industries/${ind.slug}`,
+          })),
+        },
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aisoftwaretechnology.in/' },
+          { '@type': 'ListItem', position: 2, name: 'Industries', item: 'https://aisoftwaretechnology.in/industries' },
+        ],
+      },
+    ],
   });
 
   return (
@@ -108,16 +133,29 @@ export default function Industries() {
                           {industry.desc}
                         </p>
 
-                        {/* Expand Button */}
-                        <button
-                          onClick={() => setExpanded(isExpanded ? null : industry.slug)}
-                          className="flex-shrink-0 flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] text-white/45 text-xs font-medium hover:bg-white/[0.06] hover:text-white/70 transition-all duration-300 cursor-pointer whitespace-nowrap"
-                        >
-                          {isExpanded ? 'Show Less' : 'View Details'}
-                          <motion.div animate={{ rotate: isExpanded ? 180 : 0 }}>
-                            <i className="ri-arrow-down-s-line text-sm"></i>
-                          </motion.div>
-                        </button>
+                        {/* Actions */}
+                        <div className="flex items-center gap-2.5 flex-shrink-0">
+                          <a
+                            href={`/industries/${industry.slug}`}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              navigate(`/industries/${industry.slug}`);
+                            }}
+                            className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-accent-500/10 border border-accent-400/20 text-accent-300 text-xs font-semibold hover:bg-accent-500/20 transition-all duration-300 cursor-pointer whitespace-nowrap"
+                          >
+                            Explore {industry.title.split(' ')[0]}
+                            <i className="ri-arrow-right-up-line text-sm"></i>
+                          </a>
+                          <button
+                            onClick={() => setExpanded(isExpanded ? null : industry.slug)}
+                            className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] text-white/45 text-xs font-medium hover:bg-white/[0.06] hover:text-white/70 transition-all duration-300 cursor-pointer whitespace-nowrap"
+                          >
+                            {isExpanded ? 'Show Less' : 'Quick Overview'}
+                            <motion.div animate={{ rotate: isExpanded ? 180 : 0 }}>
+                              <i className="ri-arrow-down-s-line text-sm"></i>
+                            </motion.div>
+                          </button>
+                        </div>
                       </div>
 
                       {/* Expanded Content */}
@@ -153,8 +191,13 @@ export default function Industries() {
                                 </h5>
                                 <div className="space-y-3">
                                   {industry.caseStudies.map((cs) => (
-                                    <div
+                                    <a
                                       key={cs.title}
+                                      href={'slug' in cs && cs.slug ? `/case-studies/${cs.slug}` : '/case-studies'}
+                                      onClick={(e) => {
+                                        e.preventDefault();
+                                        navigate('slug' in cs && cs.slug ? `/case-studies/${cs.slug}` : '/case-studies');
+                                      }}
                                       className="flex items-start gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/[0.04] hover:bg-white/[0.04] transition-colors duration-300 cursor-pointer group"
                                     >
                                       <div className="w-8 h-8 rounded-lg bg-accent-500/10 flex items-center justify-center flex-shrink-0">
@@ -166,7 +209,7 @@ export default function Industries() {
                                         </h6>
                                         <p className="text-white/30 text-[11px]">{cs.desc}</p>
                                       </div>
-                                    </div>
+                                    </a>
                                   ))}
                                 </div>
                               </div>
@@ -175,19 +218,20 @@ export default function Industries() {
                             {/* CTA */}
                             <div className="mt-6 flex flex-col sm:flex-row items-center gap-3">
                               <a
-                                href="/contact"
-                                onClick={(e) => { e.preventDefault(); navigate('/contact'); }}
+                                href={`/industries/${industry.slug}`}
+                                onClick={(e) => { e.preventDefault(); navigate(`/industries/${industry.slug}`); }}
                                 className="glass-btn-primary cursor-pointer text-sm"
                               >
-                                Get {industry.title} Solutions
+                                View {industry.title} Solutions Page
                                 <i className="ri-arrow-right-line ml-2"></i>
                               </a>
-                              <button
-                                onClick={() => navigate('/portfolio')}
+                              <a
+                                href="/contact"
+                                onClick={(e) => { e.preventDefault(); navigate('/contact'); }}
                                 className="glass-btn cursor-pointer text-sm"
                               >
-                                View Portfolio
-                              </button>
+                                Request Consultation
+                              </a>
                             </div>
                           </div>
                         </motion.div>

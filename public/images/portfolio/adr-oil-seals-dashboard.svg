@@ -1,0 +1,164 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 760" width="1400" height="760">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040915"/>
+      <stop offset="55%" stop-color="#0A192F"/>
+      <stop offset="100%" stop-color="#0F294A"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00E5FF"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00E5FF" stop-opacity="0.24"/>
+      <stop offset="100%" stop-color="#00E5FF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#F59E0B" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="techGrid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="#ffffff" stroke-width="0.6" stroke-opacity="0.05"/>
+    </pattern>
+  </defs>
+
+  <!-- Deep Enterprise Background -->
+  <rect width="1400" height="760" fill="url(#bgGrad)"/>
+  <rect width="1400" height="760" fill="url(#techGrid)"/>
+
+  <!-- Ambient Aurora Glows -->
+  <circle cx="783" cy="493" r="420" fill="url(#glow1)"/>
+  <circle cx="617" cy="267" r="380" fill="url(#glow2)"/>
+
+  <!-- Subtle Outer Frame -->
+  <rect x="44" y="44" width="1312" height="672" rx="28" fill="#030712" fill-opacity="0.45" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1.5"/>
+
+  <!-- Top Brand Telemetry Bar -->
+  <rect x="88" y="68" width="310" height="34" rx="17" fill="#0B1930" stroke="#00E5FF" stroke-opacity="0.4"/>
+  <circle cx="110" cy="85" r="5" fill="#00E5FF"/>
+  <text x="126" y="90" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="1.2">AI SOFTWARE TECHNOLOGY</text>
+
+  
+      <!-- Lubricant Order & Inventory ERP Command Center -->
+      <!-- Left Sidebar -->
+      <rect x="90" y="130" width="210" height="520" rx="16" fill="#071122" fill-opacity="0.9" stroke="#00E5FF" stroke-opacity="0.28" stroke-width="1.5"/>
+      <circle cx="120" cy="162" r="6" fill="#EF4444"/><circle cx="140" cy="162" r="6" fill="#F59E0B"/><circle cx="160" cy="162" r="6" fill="#10B981"/>
+      <text x="115" y="202" fill="#00E5FF" font-family="system-ui, sans-serif" font-size="13" font-weight="700" letter-spacing="1.5">LUBRICANT ERP</text>
+      
+        <rect x="106" y="224" width="178" height="40" rx="10" fill="#00E5FF" fill-opacity="0.18" stroke="#00E5FF" stroke-opacity="0.5"/>
+        <circle cx="126" cy="244" r="5" fill="#00E5FF"/>
+        <text x="142" y="249" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="13" font-weight="700">Dealer Orders</text>
+      
+        <rect x="106" y="278" width="178" height="40" rx="10" fill="#ffffff" fill-opacity="0.04" stroke="#ffffff" stroke-opacity="0.08"/>
+        <circle cx="126" cy="298" r="5" fill="#3B82F6"/>
+        <text x="142" y="303" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="13" font-weight="500">Pack Size Matrix</text>
+      
+        <rect x="106" y="332" width="178" height="40" rx="10" fill="#ffffff" fill-opacity="0.04" stroke="#ffffff" stroke-opacity="0.08"/>
+        <circle cx="126" cy="352" r="5" fill="#F59E0B"/>
+        <text x="142" y="357" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="13" font-weight="500">Drum & Carton Stock</text>
+      
+        <rect x="106" y="386" width="178" height="40" rx="10" fill="#ffffff" fill-opacity="0.04" stroke="#ffffff" stroke-opacity="0.08"/>
+        <circle cx="126" cy="406" r="5" fill="#3B82F6"/>
+        <text x="142" y="411" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="13" font-weight="500">Batch & Grade QC</text>
+      
+        <rect x="106" y="440" width="178" height="40" rx="10" fill="#ffffff" fill-opacity="0.04" stroke="#ffffff" stroke-opacity="0.08"/>
+        <circle cx="126" cy="460" r="5" fill="#3B82F6"/>
+        <text x="142" y="465" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="13" font-weight="500">Dispatch & LR Track</text>
+      
+        <rect x="106" y="494" width="178" height="40" rx="10" fill="#ffffff" fill-opacity="0.04" stroke="#ffffff" stroke-opacity="0.08"/>
+        <circle cx="126" cy="514" r="5" fill="#3B82F6"/>
+        <text x="142" y="519" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="13" font-weight="500">Payment Ledger</text>
+      
+
+      <!-- Top KPI Cards: Drum / Carton / Dispatch -->
+      
+        <rect x="324" y="130" width="230" height="118" rx="14" fill="#09172E" fill-opacity="0.88" stroke="#00E5FF" stroke-opacity="0.35" stroke-width="1.5"/>
+        <text x="344" y="160" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="1">200L BARREL STOCK</text>
+        <text x="344" y="196" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="22" font-weight="800">1,480 Drums</text>
+        <rect x="344" y="216" width="190" height="8" rx="4" fill="#1E293B"/>
+        <rect x="344" y="216" width="160" height="8" rx="4" fill="#00E5FF"/>
+      
+        <rect x="570" y="130" width="230" height="118" rx="14" fill="#09172E" fill-opacity="0.88" stroke="#F59E0B" stroke-opacity="0.35" stroke-width="1.5"/>
+        <text x="590" y="160" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="1">20L / 5L CARTONS</text>
+        <text x="590" y="196" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="22" font-weight="800">12,640 Units</text>
+        <rect x="590" y="216" width="190" height="8" rx="4" fill="#1E293B"/>
+        <rect x="590" y="216" width="144" height="8" rx="4" fill="#F59E0B"/>
+      
+        <rect x="816" y="130" width="230" height="118" rx="14" fill="#09172E" fill-opacity="0.88" stroke="#10B981" stroke-opacity="0.35" stroke-width="1.5"/>
+        <text x="836" y="160" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="1">ACTIVE DEALER ORDERS</text>
+        <text x="836" y="196" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="22" font-weight="800">342 Pending</text>
+        <rect x="836" y="216" width="190" height="8" rx="4" fill="#1E293B"/>
+        <rect x="836" y="216" width="173" height="8" rx="4" fill="#10B981"/>
+      
+        <rect x="1062" y="130" width="230" height="118" rx="14" fill="#09172E" fill-opacity="0.88" stroke="#3B82F6" stroke-opacity="0.35" stroke-width="1.5"/>
+        <text x="1082" y="160" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="1">DISPATCH FULFILMENT</text>
+        <text x="1082" y="196" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="22" font-weight="800">99.4% On-Time</text>
+        <rect x="1082" y="216" width="190" height="8" rx="4" fill="#1E293B"/>
+        <rect x="1082" y="216" width="181" height="8" rx="4" fill="#3B82F6"/>
+      
+
+      <!-- Center Panel: Dealer Order & Pack Allocation Pipeline -->
+      <rect x="324" y="268" width="640" height="382" rx="16" fill="#081428" fill-opacity="0.9" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1.5"/>
+      <text x="352" y="306" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="16" font-weight="700">B2B Distributor Order &amp; Grade Packing Pipeline</text>
+      <text x="352" y="328" fill="#64748B" font-family="system-ui, sans-serif" font-size="12">Admin Control Panel &amp; Real-Time Telemetry • Industrial Manufactu</text>
+
+      <!-- Simulated Order Rows -->
+      
+        <rect x="352" y="350" width="584" height="52" rx="10" fill="#0F213C" fill-opacity="0.75" stroke="#ffffff" stroke-opacity="0.07"/>
+        <rect x="366" y="364" width="84" height="24" rx="6" fill="#10B981" fill-opacity="0.16"/>
+        <text x="378" y="381" fill="#10B981" font-family="monospace" font-size="12" font-weight="700">ORD-8841</text>
+        <text x="468" y="381" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="13" font-weight="600">20W-40 Multigrade • 210L Drum × 40</text>
+        <rect x="812" y="364" width="106" height="24" rx="12" fill="#10B981" fill-opacity="0.2" stroke="#10B981" stroke-opacity="0.5"/>
+        <text x="865" y="380" text-anchor="middle" fill="#10B981" font-family="system-ui, sans-serif" font-size="11" font-weight="700">DISPATCHED</text>
+      
+        <rect x="352" y="416" width="584" height="52" rx="10" fill="#0F213C" fill-opacity="0.75" stroke="#ffffff" stroke-opacity="0.07"/>
+        <rect x="366" y="430" width="84" height="24" rx="6" fill="#00E5FF" fill-opacity="0.16"/>
+        <text x="378" y="447" fill="#00E5FF" font-family="monospace" font-size="12" font-weight="700">ORD-8842</text>
+        <text x="468" y="447" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="13" font-weight="600">15W-40 Diesel CI-4 • 20L Bucket × 120</text>
+        <rect x="812" y="430" width="106" height="24" rx="12" fill="#00E5FF" fill-opacity="0.2" stroke="#00E5FF" stroke-opacity="0.5"/>
+        <text x="865" y="446" text-anchor="middle" fill="#00E5FF" font-family="system-ui, sans-serif" font-size="11" font-weight="700">PACKING QC</text>
+      
+        <rect x="352" y="482" width="584" height="52" rx="10" fill="#0F213C" fill-opacity="0.75" stroke="#ffffff" stroke-opacity="0.07"/>
+        <rect x="366" y="496" width="84" height="24" rx="6" fill="#F59E0B" fill-opacity="0.16"/>
+        <text x="378" y="513" fill="#F59E0B" font-family="monospace" font-size="12" font-weight="700">ORD-8843</text>
+        <text x="468" y="513" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="13" font-weight="600">Hydraulic AW-68 • 50L Drum × 85</text>
+        <rect x="812" y="496" width="106" height="24" rx="12" fill="#F59E0B" fill-opacity="0.2" stroke="#F59E0B" stroke-opacity="0.5"/>
+        <text x="865" y="512" text-anchor="middle" fill="#F59E0B" font-family="system-ui, sans-serif" font-size="11" font-weight="700">APPROVED</text>
+      
+        <rect x="352" y="548" width="584" height="52" rx="10" fill="#0F213C" fill-opacity="0.75" stroke="#ffffff" stroke-opacity="0.07"/>
+        <rect x="366" y="562" width="84" height="24" rx="6" fill="#3B82F6" fill-opacity="0.16"/>
+        <text x="378" y="579" fill="#3B82F6" font-family="monospace" font-size="12" font-weight="700">ORD-8844</text>
+        <text x="468" y="579" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="13" font-weight="600">Synthetic 5W-30 • 1L Carton × 400</text>
+        <rect x="812" y="562" width="106" height="24" rx="12" fill="#3B82F6" fill-opacity="0.2" stroke="#3B82F6" stroke-opacity="0.5"/>
+        <text x="865" y="578" text-anchor="middle" fill="#3B82F6" font-family="system-ui, sans-serif" font-size="11" font-weight="700">IN TRANSIT</text>
+      
+
+      <!-- Right Panel: Drum Tank Gauges & Logistics Telemetry -->
+      <rect x="984" y="268" width="322" height="382" rx="16" fill="#081428" fill-opacity="0.9" stroke="#00E5FF" stroke-opacity="0.25" stroke-width="1.5"/>
+      <text x="1012" y="306" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="15" font-weight="700">Warehouse Batch &amp; Fleet</text>
+      <!-- 3 Cylindrical Drum Silo Gauges -->
+      
+        <rect x="1024" y="334" width="64" height="140" rx="14" fill="#112240" stroke="#00E5FF" stroke-opacity="0.4" stroke-width="1.5"/>
+        <rect x="1030" y="351" width="52" height="117" rx="10" fill="#00E5FF" fill-opacity="0.35"/>
+        <text x="1056" y="412" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="15" font-weight="800">88%</text>
+        <text x="1056" y="494" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10" font-weight="600">Base</text>
+      
+        <rect x="1114" y="334" width="64" height="140" rx="14" fill="#112240" stroke="#F59E0B" stroke-opacity="0.4" stroke-width="1.5"/>
+        <rect x="1120" y="373" width="52" height="95" rx="10" fill="#F59E0B" fill-opacity="0.35"/>
+        <text x="1146" y="412" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="15" font-weight="800">72%</text>
+        <text x="1146" y="494" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10" font-weight="600">Additive</text>
+      
+        <rect x="1204" y="334" width="64" height="140" rx="14" fill="#112240" stroke="#10B981" stroke-opacity="0.4" stroke-width="1.5"/>
+        <rect x="1210" y="342" width="52" height="126" rx="10" fill="#10B981" fill-opacity="0.35"/>
+        <text x="1236" y="412" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="15" font-weight="800">94%</text>
+        <text x="1236" y="494" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10" font-weight="600">Finished</text>
+      
+      <!-- Route Telemetry Line -->
+      <rect x="1012" y="518" width="266" height="108" rx="12" fill="#0D213F" stroke="#38BDF8" stroke-opacity="0.25"/>
+      <path d="M 1032 595 Q 1090 540, 1145 575 T 1255 548" fill="none" stroke="#00E5FF" stroke-width="3" stroke-dasharray="5,5"/>
+      <circle cx="1032" cy="595" r="6" fill="#F59E0B"/>
+      <circle cx="1145" cy="575" r="6" fill="#00E5FF"/>
+      <circle cx="1255" cy="548" r="7" fill="#10B981"/>
+      <text x="1032" y="544" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="12" font-weight="700">Live Dispatch Route Telemetry</text>
+    
+</svg>

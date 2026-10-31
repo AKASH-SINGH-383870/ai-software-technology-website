@@ -87,40 +87,62 @@ export default function Services() {
                 <motion.div
                   key={service.slug}
                   onClick={() => navigate(`/services/${service.slug}`)}
-                  className="glass-card-hover rounded-2xl p-8 flex flex-col justify-between group cursor-pointer"
+                  className="glass-card-hover rounded-2xl overflow-hidden flex flex-col justify-between group cursor-pointer"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-50px' }}
-                  transition={{ delay: i * 0.06, duration: 0.5 }}
+                  transition={{ delay: i * 0.04, duration: 0.5 }}
                   whileHover={{ y: -6, transition: { duration: 0.25 } }}
                 >
                   <div>
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary-500/15 to-accent-500/10 border border-primary-400/15 flex items-center justify-center mb-6 group-hover:border-accent-400/30 group-hover:shadow-[0_0_30px_rgba(0,194,255,0.2)] transition-all duration-300">
-                      <i className={`${service.icon} text-accent-400 text-2xl`}></i>
+                    <div className="relative w-full aspect-[640/427] bg-[#060D1A] overflow-hidden border-b border-white/[0.06]">
+                      <img
+                        src={service.bannerImage}
+                        alt={service.imageAlt || `${service.name} Services — AI Software Technology`}
+                        title={service.name}
+                        loading={i < 3 ? 'eager' : 'lazy'}
+                        decoding="async"
+                        width="640"
+                        height="427"
+                        onError={(e) => {
+                          if (service.fallbackImage && e.currentTarget.src !== service.fallbackImage) {
+                            e.currentTarget.src = service.fallbackImage;
+                          }
+                        }}
+                        className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-[1.03]"
+                      />
                     </div>
 
-                    <h3 className="font-heading text-xl font-bold text-white mb-2 group-hover:text-accent-300 transition-colors">
-                      {service.name}
-                    </h3>
-                    <p className="text-xs font-medium text-accent-400/70 mb-3">{service.tagline}</p>
-                    <p className="text-sm text-white/40 leading-relaxed mb-6 line-clamp-3">
-                      {service.heroDesc}
-                    </p>
-
-                    <div className="space-y-2 mb-6">
-                      {service.features.slice(0, 4).map((f) => (
-                        <div key={f.title} className="flex items-center gap-2 text-xs text-white/50">
-                          <i className="ri-check-line text-accent-400 text-sm flex-shrink-0"></i>
-                          <span>{f.title}</span>
+                    <div className="p-6 sm:p-7 pb-0">
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500/20 to-accent-500/15 border border-primary-400/20 flex items-center justify-center flex-shrink-0 group-hover:shadow-[0_0_25px_rgba(0,194,255,0.2)] transition-all duration-300">
+                          <i className={`${service.icon} text-accent-400 text-lg`}></i>
                         </div>
-                      ))}
+                        <h3 className="font-heading text-lg sm:text-xl font-bold text-white group-hover:text-accent-300 transition-colors leading-snug">
+                          {service.name}
+                        </h3>
+                      </div>
+
+                      <p className="text-xs font-medium text-accent-400/80 mb-2.5">{service.tagline}</p>
+                      <p className="text-sm text-white/45 leading-relaxed mb-5 line-clamp-3">
+                        {service.heroDesc}
+                      </p>
+
+                      <div className="space-y-2 mb-6">
+                        {service.features.slice(0, 4).map((f) => (
+                          <div key={f.title} className="flex items-center gap-2 text-xs text-white/55">
+                            <i className="ri-check-line text-accent-400 text-sm flex-shrink-0"></i>
+                            <span>{f.title}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between pt-4 border-t border-white/[0.05]">
+                  <div className="px-6 sm:px-7 pb-6 pt-4 border-t border-white/[0.05] flex items-center justify-between">
                     <div className="flex flex-wrap gap-1">
                       {service.technologies.slice(0, 3).map((t) => (
-                        <span key={t} className="px-2 py-0.5 rounded bg-white/[0.03] text-[10px] text-white/35">{t}</span>
+                        <span key={t} className="px-2 py-0.5 rounded bg-white/[0.03] text-[10px] text-white/40">{t}</span>
                       ))}
                     </div>
                     <span className="text-xs font-semibold text-accent-400 flex items-center gap-1 group-hover:gap-2 transition-all whitespace-nowrap">
@@ -206,30 +228,50 @@ export default function Services() {
                         viewport={{ once: true }}
                         transition={{ delay: (idx % 3) * 0.06, duration: 0.4 }}
                         whileHover={{ y: -4 }}
-                        onClick={() => navigate((item as { industryPath?: string }).industryPath || `/services/${item.slug}`)}
-                        className="glass-card-hover rounded-2xl p-6 flex flex-col justify-between group cursor-pointer"
+                        onClick={() => navigate(`/services/${item.slug}`)}
+                        className="glass-card-hover rounded-2xl overflow-hidden flex flex-col justify-between group cursor-pointer"
                       >
                         <div>
-                          <div className="flex items-start justify-between gap-3 mb-4">
-                            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary-500/15 to-accent-500/10 border border-primary-400/15 flex items-center justify-center group-hover:border-accent-400/30 transition-all">
-                              <i className={`${item.icon} text-accent-400 text-lg`}></i>
-                            </div>
-                            <span className="text-[10px] font-mono text-white/25 bg-white/[0.03] px-2 py-0.5 rounded">
-                              {String(idx + 1).padStart(2, '0')}
-                            </span>
+                          <div className="relative w-full aspect-[640/427] bg-[#060D1A] overflow-hidden border-b border-white/[0.06]">
+                            <img
+                              src={item.image}
+                              alt={item.imageAlt || `${item.name} — AI Software Technology`}
+                              title={item.name}
+                              loading="lazy"
+                              decoding="async"
+                              width="640"
+                              height="427"
+                              onError={(e) => {
+                                if (item.fallbackImage && e.currentTarget.src !== item.fallbackImage) {
+                                  e.currentTarget.src = item.fallbackImage;
+                                }
+                              }}
+                              className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-[1.03]"
+                            />
                           </div>
-                          <h4 className="font-heading text-base font-bold text-white mb-2 group-hover:text-accent-300 transition-colors">
-                            {item.name}
-                          </h4>
-                          <p className="text-xs text-white/40 leading-relaxed mb-5">
-                            {item.desc}
-                          </p>
+
+                          <div className="p-6 pb-0">
+                            <div className="flex items-start justify-between gap-3 mb-3">
+                              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500/15 to-accent-500/10 border border-primary-400/15 flex items-center justify-center group-hover:border-accent-400/30 transition-all">
+                                <i className={`${item.icon} text-accent-400 text-lg`}></i>
+                              </div>
+                              <span className="text-[10px] font-mono text-white/30 bg-white/[0.04] px-2 py-0.5 rounded">
+                                {String(idx + 1).padStart(2, '0')}
+                              </span>
+                            </div>
+                            <h4 className="font-heading text-base font-bold text-white mb-2 group-hover:text-accent-300 transition-colors">
+                              {item.name}
+                            </h4>
+                            <p className="text-xs text-white/45 leading-relaxed mb-5">
+                              {item.desc}
+                            </p>
+                          </div>
                         </div>
 
-                        <div className="flex items-center justify-between pt-3 border-t border-white/[0.04]">
+                        <div className="px-6 pb-5 pt-3 border-t border-white/[0.04] flex items-center justify-between">
                           <div className="flex flex-wrap gap-1">
                             {item.tags.slice(0, 3).map((tag) => (
-                              <span key={tag} className="px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.05] text-[10px] text-white/35">
+                              <span key={tag} className="px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.05] text-[10px] text-white/40">
                                 {tag}
                               </span>
                             ))}

@@ -1,11 +1,19 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { usePageSEO } from "@/hooks/usePageSEO";
 
 export default function NotFound() {
+  usePageSEO({
+    title: '404 Page Not Found | AI Software Technology',
+    description: 'The page you are looking for could not be found. Explore custom software development, ERP, CRM, HRMS, and SaaS solutions from AI Software Technology.',
+    noindex: true,
+  });
+
   const helpfulLinks = [
     { label: 'Home', href: '/' },
     { label: 'Services', href: '/services' },
     { label: 'Portfolio', href: '/portfolio' },
+    { label: 'Case Studies', href: '/case-studies' },
     { label: 'Contact Us', href: '/contact' },
     { label: 'Blog & Insights', href: '/blogs' },
   ];

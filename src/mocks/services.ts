@@ -1,3 +1,87 @@
+export const serviceImages: Record<string, string> = {
+  'custom-software': '/images/services/01-custom-software-development.png',
+  'erp-solutions': '/images/services/02-erp-software-development.png',
+  'crm-solutions': '/images/services/03-crm-software-development.png',
+  'hrms-software': '/images/services/04-hrms-and-payroll-software.png',
+  'saas-development': '/images/services/05-saas-application-development.png',
+  'mobile-app-development': '/images/services/06-android-and-ios-app-development.png',
+  'website-development': '/images/services/07-website-and-web-application-development.png',
+  'ai-automation': '/images/services/08-ai-and-business-automation.png',
+  'whatsapp-automation': '/images/services/09-whatsapp-business-api-and-chatbot-integration.png',
+  'inventory-management-software': '/images/services/10-inventory-management-software.png',
+  'billing-gst-software': '/images/services/11-billing-and-gst-software.png',
+  'order-management-software': '/images/services/12-order-management-software.png',
+  'manufacturing-software': '/images/services/13-manufacturing-management-software.png',
+  'hospital-management-software': '/images/services/14-hospital-and-clinic-management-software.png',
+  'hotel-management-software': '/images/services/15-hotel-management-software.png',
+  'logistics-software': '/images/services/16-logistics-and-shipment-tracking-software.png',
+  'field-sales-tracking-software': '/images/services/17-field-sales-and-gps-tracking-software.png',
+  'attendance-workforce-software': '/images/services/18-attendance-and-workforce-management-software.png',
+  'retail-pos-software': '/images/services/19-retail-and-pos-software.png',
+  'ecommerce-development': '/images/services/20-e-commerce-development.png',
+  'api-development-integration': '/images/services/21-api-development-and-integration.png',
+  'software-maintenance-support': '/images/services/22-software-maintenance-and-support.png',
+  'cloud-solutions': '/images/services/23-cloud-deployment-and-server-setup.png',
+  'ui-ux-design': '/images/services/24-ui-ux-design.png',
+  'digital-marketing': '/images/services/25-seo-and-digital-marketing-support.png',
+};
+
+export const serviceImageFallbacks: Record<string, string> = {
+  'custom-software': 'https://i.ibb.co/JNHrnkp/01-custom-software-development.png',
+  'erp-solutions': 'https://i.ibb.co/G4V79vY8/02-erp-software-development.png',
+  'crm-solutions': 'https://i.ibb.co/LzL1bzFG/03-crm-software-development.png',
+  'hrms-software': 'https://i.ibb.co/R1JvnYt/04-hrms-and-payroll-software.png',
+  'saas-development': 'https://i.ibb.co/xSwpcg3v/05-saas-application-development.png',
+  'mobile-app-development': 'https://i.ibb.co/mWkd2C0/06-android-and-ios-app-development.png',
+  'website-development': 'https://i.ibb.co/GvNWXfD4/07-website-and-web-application-development.png',
+  'ai-automation': 'https://i.ibb.co/B71q0Qn/08-ai-and-business-automation.png',
+  'whatsapp-automation': 'https://i.ibb.co/B5fFpmq8/09-whatsapp-business-api-and-chatbot-integration.png',
+  'inventory-management-software': 'https://i.ibb.co/x8MzWCvc/10-inventory-management-software.png',
+  'billing-gst-software': 'https://i.ibb.co/Fk41kwxT/11-billing-and-gst-software.png',
+  'order-management-software': 'https://i.ibb.co/21ss0FXP/12-order-management-software.png',
+  'manufacturing-software': 'https://i.ibb.co/BKyJpC7t/13-manufacturing-management-software.png',
+  'hospital-management-software': 'https://i.ibb.co/6RR2KFgr/14-hospital-and-clinic-management-software.png',
+  'hotel-management-software': 'https://i.ibb.co/P0CB7g4/15-hotel-management-software.png',
+  'logistics-software': 'https://i.ibb.co/Ngph3htN/16-logistics-and-shipment-tracking-software.png',
+  'field-sales-tracking-software': 'https://i.ibb.co/4wJvCqvT/17-field-sales-and-gps-tracking-software.png',
+  'attendance-workforce-software': 'https://i.ibb.co/ynpmzrhQ/18-attendance-and-workforce-management-software.png',
+  'retail-pos-software': 'https://i.ibb.co/B5H5wy4k/19-retail-and-pos-software.png',
+  'ecommerce-development': 'https://i.ibb.co/350wChH2/20-e-commerce-development.png',
+  'api-development-integration': 'https://i.ibb.co/27Gk4N7C/21-api-development-and-integration.png',
+  'software-maintenance-support': 'https://i.ibb.co/9kfpHL9z/22-software-maintenance-and-support.png',
+  'cloud-solutions': 'https://i.ibb.co/5xKYMYxz/23-cloud-deployment-and-server-setup.png',
+  'ui-ux-design': 'https://i.ibb.co/TMcq5KT7/24-ui-ux-design.png',
+  'digital-marketing': 'https://i.ibb.co/YF4qmCnq/25-seo-and-digital-marketing-support.png',
+};
+
+export const serviceImageAlts: Record<string, string> = {
+  'custom-software': 'Custom Software Development Services — AI Software Technology',
+  'erp-solutions': 'ERP Software Development Solutions — AI Software Technology',
+  'crm-solutions': 'CRM Software Development Services — AI Software Technology',
+  'hrms-software': 'HRMS & Payroll Software Development — AI Software Technology',
+  'saas-development': 'SaaS Application Development Services — AI Software Technology',
+  'mobile-app-development': 'Android & iOS Mobile App Development — AI Software Technology',
+  'website-development': 'Website & Web Application Development Services — AI Software Technology',
+  'ai-automation': 'AI & Business Automation Solutions — AI Software Technology',
+  'whatsapp-automation': 'WhatsApp Business API & Chatbot Integration Services — AI Software Technology',
+  'inventory-management-software': 'Inventory Management Software Solutions — AI Software Technology',
+  'billing-gst-software': 'Billing & GST Software Development — AI Software Technology',
+  'order-management-software': 'Order Management Software Solutions — AI Software Technology',
+  'manufacturing-software': 'Manufacturing Management Software Solutions — AI Software Technology',
+  'hospital-management-software': 'Hospital & Clinic Management Software — AI Software Technology',
+  'hotel-management-software': 'Hotel Management Software Solutions — AI Software Technology',
+  'logistics-software': 'Logistics & Shipment Tracking Software — AI Software Technology',
+  'field-sales-tracking-software': 'Field Sales & GPS Tracking Software — AI Software Technology',
+  'attendance-workforce-software': 'Attendance & Workforce Management Software — AI Software Technology',
+  'retail-pos-software': 'Retail & POS Software Solutions — AI Software Technology',
+  'ecommerce-development': 'E-commerce Development Services — AI Software Technology',
+  'api-development-integration': 'API Development & System Integration Services — AI Software Technology',
+  'software-maintenance-support': 'Software Maintenance & Technical Support Services — AI Software Technology',
+  'cloud-solutions': 'Cloud Deployment & Server Setup Services — AI Software Technology',
+  'ui-ux-design': 'UI/UX Design Services for Software & Mobile Apps — AI Software Technology',
+  'digital-marketing': 'SEO & Digital Marketing Support Services — AI Software Technology',
+};
+
 export const serviceCategories = [
   {
     id: 'core-software',
@@ -9,6 +93,9 @@ export const serviceCategories = [
         name: 'Custom Software Development',
         slug: 'custom-software',
         icon: 'ri-code-s-slash-line',
+        image: serviceImages['custom-software'],
+        fallbackImage: serviceImageFallbacks['custom-software'],
+        imageAlt: serviceImageAlts['custom-software'],
         desc: 'Tailor-made business applications, internal workflow systems, admin dashboards, and process management software designed specifically around your operations.',
         tags: ['Business Software', 'Workflows', 'Admin Panels', 'APIs'],
       },
@@ -16,6 +103,9 @@ export const serviceCategories = [
         name: 'ERP Software Development',
         slug: 'erp-solutions',
         icon: 'ri-building-2-line',
+        image: serviceImages['erp-solutions'],
+        fallbackImage: serviceImageFallbacks['erp-solutions'],
+        imageAlt: serviceImageAlts['erp-solutions'],
         desc: 'Comprehensive Enterprise Resource Planning covering inventory, purchase, sales, GST invoicing, accounting, multi-branch operations, and management analytics.',
         tags: ['Inventory & Stock', 'GST Billing', 'Multi-Branch', 'Procurement'],
       },
@@ -23,6 +113,9 @@ export const serviceCategories = [
         name: 'CRM Software Development',
         slug: 'crm-solutions',
         icon: 'ri-customer-service-2-line',
+        image: serviceImages['crm-solutions'],
+        fallbackImage: serviceImageFallbacks['crm-solutions'],
+        imageAlt: serviceImageAlts['crm-solutions'],
         desc: 'Complete sales and lead management CRM with Facebook/Google lead capture, WhatsApp & email integration, sales pipeline, follow-ups, and quotation builder.',
         tags: ['Lead Management', 'Sales Pipeline', 'WhatsApp CRM', 'Quotations'],
       },
@@ -30,6 +123,9 @@ export const serviceCategories = [
         name: 'HRMS & Payroll Software',
         slug: 'hrms-software',
         icon: 'ri-team-line',
+        image: serviceImages['hrms-software'],
+        fallbackImage: serviceImageFallbacks['hrms-software'],
+        imageAlt: serviceImageAlts['hrms-software'],
         desc: 'Complete HR and payroll system with employee records, attendance & biometric integration, leave approvals, salary slip generation, PF/ESI, and self-service portals.',
         tags: ['Payroll & PF/ESI', 'Biometric Attendance', 'Leave Portal', 'HRMS'],
       },
@@ -37,6 +133,9 @@ export const serviceCategories = [
         name: 'SaaS Application Development',
         slug: 'saas-development',
         icon: 'ri-cloud-windy-line',
+        image: serviceImages['saas-development'],
+        fallbackImage: serviceImageFallbacks['saas-development'],
+        imageAlt: serviceImageAlts['saas-development'],
         desc: 'Multi-tenant cloud SaaS architectures with subscription plans, payment gateway integration, role-based dashboards, analytics, and API ecosystems.',
         tags: ['Multi-Tenant', 'Subscription Billing', 'RBAC', 'Cloud Native'],
       },
@@ -44,6 +143,9 @@ export const serviceCategories = [
         name: 'Android & iOS App Development',
         slug: 'mobile-app-development',
         icon: 'ri-smartphone-line',
+        image: serviceImages['mobile-app-development'],
+        fallbackImage: serviceImageFallbacks['mobile-app-development'],
+        imageAlt: serviceImageAlts['mobile-app-development'],
         desc: 'Native Android, iOS, and cross-platform Flutter & React Native mobile applications for customers, field sales teams, delivery staff, and executives.',
         tags: ['Android', 'iOS', 'Flutter', 'React Native'],
       },
@@ -51,6 +153,9 @@ export const serviceCategories = [
         name: 'Website & Web Application Development',
         slug: 'website-development',
         icon: 'ri-global-line',
+        image: serviceImages['website-development'],
+        fallbackImage: serviceImageFallbacks['website-development'],
+        imageAlt: serviceImageAlts['website-development'],
         desc: 'Browser-based enterprise web applications, corporate portals, customer portals, and real-time operational dashboards built with React, Next.js, and Node.js.',
         tags: ['React / Next.js', 'Client Portals', 'Web Apps', 'TypeScript'],
       },
@@ -58,6 +163,9 @@ export const serviceCategories = [
         name: 'Attendance & Workforce Management Software',
         slug: 'attendance-workforce-software',
         icon: 'ri-fingerprint-line',
+        image: serviceImages['attendance-workforce-software'],
+        fallbackImage: serviceImageFallbacks['attendance-workforce-software'],
+        imageAlt: serviceImageAlts['attendance-workforce-software'],
         desc: 'Factory gate-pass, shift scheduling, contractor attendance, biometric/QR check-ins, overtime calculation, and live workforce monitoring dashboards.',
         tags: ['Gate Pass', 'Shift Roster', 'Biometric Sync', 'Workforce'],
       },
@@ -73,6 +181,9 @@ export const serviceCategories = [
         name: 'Inventory Management Software',
         slug: 'inventory-management-software',
         icon: 'ri-archive-drawer-line',
+        image: serviceImages['inventory-management-software'],
+        fallbackImage: serviceImageFallbacks['inventory-management-software'],
+        imageAlt: serviceImageAlts['inventory-management-software'],
         desc: 'Multi-warehouse stock tracking, batch & lot traceability, barcode/QR scanning, inward-outward registers, and automated low-stock reorder alerts.',
         tags: ['Multi-Warehouse', 'Batch & Lot', 'Barcode', 'Reorder Alerts'],
       },
@@ -80,6 +191,9 @@ export const serviceCategories = [
         name: 'Billing & GST Software',
         slug: 'billing-gst-software',
         icon: 'ri-bill-line',
+        image: serviceImages['billing-gst-software'],
+        fallbackImage: serviceImageFallbacks['billing-gst-software'],
+        imageAlt: serviceImageAlts['billing-gst-software'],
         desc: 'Fast GST-compliant invoicing, e-invoicing & e-way bill readiness, HSN/SAC tax summaries, customer/supplier ledgers, and payment collection tracking.',
         tags: ['GST Invoicing', 'E-Way Bill', 'Ledgers', 'Tax Reports'],
       },
@@ -87,38 +201,49 @@ export const serviceCategories = [
         name: 'Order Management Software',
         slug: 'order-management-software',
         icon: 'ri-file-list-3-line',
+        image: serviceImages['order-management-software'],
+        fallbackImage: serviceImageFallbacks['order-management-software'],
+        imageAlt: serviceImageAlts['order-management-software'],
         desc: 'Centralized B2B dealer, distributor, and sales-team order booking, pack-size & grade matrices, approval workflows, and live dispatch status tracking.',
         tags: ['Dealer Portal', 'Order Booking', 'Approval Flow', 'Dispatch'],
       },
       {
         name: 'Manufacturing Management Software',
         slug: 'manufacturing-software',
-        industryPath: '/industries/manufacturing',
         icon: 'ri-settings-5-line',
+        image: serviceImages['manufacturing-software'],
+        fallbackImage: serviceImageFallbacks['manufacturing-software'],
+        imageAlt: serviceImageAlts['manufacturing-software'],
         desc: 'Bill of Materials (BOM), production planning, work orders, raw-material consumption, batch quality checks, machine utilization, and wastage tracking.',
         tags: ['BOM', 'Production Planning', 'Shop Floor', 'Quality Control'],
       },
       {
         name: 'Hospital & Clinic Management Software',
         slug: 'hospital-management-software',
-        industryPath: '/industries/healthcare',
         icon: 'ri-hospital-line',
+        image: serviceImages['hospital-management-software'],
+        fallbackImage: serviceImageFallbacks['hospital-management-software'],
+        imageAlt: serviceImageAlts['hospital-management-software'],
         desc: 'OPD/IPD patient registration, doctor scheduling, electronic medical records (EMR), lab/pharmacy integration, billing, and discharge summaries.',
         tags: ['OPD / IPD', 'EMR', 'Appointments', 'Hospital Billing'],
       },
       {
         name: 'Hotel Management Software',
         slug: 'hotel-management-software',
-        industryPath: '/industries/hospitality',
         icon: 'ri-hotel-line',
+        image: serviceImages['hotel-management-software'],
+        fallbackImage: serviceImageFallbacks['hotel-management-software'],
+        imageAlt: serviceImageAlts['hotel-management-software'],
         desc: 'Room reservation engine, front desk check-in/out, housekeeping status, KOT & restaurant POS billing, banquet management, and guest CRM.',
         tags: ['PMS', 'Front Desk', 'KOT & POS', 'Room Booking'],
       },
       {
         name: 'Logistics & Shipment Tracking Software',
         slug: 'logistics-software',
-        industryPath: '/industries/manufacturing',
         icon: 'ri-truck-line',
+        image: serviceImages['logistics-software'],
+        fallbackImage: serviceImageFallbacks['logistics-software'],
+        imageAlt: serviceImageAlts['logistics-software'],
         desc: 'Consignment booking (LR/Bilty), vehicle trip sheets, fleet fuel & maintenance logs, hub-to-hub manifest tracking, and proof-of-delivery (POD).',
         tags: ['LR / Bilty', 'Fleet Tracking', 'Dispatch', 'POD'],
       },
@@ -126,14 +251,19 @@ export const serviceCategories = [
         name: 'Field Sales & GPS Tracking Software',
         slug: 'field-sales-tracking-software',
         icon: 'ri-map-pin-user-line',
+        image: serviceImages['field-sales-tracking-software'],
+        fallbackImage: serviceImageFallbacks['field-sales-tracking-software'],
+        imageAlt: serviceImageAlts['field-sales-tracking-software'],
         desc: 'Geo-verified attendance, live field-executive route tracking, beat planning, on-site client visit check-ins, expense claims, and mobile order capture.',
         tags: ['GPS Route', 'Beat Plan', 'Visit Check-In', 'Field Orders'],
       },
       {
         name: 'Retail & POS Software',
         slug: 'retail-pos-software',
-        industryPath: '/industries/retail',
         icon: 'ri-store-2-line',
+        image: serviceImages['retail-pos-software'],
+        fallbackImage: serviceImageFallbacks['retail-pos-software'],
+        imageAlt: serviceImageAlts['retail-pos-software'],
         desc: 'High-speed barcode POS counter billing, multi-store inventory synchronization, customer loyalty points, promotions, and daily cashier reconciliation.',
         tags: ['Barcode POS', 'Multi-Store', 'Loyalty Points', 'Fast Checkout'],
       },
@@ -149,6 +279,9 @@ export const serviceCategories = [
         name: 'AI & Business Automation',
         slug: 'ai-automation',
         icon: 'ri-brain-line',
+        image: serviceImages['ai-automation'],
+        fallbackImage: serviceImageFallbacks['ai-automation'],
+        imageAlt: serviceImageAlts['ai-automation'],
         desc: 'AI chatbots, intelligent document data extraction, automated lead qualification, and custom AI workflow assistants connected to your business data.',
         tags: ['AI Chatbots', 'Document OCR', 'Lead Scoring', 'LLM Workflows'],
       },
@@ -156,6 +289,9 @@ export const serviceCategories = [
         name: 'WhatsApp Business API & Chatbot Integration',
         slug: 'whatsapp-automation',
         icon: 'ri-whatsapp-line',
+        image: serviceImages['whatsapp-automation'],
+        fallbackImage: serviceImageFallbacks['whatsapp-automation'],
+        imageAlt: serviceImageAlts['whatsapp-automation'],
         desc: 'Automated WhatsApp lead capture, interactive conversational chatbots, instant quotation/invoice sharing, payment reminders, and CRM synchronization.',
         tags: ['WhatsApp API', 'Chatbots', 'Auto Follow-Up', 'CRM Sync'],
       },
@@ -163,6 +299,9 @@ export const serviceCategories = [
         name: 'E-commerce Development',
         slug: 'ecommerce-development',
         icon: 'ri-shopping-bag-3-line',
+        image: serviceImages['ecommerce-development'],
+        fallbackImage: serviceImageFallbacks['ecommerce-development'],
+        imageAlt: serviceImageAlts['ecommerce-development'],
         desc: 'Custom B2C and B2B e-commerce stores & multi-vendor marketplaces with product catalogs, cart & checkout, UPI/card payment gateways, and shipping sync.',
         tags: ['B2B / B2C Store', 'Multi-Vendor', 'Payment Gateway', 'Order Sync'],
       },
@@ -170,6 +309,9 @@ export const serviceCategories = [
         name: 'API Development & Integration',
         slug: 'api-development-integration',
         icon: 'ri-plug-line',
+        image: serviceImages['api-development-integration'],
+        fallbackImage: serviceImageFallbacks['api-development-integration'],
+        imageAlt: serviceImageAlts['api-development-integration'],
         desc: 'Secure REST & GraphQL API development and seamless integration with payment gateways, Tally, ERP/CRM, shipping partners, SMS, and biometric hardware.',
         tags: ['REST APIs', 'Payment Gateways', 'Tally Sync', 'Webhooks'],
       },
@@ -177,6 +319,9 @@ export const serviceCategories = [
         name: 'Software Maintenance & Support',
         slug: 'software-maintenance-support',
         icon: 'ri-shield-check-line',
+        image: serviceImages['software-maintenance-support'],
+        fallbackImage: serviceImageFallbacks['software-maintenance-support'],
+        imageAlt: serviceImageAlts['software-maintenance-support'],
         desc: 'Dedicated post-launch SLA support, bug fixing, database optimization, security patching, server monitoring, and feature upgrades for existing software.',
         tags: ['AMC & SLA', 'Bug Fixes', 'Server Care', 'Upgrades'],
       },
@@ -184,6 +329,9 @@ export const serviceCategories = [
         name: 'Cloud Deployment & Server Setup',
         slug: 'cloud-solutions',
         icon: 'ri-cloud-line',
+        image: serviceImages['cloud-solutions'],
+        fallbackImage: serviceImageFallbacks['cloud-solutions'],
+        imageAlt: serviceImageAlts['cloud-solutions'],
         desc: 'AWS, Azure, GCP, and VPS server provisioning, SSL security, automated database backups, Docker containerization, and CI/CD deployment pipelines.',
         tags: ['AWS / Azure', 'VPS Setup', 'Auto Backups', 'SSL & Security'],
       },
@@ -191,6 +339,9 @@ export const serviceCategories = [
         name: 'UI/UX Design',
         slug: 'ui-ux-design',
         icon: 'ri-palette-line',
+        image: serviceImages['ui-ux-design'],
+        fallbackImage: serviceImageFallbacks['ui-ux-design'],
+        imageAlt: serviceImageAlts['ui-ux-design'],
         desc: 'User workflow research, wireframing, interactive Figma prototypes, and clean design systems for complex enterprise dashboards and mobile apps.',
         tags: ['Figma Prototypes', 'Dashboard UI', 'Design Systems', 'Mobile UX'],
       },
@@ -198,6 +349,9 @@ export const serviceCategories = [
         name: 'SEO & Digital Marketing Support',
         slug: 'digital-marketing',
         icon: 'ri-megaphone-line',
+        image: serviceImages['digital-marketing'],
+        fallbackImage: serviceImageFallbacks['digital-marketing'],
+        imageAlt: serviceImageAlts['digital-marketing'],
         desc: 'Technical SEO, local business optimization, search marketing, and digital lead generation campaigns to help your software or business grow online.',
         tags: ['Technical SEO', 'Local SEO', 'Google Ads', 'Lead Generation'],
       },
@@ -211,6 +365,8 @@ export interface ServiceDetailItem {
   tagline: string;
   heroDesc: string;
   bannerImage: string;
+  fallbackImage?: string;
+  imageAlt?: string;
   icon: string;
   color: string;
   features: { title: string; desc: string; icon: string }[];
@@ -235,8 +391,9 @@ export const servicesData: ServiceDetailItem[] = [
     tagline: 'Tailor-Made Software Built Around Your Exact Business Workflows',
     heroDesc:
       'AI Software Technology — A Brand of Digi India Solutions — designs and develops custom business software that replaces scattered spreadsheets and rigid off-the-shelf tools with a unified, secure, and scalable digital system.',
-    bannerImage:
-      'https://readdy.ai/api/search-image?query=Enterprise%20custom%20software%20architecture%20dashboard%20with%20interconnected%20workflow%20modules%20and%20analytics%20screens%2C%20dark%20navy%20background%20with%20royal%20blue%20and%20cyan%20glowing%20interface%2C%20futuristic%20B2B%20software%20engineering%20visualization&width=1400&height=600&seq=srv-banner-custom-1&orientation=landscape',
+    bannerImage: serviceImages['custom-software'],
+    fallbackImage: serviceImageFallbacks['custom-software'],
+    imageAlt: serviceImageAlts['custom-software'],
     icon: 'ri-code-s-slash-line',
     color: 'from-amber-500 to-orange-400',
     features: [
@@ -283,8 +440,9 @@ export const servicesData: ServiceDetailItem[] = [
     tagline: 'Unify Inventory, Billing, Purchases, Accounts & Multi-Branch Operations',
     heroDesc:
       'AI Software Technology develops customized ERP software that connects your inventory, procurement, sales orders, GST billing, vendor accounts, warehouse dispatch, and management reporting in one reliable system.',
-    bannerImage:
-      'https://readdy.ai/api/search-image?query=Enterprise%20resource%20planning%20ERP%20control%20dashboard%20with%20supply%20chain%20analytics%2C%20warehouse%20inventory%20charts%20and%20financial%20modules%20in%20dark%20futuristic%20UI%2C%20indigo%20and%20cyan%20glowing%20accents&width=1400&height=600&seq=srv-banner-erp-2&orientation=landscape',
+    bannerImage: serviceImages['erp-solutions'],
+    fallbackImage: serviceImageFallbacks['erp-solutions'],
+    imageAlt: serviceImageAlts['erp-solutions'],
     icon: 'ri-building-2-line',
     color: 'from-indigo-500 to-blue-400',
     features: [
@@ -330,8 +488,9 @@ export const servicesData: ServiceDetailItem[] = [
     tagline: 'Capture Every Lead, Automate Follow-Ups, and Close More Sales',
     heroDesc:
       'AI Software Technology builds custom CRM software designed around your sales process — featuring automated lead capture from Facebook, Instagram, Google & websites, WhatsApp & email integration, quotation builders, and complete sales pipeline visibility.',
-    bannerImage:
-      'https://readdy.ai/api/search-image?query=Customer%20relationship%20management%20CRM%20sales%20pipeline%20dashboard%20with%20lead%20conversion%20funnels%2C%20customer%20cards%20and%20WhatsApp%20follow-up%20analytics%20in%20sleek%20dark%20interface%20with%20violet%20and%20cyan%20glow&width=1400&height=600&seq=srv-banner-crm-3&orientation=landscape',
+    bannerImage: serviceImages['crm-solutions'],
+    fallbackImage: serviceImageFallbacks['crm-solutions'],
+    imageAlt: serviceImageAlts['crm-solutions'],
     icon: 'ri-customer-service-2-line',
     color: 'from-violet-500 to-purple-400',
     features: [
@@ -377,8 +536,9 @@ export const servicesData: ServiceDetailItem[] = [
     tagline: 'Simplify Employee Management, Attendance, Payroll & HR Operations',
     heroDesc:
       'AI Software Technology builds custom HRMS and Payroll software that automates your entire employee lifecycle — from recruitment and onboarding to biometric/GPS attendance, leave management, automated salary slips, PF/ESI compliance, and employee self-service portals.',
-    bannerImage:
-      'https://readdy.ai/api/search-image?query=Modern%20HRMS%20and%20payroll%20management%20software%20dashboard%20on%20widescreen%20monitor%20showing%20employee%20attendance%20biometric%20logs%2C%20shift%20rosters%20and%20salary%20slip%20analytics%2C%20dark%20enterprise%20UI%20with%20emerald%20and%20cyan%20accents&width=1400&height=600&seq=srv-banner-hrms-4&orientation=landscape',
+    bannerImage: serviceImages['hrms-software'],
+    fallbackImage: serviceImageFallbacks['hrms-software'],
+    imageAlt: serviceImageAlts['hrms-software'],
     icon: 'ri-team-line',
     color: 'from-emerald-500 to-teal-400',
     features: [
@@ -424,8 +584,9 @@ export const servicesData: ServiceDetailItem[] = [
     tagline: 'Launch & Scale Multi-Tenant Cloud SaaS Products',
     heroDesc:
       'AI Software Technology designs, architects, and builds commercial SaaS platforms and subscription software products — complete with multi-tenant architecture, subscription billing, role-based dashboards, API integrations, and cloud scalability.',
-    bannerImage:
-      'https://readdy.ai/api/search-image?query=Multi-tenant%20cloud%20SaaS%20application%20architecture%20and%20subscription%20analytics%20dashboard%20displayed%20on%20modern%20screens%2C%20API%20nodes%20and%20tenant%20metrics%2C%20dark%20futuristic%20tech%20environment%20with%20cyan%20and%20blue%20glow&width=1400&height=600&seq=srv-banner-saas-5&orientation=landscape',
+    bannerImage: serviceImages['saas-development'],
+    fallbackImage: serviceImageFallbacks['saas-development'],
+    imageAlt: serviceImageAlts['saas-development'],
     icon: 'ri-cloud-windy-line',
     color: 'from-cyan-500 to-blue-400',
     features: [
@@ -471,8 +632,9 @@ export const servicesData: ServiceDetailItem[] = [
     tagline: 'High-Performance Android, iOS & Cross-Platform Business Apps',
     heroDesc:
       'AI Software Technology builds reliable, user-friendly mobile applications for Android and iOS — including customer booking & e-commerce apps, field sales & service apps, employee portals, and companion apps for ERP/CRM/SaaS platforms.',
-    bannerImage:
-      'https://readdy.ai/api/search-image?query=Futuristic%20Android%20and%20iOS%20mobile%20app%20interface%20screens%20floating%20in%20dark%20space%20with%20holographic%20UI%20elements%2C%20glowing%20purple%20and%20cyan%20accents%2C%20sleek%20smartphone%20mockups%20showing%20business%20analytics%20dashboards&width=1400&height=600&seq=srv-banner-mob-6&orientation=landscape',
+    bannerImage: serviceImages['mobile-app-development'],
+    fallbackImage: serviceImageFallbacks['mobile-app-development'],
+    imageAlt: serviceImageAlts['mobile-app-development'],
     icon: 'ri-smartphone-line',
     color: 'from-purple-500 to-pink-400',
     features: [
@@ -518,8 +680,9 @@ export const servicesData: ServiceDetailItem[] = [
     tagline: 'Modern Business Websites, Web Portals & Custom Web Applications',
     heroDesc:
       'AI Software Technology designs and develops high-performance corporate websites, custom web applications, multi-portal platforms, and client portals that strengthen your brand credibility and streamline digital operations.',
-    bannerImage:
-      'https://readdy.ai/api/search-image?query=Modern%20web%20application%20development%20workspace%20with%20multiple%20widescreen%20monitors%20displaying%20clean%20responsive%20dashboards%20and%20multi-portal%20web%20interfaces%2C%20dark%20ambient%20lighting%20with%20blue%20and%20cyan%20glow&width=1400&height=600&seq=srv-banner-web-7&orientation=landscape',
+    bannerImage: serviceImages['website-development'],
+    fallbackImage: serviceImageFallbacks['website-development'],
+    imageAlt: serviceImageAlts['website-development'],
     icon: 'ri-global-line',
     color: 'from-blue-500 to-cyan-400',
     features: [
@@ -565,8 +728,9 @@ export const servicesData: ServiceDetailItem[] = [
     tagline: 'Automate Repetitive Business Work with Practical AI & Smart Workflows',
     heroDesc:
       'AI Software Technology helps businesses eliminate manual data entry, speed up customer responses, and automate repetitive cross-department workflows using practical AI assistants, document processing, and WhatsApp/CRM automation.',
-    bannerImage:
-      'https://readdy.ai/api/search-image?query=Artificial%20intelligence%20business%20automation%20workflow%20visualization%20with%20glowing%20emerald%20and%20cyan%20neural%20nodes%2C%20automated%20document%20processing%20and%20analytics%20streams%20in%20dark%20futuristic%20space&width=1400&height=600&seq=srv-banner-ai-8&orientation=landscape',
+    bannerImage: serviceImages['ai-automation'],
+    fallbackImage: serviceImageFallbacks['ai-automation'],
+    imageAlt: serviceImageAlts['ai-automation'],
     icon: 'ri-brain-line',
     color: 'from-emerald-500 to-teal-400',
     features: [
@@ -611,8 +775,9 @@ export const servicesData: ServiceDetailItem[] = [
     tagline: 'Automate Customer Communication, Lead Capture & Order Updates on WhatsApp',
     heroDesc:
       'AI Software Technology integrates WhatsApp Click-to-Chat workflows, official WhatsApp Business API messaging, interactive chatbots, and automated ERP/CRM notifications so your business engages customers instantly.',
-    bannerImage:
-      'https://readdy.ai/api/search-image?query=Modern%20WhatsApp%20Business%20API%20and%20conversational%20chatbot%20automation%20dashboard%20with%20interactive%20message%20flows%2C%20customer%20lead%20notifications%20and%20CRM%20sync%20in%20dark%20sleek%20UI%20with%20emerald%20green%20and%20cyan%20glow&width=1400&height=600&seq=srv-banner-wa-9&orientation=landscape',
+    bannerImage: serviceImages['whatsapp-automation'],
+    fallbackImage: serviceImageFallbacks['whatsapp-automation'],
+    imageAlt: serviceImageAlts['whatsapp-automation'],
     icon: 'ri-whatsapp-line',
     color: 'from-emerald-500 to-green-400',
     features: [
@@ -657,8 +822,9 @@ export const servicesData: ServiceDetailItem[] = [
     tagline: 'Real-Time Multi-Warehouse Stock Control, Batch Tracking & Barcode Automation',
     heroDesc:
       'AI Software Technology develops custom Inventory Management Software that gives you 100% real-time visibility into raw materials, finished goods, batch/expiry dates, multi-godown stock transfers, and automated reorder levels.',
-    bannerImage:
-      'https://readdy.ai/api/search-image?query=Modern%20warehouse%20inventory%20management%20software%20dashboard%20showing%20real-time%20stock%20levels%2C%20barcode%20scanning%20analytics%20and%20multi-warehouse%20supply%20tracking%20in%20dark%20enterprise%20UI%20with%20cyan%20and%20blue%20glow&width=1400&height=600&seq=srv-banner-inv-10&orientation=landscape',
+    bannerImage: serviceImages['inventory-management-software'],
+    fallbackImage: serviceImageFallbacks['inventory-management-software'],
+    imageAlt: serviceImageAlts['inventory-management-software'],
     icon: 'ri-archive-drawer-line',
     color: 'from-cyan-500 to-indigo-500',
     features: [
@@ -703,8 +869,9 @@ export const servicesData: ServiceDetailItem[] = [
     tagline: 'Fast, Accurate GST Invoicing, Ledger Accounting & Payment Tracking',
     heroDesc:
       'AI Software Technology builds custom Billing & GST Software tailored to your pricing tiers, tax rules, credit limits, e-invoicing workflows, and customer/vendor ledger management.',
-    bannerImage:
-      'https://readdy.ai/api/search-image?query=Modern%20financial%20billing%20and%20GST%20invoicing%20software%20dashboard%20displaying%20digital%20tax%20invoices%2C%20revenue%20ledgers%20and%20payment%20analytics%20in%20sleek%20dark%20interface%20with%20blue%20and%20emerald%20accents&width=1400&height=600&seq=srv-banner-gst-11&orientation=landscape',
+    bannerImage: serviceImages['billing-gst-software'],
+    fallbackImage: serviceImageFallbacks['billing-gst-software'],
+    imageAlt: serviceImageAlts['billing-gst-software'],
     icon: 'ri-bill-line',
     color: 'from-blue-500 to-indigo-400',
     features: [
@@ -749,8 +916,9 @@ export const servicesData: ServiceDetailItem[] = [
     tagline: 'Streamline B2B Dealer Orders, Approvals, Inventory Allocation & Dispatch',
     heroDesc:
       'AI Software Technology builds custom Order Management Software (OMS) that centralizes order booking from dealers, distributors, sales executives, and online channels — providing complete visibility from order placement to warehouse dispatch.',
-    bannerImage:
-      'https://readdy.ai/api/search-image?query=Enterprise%20B2B%20order%20management%20software%20dashboard%20showing%20live%20order%20queues%2C%20dealer%20fulfillment%20status%2C%20dispatch%20tracking%20and%20inventory%20allocation%20in%20dark%20UI%20with%20amber%20and%20cyan%20glow&width=1400&height=600&seq=srv-banner-oms-12&orientation=landscape',
+    bannerImage: serviceImages['order-management-software'],
+    fallbackImage: serviceImageFallbacks['order-management-software'],
+    imageAlt: serviceImageAlts['order-management-software'],
     icon: 'ri-file-list-3-line',
     color: 'from-amber-500 to-cyan-400',
     features: [
@@ -795,8 +963,9 @@ export const servicesData: ServiceDetailItem[] = [
     tagline: 'Digitize Production Planning, Bill of Materials (BOM), Shop Floor & Quality Control',
     heroDesc:
       'AI Software Technology develops custom Manufacturing ERP and Shop-Floor Management Software that connects raw material procurement, multi-level Bill of Materials (BOM), batch production, machine utilization, quality inspection, and finished goods dispatch.',
-    bannerImage:
-      'https://readdy.ai/api/search-image?query=Smart%20factory%20manufacturing%20management%20software%20dashboard%20showing%20production%20lines%2C%20Bill%20of%20Materials%20BOM%2C%20machine%20utilization%20and%20quality%20control%20analytics%20in%20dark%20industrial%20UI%20with%20blue%20and%20cyan%20glow&width=1400&height=600&seq=srv-banner-mfg-13&orientation=landscape',
+    bannerImage: serviceImages['manufacturing-software'],
+    fallbackImage: serviceImageFallbacks['manufacturing-software'],
+    imageAlt: serviceImageAlts['manufacturing-software'],
     icon: 'ri-settings-5-line',
     color: 'from-blue-600 to-cyan-400',
     features: [
@@ -841,8 +1010,9 @@ export const servicesData: ServiceDetailItem[] = [
     tagline: 'Digitize OPD/IPD, Appointments, EMR, Pharmacy, Lab & Hospital Billing',
     heroDesc:
       'AI Software Technology develops custom Hospital Management Information Systems (HMIS) and Clinic Software designed for doctors, multi-specialty hospitals, diagnostic centers, and clinics to deliver seamless patient care.',
-    bannerImage:
-      'https://readdy.ai/api/search-image?query=Modern%20hospital%20and%20clinic%20management%20software%20dashboard%20showing%20electronic%20medical%20records%20EMR%2C%20OPD%20IPD%20appointment%20schedules%20and%20patient%20care%20analytics%20in%20dark%20sleek%20healthcare%20UI%20with%20teal%20and%20cyan%20glow&width=1400&height=600&seq=srv-banner-hms-14&orientation=landscape',
+    bannerImage: serviceImages['hospital-management-software'],
+    fallbackImage: serviceImageFallbacks['hospital-management-software'],
+    imageAlt: serviceImageAlts['hospital-management-software'],
     icon: 'ri-hospital-line',
     color: 'from-teal-500 to-cyan-400',
     features: [
@@ -887,8 +1057,9 @@ export const servicesData: ServiceDetailItem[] = [
     tagline: 'All-in-One Cloud PMS for Room Reservations, Front Desk, Housekeeping & Restaurant POS',
     heroDesc:
       'AI Software Technology develops custom Hotel & Hospitality Management Software (PMS) that unifies direct bookings, front-desk check-in/out, room rack status, housekeeping workflows, restaurant KOT/POS billing, and financial analytics.',
-    bannerImage:
-      'https://readdy.ai/api/search-image?query=Luxury%20hotel%20property%20management%20software%20PMS%20dashboard%20showing%20room%20occupancy%20calendar%2C%20front%20desk%20check-in%20status%2C%20housekeeping%20and%20restaurant%20POS%20analytics%20in%20dark%20UI%20with%20amber%20and%20cyan%20glow&width=1400&height=600&seq=srv-banner-hotel-15&orientation=landscape',
+    bannerImage: serviceImages['hotel-management-software'],
+    fallbackImage: serviceImageFallbacks['hotel-management-software'],
+    imageAlt: serviceImageAlts['hotel-management-software'],
     icon: 'ri-hotel-line',
     color: 'from-amber-500 to-rose-400',
     features: [
@@ -933,8 +1104,9 @@ export const servicesData: ServiceDetailItem[] = [
     tagline: 'End-to-End Consignment Booking (LR/Bilty), Fleet Dispatch & Live Shipment Tracking',
     heroDesc:
       'AI Software Technology builds custom Logistics, Transport ERP, and Courier/Shipment Tracking Software that digitizes consignment booking, manifest loading, fleet trip management, driver expenses, and live customer tracking.',
-    bannerImage:
-      'https://readdy.ai/api/search-image?query=Futuristic%20logistics%20and%20shipment%20tracking%20software%20command%20center%20dashboard%20showing%20live%20fleet%20GPS%20routes%2C%20consignment%20status%20and%20warehouse%20dispatch%20analytics%20in%20dark%20UI%20with%20cyan%20and%20blue%20glow&width=1400&height=600&seq=srv-banner-log-16&orientation=landscape',
+    bannerImage: serviceImages['logistics-software'],
+    fallbackImage: serviceImageFallbacks['logistics-software'],
+    imageAlt: serviceImageAlts['logistics-software'],
     icon: 'ri-truck-line',
     color: 'from-sky-500 to-indigo-500',
     features: [
@@ -979,8 +1151,9 @@ export const servicesData: ServiceDetailItem[] = [
     tagline: 'Empower Field Sales & Service Teams with Geo-Verified Visits, Beat Plans & Mobile Ordering',
     heroDesc:
       'AI Software Technology develops custom Field Sales & Workforce GPS Tracking Software (Web Admin + Mobile App) that gives managers real-time visibility into field executive attendance, client visits, route maps, travel expenses, and on-site order collection.',
-    bannerImage:
-      'https://readdy.ai/api/search-image?query=Field%20sales%20and%20GPS%20workforce%20tracking%20software%20dashboard%20with%20live%20employee%20route%20maps%2C%20geo-fenced%20visit%20check-ins%20and%20mobile%20order%20analytics%20in%20dark%20UI%20with%20cyan%20and%20emerald%20glow&width=1400&height=600&seq=srv-banner-gps-17&orientation=landscape',
+    bannerImage: serviceImages['field-sales-tracking-software'],
+    fallbackImage: serviceImageFallbacks['field-sales-tracking-software'],
+    imageAlt: serviceImageAlts['field-sales-tracking-software'],
     icon: 'ri-map-pin-user-line',
     color: 'from-emerald-500 to-cyan-400',
     features: [
@@ -1025,8 +1198,9 @@ export const servicesData: ServiceDetailItem[] = [
     tagline: 'Centralized Factory Attendance, Shift Roster, Gate Pass & Workforce Control',
     heroDesc:
       'AI Software Technology builds custom Attendance, Gate-Pass, and Workforce Management Software designed for factories, industrial plants, warehouses, and multi-branch organizations to monitor staff, contractors, shifts, and overtime in real time.',
-    bannerImage:
-      'https://readdy.ai/api/search-image?query=Industrial%20factory%20attendance%20and%20workforce%20management%20software%20dashboard%20showing%20live%20employee%20check-in%20logs%2C%20shift%20rosters%2C%20gate%20pass%20security%20and%20overtime%20analytics%20in%20dark%20UI%20with%20emerald%20and%20cyan%20glow&width=1400&height=600&seq=srv-banner-att-18&orientation=landscape',
+    bannerImage: serviceImages['attendance-workforce-software'],
+    fallbackImage: serviceImageFallbacks['attendance-workforce-software'],
+    imageAlt: serviceImageAlts['attendance-workforce-software'],
     icon: 'ri-fingerprint-line',
     color: 'from-teal-500 to-emerald-400',
     features: [
@@ -1071,8 +1245,9 @@ export const servicesData: ServiceDetailItem[] = [
     tagline: 'High-Speed Barcode POS Billing, Multi-Store Inventory & Customer Loyalty',
     heroDesc:
       'AI Software Technology develops custom Retail Point-of-Sale (POS) and Store Management Software designed for supermarkets, retail chains, showrooms, and specialty stores — delivering sub-second counter billing and live inventory control.',
-    bannerImage:
-      'https://readdy.ai/api/search-image?query=Modern%20retail%20POS%20point%20of%20sale%20billing%20software%20interface%20with%20barcode%20scanner%2C%20multi-store%20inventory%20sync%20and%20customer%20loyalty%20analytics%20in%20sleek%20dark%20UI%20with%20purple%20and%20cyan%20glow&width=1400&height=600&seq=srv-banner-pos-19&orientation=landscape',
+    bannerImage: serviceImages['retail-pos-software'],
+    fallbackImage: serviceImageFallbacks['retail-pos-software'],
+    imageAlt: serviceImageAlts['retail-pos-software'],
     icon: 'ri-store-2-line',
     color: 'from-fuchsia-500 to-purple-500',
     features: [
@@ -1117,8 +1292,9 @@ export const servicesData: ServiceDetailItem[] = [
     tagline: 'Custom B2C Online Stores, B2B Wholesale Portals & Multi-Vendor Marketplaces',
     heroDesc:
       'AI Software Technology designs and develops high-conversion custom E-commerce websites, B2B wholesale ordering platforms, and mobile shopping apps — complete with catalog management, payment gateways, shipping integration, and ERP inventory sync.',
-    bannerImage:
-      'https://readdy.ai/api/search-image?query=Modern%20e-commerce%20platform%20and%20online%20shopping%20admin%20dashboard%20displaying%20product%20catalogs%2C%20checkout%20conversion%20funnels%20and%20order%20fulfillment%20analytics%20in%20dark%20UI%20with%20cyan%20and%20orange%20glow&width=1400&height=600&seq=srv-banner-ecom-20&orientation=landscape',
+    bannerImage: serviceImages['ecommerce-development'],
+    fallbackImage: serviceImageFallbacks['ecommerce-development'],
+    imageAlt: serviceImageAlts['ecommerce-development'],
     icon: 'ri-shopping-bag-3-line',
     color: 'from-orange-500 to-pink-500',
     features: [
@@ -1163,8 +1339,9 @@ export const servicesData: ServiceDetailItem[] = [
     tagline: 'Connect Your Software Ecosystem with Secure REST/GraphQL APIs & Third-Party Integrations',
     heroDesc:
       'AI Software Technology architects secure, high-performance APIs and middleware integrations that connect your ERP, CRM, HRMS, website, mobile apps, payment gateways, accounting tools, and hardware devices.',
-    bannerImage:
-      'https://readdy.ai/api/search-image?query=Secure%20API%20development%20and%20enterprise%20system%20integration%20architecture%20visualization%20with%20connected%20cloud%20endpoints%2C%20JSON%20data%20streams%20and%20microservices%20nodes%20glowing%20in%20dark%20navy%20and%20cyan%20space&width=1400&height=600&seq=srv-banner-api-21&orientation=landscape',
+    bannerImage: serviceImages['api-development-integration'],
+    fallbackImage: serviceImageFallbacks['api-development-integration'],
+    imageAlt: serviceImageAlts['api-development-integration'],
     icon: 'ri-plug-line',
     color: 'from-cyan-500 to-blue-600',
     features: [
@@ -1209,8 +1386,9 @@ export const servicesData: ServiceDetailItem[] = [
     tagline: 'Reliable Annual Maintenance (AMC), Bug Fixing, Security Patching & Feature Upgrades',
     heroDesc:
       'AI Software Technology provides dedicated Software Maintenance, SLA Support, Server Monitoring, Database Optimization, and Feature Enhancement services to keep your business-critical web, mobile, ERP, CRM, and SaaS applications running smoothly.',
-    bannerImage:
-      'https://readdy.ai/api/search-image?query=Enterprise%20software%20maintenance%20and%2024%207%20technical%20support%20monitoring%20dashboard%20showing%20server%20uptime%20metrics%2C%20security%20shields%20and%20database%20performance%20charts%20in%20dark%20UI%20with%20emerald%20and%20blue%20glow&width=1400&height=600&seq=srv-banner-sup-22&orientation=landscape',
+    bannerImage: serviceImages['software-maintenance-support'],
+    fallbackImage: serviceImageFallbacks['software-maintenance-support'],
+    imageAlt: serviceImageAlts['software-maintenance-support'],
     icon: 'ri-shield-check-line',
     color: 'from-emerald-500 to-blue-500',
     features: [
@@ -1255,8 +1433,9 @@ export const servicesData: ServiceDetailItem[] = [
     tagline: 'Secure, High-Availability Cloud Infrastructure & Server Management',
     heroDesc:
       'AI Software Technology provides end-to-end cloud deployment, VPS/dedicated server setup, database optimization, SSL security, automated backups, and CI/CD pipelines so your business applications run fast and reliably.',
-    bannerImage:
-      'https://readdy.ai/api/search-image?query=Cloud%20computing%20infrastructure%20visualization%20with%20server%20clusters%2C%20Docker%20containers%20and%20global%20CDN%20network%20nodes%20connected%20by%20glowing%20sky%20blue%20light%20beams%20in%20dark%20space&width=1400&height=600&seq=srv-banner-cloud-23&orientation=landscape',
+    bannerImage: serviceImages['cloud-solutions'],
+    fallbackImage: serviceImageFallbacks['cloud-solutions'],
+    imageAlt: serviceImageAlts['cloud-solutions'],
     icon: 'ri-cloud-line',
     color: 'from-sky-500 to-blue-400',
     features: [
@@ -1299,8 +1478,9 @@ export const servicesData: ServiceDetailItem[] = [
     tagline: 'Clean, Intuitive Interfaces for Business Software, Dashboards & Mobile Apps',
     heroDesc:
       'AI Software Technology designs clear, user-friendly interfaces for complex ERP, CRM, HRMS, SaaS dashboards, websites, and mobile apps — making sure your software is effortless for both staff and customers to use.',
-    bannerImage:
-      'https://readdy.ai/api/search-image?query=UI%20UX%20design%20studio%20workspace%20with%20wireframes%2C%20color%20palettes%2C%20component%20libraries%20and%20interactive%20prototypes%20floating%20on%20dark%20screens%20with%20rose%20pink%20and%20cyan%20glowing%20accents&width=1400&height=600&seq=srv-banner-ux-24&orientation=landscape',
+    bannerImage: serviceImages['ui-ux-design'],
+    fallbackImage: serviceImageFallbacks['ui-ux-design'],
+    imageAlt: serviceImageAlts['ui-ux-design'],
     icon: 'ri-palette-line',
     color: 'from-rose-500 to-pink-400',
     features: [
@@ -1342,8 +1522,9 @@ export const servicesData: ServiceDetailItem[] = [
     tagline: 'Search Visibility & Lead Generation Support for Growing Businesses',
     heroDesc:
       'Alongside custom software and website development, AI Software Technology — A Brand of Digi India Solutions — provides technical SEO, local search optimization, and digital marketing support to help your business attract qualified leads online.',
-    bannerImage:
-      'https://readdy.ai/api/search-image?query=Digital%20marketing%20analytics%20command%20center%20with%20SEO%20rankings%2C%20search%20visibility%20graphs%20and%20conversion%20funnels%20glowing%20in%20dark%20workspace%20with%20orange%20and%20blue%20accents&width=1400&height=600&seq=srv-banner-dm-25&orientation=landscape',
+    bannerImage: serviceImages['digital-marketing'],
+    fallbackImage: serviceImageFallbacks['digital-marketing'],
+    imageAlt: serviceImageAlts['digital-marketing'],
     icon: 'ri-megaphone-line',
     color: 'from-orange-500 to-amber-400',
     features: [

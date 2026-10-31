@@ -10,6 +10,7 @@ import { portfolioProjectsA } from '@/mocks/portfolio';
 import { portfolioProjectsB } from '@/mocks/portfolioExtended';
 import { portfolioProjectsC } from '@/mocks/portfolioNew';
 import type { PortfolioProject } from '@/mocks/portfolio';
+import { usePageSEO } from '@/hooks/usePageSEO';
 
 const allProjects: PortfolioProject[] = [...portfolioProjectsA, ...portfolioProjectsB, ...portfolioProjectsC];
 
@@ -19,6 +20,22 @@ export default function PortfolioDetail() {
   const project = slug ? allProjects.find((p) => p.slug === slug) : undefined;
   const [activeGallery, setActiveGallery] = useState(0);
   const [activeTab, setActiveTab] = useState<'overview' | 'process' | 'results'>('overview');
+
+  usePageSEO({
+    title: project
+      ? `${project.name} — ${project.category} Project | AI Software Technology`
+      : 'Portfolio Project | AI Software Technology',
+    description: project
+      ? `${project.description} Built with ${project.technologies.slice(0, 4).join(', ')} by AI Software Technology (A Brand of Digi India Solutions).`
+      : 'Explore software and web development portfolio projects by AI Software Technology.',
+    ogTitle: project ? `${project.name} | AI Software Technology Portfolio` : 'Portfolio | AI Software Technology',
+    ogDescription: project?.description,
+    ogImage: project?.image,
+    canonical: project
+      ? `https://aisoftwaretechnology.in/portfolio/${project.slug}`
+      : 'https://aisoftwaretechnology.in/portfolio',
+    noindex: !project,
+  });
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -36,8 +53,8 @@ export default function PortfolioDetail() {
               <div className="w-20 h-20 mx-auto rounded-2xl bg-white/[0.03] flex items-center justify-center mb-6">
                 <i className="ri-file-search-line text-3xl text-white/30"></i>
               </div>
-              <h2 className="font-heading text-2xl font-bold text-white mb-2">Project Not Found</h2>
-              <p className="text-white/30 text-sm mb-6">The case study you are looking for does not exist.</p>
+              <h1 className="font-heading text-2xl font-bold text-white mb-2">Project Not Found</h1>
+              <p className="text-white/30 text-sm mb-6">The portfolio project you are looking for does not exist.</p>
               <button onClick={() => navigate('/portfolio')} className="glass-btn cursor-pointer">
                 View All Projects
                 <i className="ri-arrow-right-line ml-2"></i>
@@ -56,25 +73,36 @@ export default function PortfolioDetail() {
 
   const allGalleryImages = [project.image, project.mobileImage, project.dashboardImage, ...project.gallery];
 
-  const projectSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'CreativeWork',
-    name: project.name,
-    description: project.description,
-    url: `https://aisoftwaretechnology.in/portfolio/${project.slug}`,
-    image: project.image,
-    creator: {
-      '@type': 'Organization',
-      name: 'AI Software Technology',
-      url: 'https://aisoftwaretechnology.in',
-      parentOrganization: {
+  const projectSchema = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'CreativeWork',
+      name: project.name,
+      description: project.description,
+      url: `https://aisoftwaretechnology.in/portfolio/${project.slug}`,
+      image: project.image,
+      creator: {
         '@type': 'Organization',
-        name: 'Digi India Solutions',
+        name: 'AI Software Technology',
+        url: 'https://aisoftwaretechnology.in',
+        parentOrganization: {
+          '@type': 'Organization',
+          name: 'Digi India Solutions',
+        },
       },
+      about: { '@type': 'Thing', name: project.industry },
+      keywords: project.technologies.join(', '),
     },
-    about: { '@type': 'Thing', name: project.industry },
-    keywords: project.technologies.join(', '),
-  };
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aisoftwaretechnology.in/' },
+        { '@type': 'ListItem', position: 2, name: 'Portfolio', item: 'https://aisoftwaretechnology.in/portfolio' },
+        { '@type': 'ListItem', position: 3, name: project.name, item: `https://aisoftwaretechnology.in/portfolio/${project.slug}` },
+      ],
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-dark-500 text-white overflow-x-hidden">
