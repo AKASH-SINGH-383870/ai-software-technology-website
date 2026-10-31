@@ -1,0 +1,21 @@
+{
+  "name": "AI Software Technology — A Brand of Digi India Solutions",
+  "short_name": "AI Software Tech",
+  "description": "Your Business. Our Technology. Let's Build Together. Custom Software Development, ERP, CRM, HRMS, SaaS, Mobile Apps & AI Automation.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0E27",
+  "theme_color": "#0A0E27",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "640x640",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "technology", "productivity"],
+  "lang": "en",
+  "dir": "ltr"
+}
