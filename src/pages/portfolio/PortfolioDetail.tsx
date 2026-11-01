@@ -121,8 +121,13 @@ export default function PortfolioDetail() {
             <motion.img
               key={activeGallery}
               src={allGalleryImages[activeGallery]}
-              alt={project.name}
-              className="absolute inset-0 w-full h-full object-cover"
+              alt={project.imageAlt || `${project.name} — AI Software Technology`}
+              onError={(e) => {
+                if (project.fallbackImage && e.currentTarget.src !== project.fallbackImage) {
+                  e.currentTarget.src = project.fallbackImage;
+                }
+              }}
+              className="absolute inset-0 w-full h-full object-cover object-center"
               initial={{ opacity: 0, scale: 1.05 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0 }}
@@ -312,7 +317,7 @@ export default function PortfolioDetail() {
               {allGalleryImages.map((img, i) => (
                 <motion.div
                   key={i}
-                  className="relative rounded-xl overflow-hidden cursor-pointer group aspect-video"
+                  className="relative rounded-xl overflow-hidden cursor-pointer group aspect-[640/427] bg-[#060D1A] border border-white/[0.06]"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -321,8 +326,16 @@ export default function PortfolioDetail() {
                 >
                   <img
                     src={img}
-                    alt={`${project.name} screenshot ${i + 1}`}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    alt={project.imageAlt ? `${project.imageAlt} — View ${i + 1}` : `${project.name} screenshot ${i + 1}`}
+                    width="640"
+                    height="427"
+                    decoding="async"
+                    onError={(e) => {
+                      if (project.fallbackImage && e.currentTarget.src !== project.fallbackImage) {
+                        e.currentTarget.src = project.fallbackImage;
+                      }
+                    }}
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-dark-500/0 group-hover:bg-dark-500/20 transition-colors duration-300"></div>
@@ -467,6 +480,24 @@ function OverviewTab({ project }: { project: PortfolioProject }) {
       exit={{ opacity: 0, y: -10 }}
       transition={{ duration: 0.3 }}
     >
+      {/* Project Visual Banner */}
+      <div className="mb-10 rounded-2xl overflow-hidden border border-white/[0.08] bg-[#060D1A] aspect-[640/427]">
+        <img
+          src={project.image}
+          alt={project.imageAlt || `${project.name} — AI Software Technology`}
+          title={project.name}
+          width="640"
+          height="427"
+          decoding="async"
+          onError={(e) => {
+            if (project.fallbackImage && e.currentTarget.src !== project.fallbackImage) {
+              e.currentTarget.src = project.fallbackImage;
+            }
+          }}
+          className="w-full h-full object-contain"
+        />
+      </div>
+
       {/* Client Overview */}
       <SectionBlock
         icon="ri-building-4-line"

@@ -13,6 +13,8 @@ export interface PortfolioProject {
   features: string[];
   businessResults: string[];
   image: string;
+  fallbackImage?: string;
+  imageAlt?: string;
   mobileImage: string;
   dashboardImage: string;
   challenge: string;
@@ -57,12 +59,11 @@ export const portfolioProjectsA: PortfolioProject[] = [
       'Faster coordination between sales, warehouse, and dispatch',
       'Structured SKU and pack-size order visibility',
     ],
-    image:
-      'https://readdy.ai/api/search-image?query=Industrial%20lubricant%20order%20management%20software%20dashboard%20on%20widescreen%20laptop%20showing%20dealer%20orders%2C%20product%20pack%20sizes%2C%20drum%20and%20carton%20inventory%2C%20and%20dispatch%20status%20in%20modern%20dark%20navy%20and%20cyan%20UI%2C%20manufacturing%20distribution%20office%20setting&width=800&height=600&seq=pf-maxmol-01&orientation=landscape',
-    mobileImage:
-      'https://readdy.ai/api/search-image?query=Dealer%20order%20booking%20web%20application%20on%20smartphone%20showing%20lubricant%20product%20catalog%20and%20cart%20summary%2C%20clean%20modern%20B2B%20interface%2C%20industrial%20distribution%20theme&width=400&height=700&seq=pf-maxmol-mob&orientation=portrait',
-    dashboardImage:
-      'https://readdy.ai/api/search-image?query=B2B%20distribution%20admin%20dashboard%20on%20monitor%20displaying%20incoming%20dealer%20purchase%20orders%2C%20SKU%20quantities%2C%20and%20dispatch%20coordination%20table%2C%20dark%20enterprise%20UI&width=800&height=600&seq=pf-maxmol-dash&orientation=landscape',
+    image: '/images/portfolio/lubricant-order-management-software.png',
+    fallbackImage: 'https://i.ibb.co/d0x0r17z/Lubricant-ERP-Dashboard-1.png',
+    imageAlt: 'Lubricant Order Management Software — AI Software Technology',
+    mobileImage: '/images/portfolio/lubricant-order-management-software.png',
+    dashboardImage: '/images/portfolio/lubricant-order-management-software.png',
     challenge:
       'Lubricant manufacturers and distributors handle hundreds of product combinations across engine oils, gear oils, hydraulic oils, and greases in multiple pack sizes. Receiving dealer orders via phone calls or unstructured messages caused SKU confusion, manual entry delays, and dispatch bottlenecks.',
     goals: [
@@ -96,8 +97,8 @@ export const portfolioProjectsA: PortfolioProject[] = [
       role: 'AI Software Technology — A Brand of Digi India Solutions',
     },
     gallery: [
-      'https://readdy.ai/api/search-image?query=Industrial%20order%20management%20web%20application%20showing%20product%20catalog%20and%20dealer%20order%20table%20on%20laptop%20screen%2C%20clean%20enterprise%20UI&width=800&height=600&seq=pf-maxmol-g1&orientation=landscape',
-      'https://readdy.ai/api/search-image?query=Warehouse%20dispatch%20coordination%20dashboard%20on%20desktop%20monitor%20showing%20order%20fulfillment%20status%2C%20modern%20B2B%20software%20interface&width=800&height=600&seq=pf-maxmol-g2&orientation=landscape',
+      '/images/portfolio/lubricant-order-management-software.png',
+      'https://i.ibb.co/d0x0r17z/Lubricant-ERP-Dashboard-1.png',
     ],
   },
   {
@@ -128,12 +129,11 @@ export const portfolioProjectsA: PortfolioProject[] = [
       'Structured profile verification and consultation booking workflow',
       'Mobile-responsive experience across all three portals',
     ],
-    image:
-      'https://readdy.ai/api/search-image?query=Modern%20astrology%20and%20matrimonial%20web%20platform%20displayed%20on%20laptop%20and%20smartphone%20showing%20horoscope%20compatibility%20matching%2C%20astrologer%20consultation%20cards%2C%20and%20multi-portal%20dashboard%20in%20rich%20indigo%20and%20gold%20UI&width=800&height=600&seq=pf-astro-01&orientation=landscape',
-    mobileImage:
-      'https://readdy.ai/api/search-image?query=Matrimonial%20and%20astrology%20consultation%20mobile%20web%20app%20on%20smartphone%20showing%20profile%20compatibility%20and%20astrologer%20booking%20screen%2C%20modern%20premium%20UI&width=400&height=700&seq=pf-astro-mob&orientation=portrait',
-    dashboardImage:
-      'https://readdy.ai/api/search-image?query=Multi-portal%20admin%20and%20astrologer%20dashboard%20interface%20on%20computer%20monitor%20showing%20consultation%20queues%2C%20user%20profiles%2C%20and%20platform%20controls%2C%20dark%20enterprise%20UI&width=800&height=600&seq=pf-astro-dash&orientation=landscape',
+    image: '/images/portfolio/astrology-and-matrimonial-platform.png',
+    fallbackImage: 'https://i.ibb.co/WWt9vRyM/Astrology-and-matrimonial-platform-3.png',
+    imageAlt: 'Astrology and Matrimonial Platform — AI Software Technology',
+    mobileImage: '/images/portfolio/astrology-and-matrimonial-platform.png',
+    dashboardImage: '/images/portfolio/astrology-and-matrimonial-platform.png',
     challenge:
       'Building a platform that combines astrology consultations and matrimonial matchmaking requires distinct workflows for three different user groups — end users seeking matches and consultations, astrologers managing sessions, and administrators overseeing platform quality.',
     goals: [
@@ -166,8 +166,8 @@ export const portfolioProjectsA: PortfolioProject[] = [
       role: 'AI Software Technology — A Brand of Digi India Solutions',
     },
     gallery: [
-      'https://readdy.ai/api/search-image?query=Astrology%20consultation%20and%20horoscope%20matching%20portal%20on%20laptop%20screen%2C%20modern%20dark%20and%20gold%20web%20application%20UI&width=800&height=600&seq=pf-astro-g1&orientation=landscape',
-      'https://readdy.ai/api/search-image?query=Matrimonial%20matching%20and%20astrologer%20dashboard%20interface%20on%20widescreen%20monitor%2C%20clean%20multi-portal%20software%20design&width=800&height=600&seq=pf-astro-g2&orientation=landscape',
+      '/images/portfolio/astrology-and-matrimonial-platform.png',
+      'https://i.ibb.co/WWt9vRyM/Astrology-and-matrimonial-platform-3.png',
     ],
   },
   {
@@ -198,12 +198,11 @@ export const portfolioProjectsA: PortfolioProject[] = [
       'Simplified overtime and shift reconciliation for HR teams',
       'Centralized admin dashboard for industrial workforce monitoring',
     ],
-    image:
-      'https://readdy.ai/api/search-image?query=Factory%20attendance%20and%20workforce%20management%20software%20dashboard%20on%20laptop%20screen%20showing%20shift%20attendance%20logs%2C%20gate%20pass%20tracking%2C%20and%20department%20headcount%20charts%20in%20modern%20dark%20enterprise%20UI&width=800&height=600&seq=pf-gatepass-01&orientation=landscape',
-    mobileImage:
-      'https://readdy.ai/api/search-image?query=Supervisor%20workforce%20attendance%20and%20digital%20gate%20pass%20interface%20on%20smartphone%2C%20clean%20industrial%20HRMS%20mobile%20UI&width=400&height=700&seq=pf-gatepass-mob&orientation=portrait',
-    dashboardImage:
-      'https://readdy.ai/api/search-image?query=Industrial%20HRMS%20and%20attendance%20admin%20panel%20on%20widescreen%20monitor%20showing%20employee%20check-in%20times%2C%20shift%20rosters%2C%20and%20gate%20movement%20logs%2C%20dark%20theme%20UI&width=800&height=600&seq=pf-gatepass-dash&orientation=landscape',
+    image: '/images/portfolio/factory-attendance-workforce-management.png',
+    fallbackImage: 'https://i.ibb.co/21RX1GBN/Factory-workforce-management-dashboard-2.png',
+    imageAlt: 'Factory Attendance and Workforce Management Software — AI Software Technology',
+    mobileImage: '/images/portfolio/factory-attendance-workforce-management.png',
+    dashboardImage: '/images/portfolio/factory-attendance-workforce-management.png',
     challenge:
       'Factories and industrial units operating multiple shifts struggle with manual gate registers, delayed shift headcount reporting, unrecorded worker movement via paper gate passes, and time-consuming monthly attendance compilation.',
     goals: [
@@ -236,8 +235,8 @@ export const portfolioProjectsA: PortfolioProject[] = [
       role: 'AI Software Technology — A Brand of Digi India Solutions',
     },
     gallery: [
-      'https://readdy.ai/api/search-image?query=Factory%20attendance%20monitoring%20dashboard%20on%20computer%20screen%20with%20shift%20analytics%20and%20employee%20logs%2C%20dark%20enterprise%20UI&width=800&height=600&seq=pf-gatepass-g1&orientation=landscape',
-      'https://readdy.ai/api/search-image?query=Digital%20gate%20pass%20and%20industrial%20workforce%20management%20screen%20on%20laptop%2C%20modern%20HRMS%20software%20interface&width=800&height=600&seq=pf-gatepass-g2&orientation=landscape',
+      '/images/portfolio/factory-attendance-workforce-management.png',
+      'https://i.ibb.co/21RX1GBN/Factory-workforce-management-dashboard-2.png',
     ],
   },
   {

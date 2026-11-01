@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import Navbar from '@/components/feature/Navbar';
 import Footer from '@/components/feature/Footer';
 import ScrollToTop from '@/components/feature/ScrollToTop';
+import GoogleMapEmbed from '@/components/feature/GoogleMapEmbed';
 import { usePageSEO } from '@/hooks/usePageSEO';
 import {
   validateEnquiryForm,
@@ -437,18 +438,7 @@ export default function Contact() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <div className="glass-card rounded-2xl overflow-hidden">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3498.6244666711914!2d77.0841007755044!3d28.730766875611323!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d07440faeeedd%3A0x7fd3b4b030819bdf!2sDigi%20India%20Solutions!5e0!3m2!1sen!2sin!4v1784969452127!5m2!1sen!2sin"
-                    width="100%"
-                    height="360"
-                    style={{ border: 0, borderRadius: '20px' }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    title="AI Software Technology (A Brand of Digi India Solutions) - Rohini, New Delhi Office"
-                  />
-                </div>
+                <GoogleMapEmbed />
 
                 {/* Map Actions */}
                 <div className="flex flex-col sm:flex-row gap-2">

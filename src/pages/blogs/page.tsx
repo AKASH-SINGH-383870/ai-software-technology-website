@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Navbar from '@/components/feature/Navbar';
@@ -11,19 +11,29 @@ import { usePageSEO } from '@/hooks/usePageSEO';
 export default function Blogs() {
   const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState('All');
+  const [searchQuery, setSearchQuery] = useState('');
 
   usePageSEO({
-    title: 'Software & Technology Blog | AI Software Technology — ERP, CRM, HRMS & AI Guides',
+    title: 'Software, Web Development & Cloud Computing Blog | AI Software Technology',
     description:
-      'Practical guides and B2B insights on custom software development, CRM lead management, ERP inventory & billing, HRMS payroll systems, SaaS architecture, and AI workflow automation from AI Software Technology (A Brand of Digi India Solutions).',
-    keywords:
-      'software development blog, CRM software guide, ERP software benefits, HRMS features guide, custom software vs ready-made software, WhatsApp CRM automation, AI Software Technology blog',
+      'Practical guides and B2B insights on Web Development, Cloud Computing, Custom Software, CRM, ERP, HRMS, SaaS architecture, and AI automation from AI Software Technology (A Brand of Digi India Solutions).',
     canonical: 'https://aisoftwaretechnology.in/blogs',
   });
 
-  const filtered = activeCategory === 'All'
-    ? blogPosts
-    : blogPosts.filter((p) => p.category === activeCategory);
+  const filtered = useMemo(() => {
+    const query = searchQuery.trim().toLowerCase();
+    return blogPosts.filter((p) => {
+      const matchesCategory = activeCategory === 'All' || p.category === activeCategory;
+      if (!matchesCategory) return false;
+      if (!query) return true;
+      const inTitle = p.title.toLowerCase().includes(query);
+      const inExcerpt = p.excerpt.toLowerCase().includes(query);
+      const inCategory = p.category.toLowerCase().includes(query);
+      const inTags = p.tags.some((t) => t.toLowerCase().includes(query));
+      const inKeyword = p.focusKeyword ? p.focusKeyword.toLowerCase().includes(query) : false;
+      return inTitle || inExcerpt || inCategory || inTags || inKeyword;
+    });
+  }, [activeCategory, searchQuery]);
 
   const featured = blogPosts.filter((p) => p.featured);
 
@@ -48,7 +58,7 @@ export default function Blogs() {
                 <span className="text-gradient">Software</span> &amp; Technology Insights
               </h1>
               <p className="text-white/45 text-base md:text-lg max-w-xl">
-                Practical guides on Custom Software, CRM, ERP, HRMS, SaaS, and AI Automation for growing businesses.
+                Practical guides on Web Development, Cloud Computing, Custom Software, CRM, ERP, HRMS, SaaS, and AI Automation for growing businesses.
               </p>
             </motion.div>
           </div>
@@ -59,23 +69,28 @@ export default function Blogs() {
           <section className="py-12 md:py-16">
             <div className="max-w-[1400px] mx-auto px-6 md:px-10">
               <motion.div
-                className="glass-card rounded-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-2"
+                className="glass-card rounded-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-2 items-center"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <div className="relative h-60 md:h-80 lg:h-auto">
+                <div className="relative w-full aspect-[3/2] bg-[#060D1A] overflow-hidden">
                   <img
                     src={featured[0].image}
-                    alt={featured[0].title}
+                    alt={featured[0].imageAlt || featured[0].title}
                     title={featured[0].title}
                     loading="eager"
-                    width="800"
-                    height="600"
-                    className="w-full h-full object-cover"
+                    width="1200"
+                    height="800"
+                    onError={(e) => {
+                      const fallback = `/images/blogs/${featured[0].slug}.svg`;
+                      if (e.currentTarget.src !== window.location.origin + fallback) {
+                        e.currentTarget.src = fallback;
+                      }
+                    }}
+                    className="w-full h-full object-cover object-center"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-dark-500/60 to-transparent"></div>
                 </div>
                 <div className="p-6 md:p-10 flex flex-col justify-center">
                   <div className="flex items-center gap-3 mb-4">
@@ -99,10 +114,13 @@ export default function Blogs() {
                   </div>
                   <a
                     href={`/blogs/${featured[0].slug}`}
-                    onClick={(e) => { e.preventDefault(); navigate(`/blogs/${featured[0].slug}`); }}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      navigate(`/blogs/${featured[0].slug}`);
+                    }}
                     className="mt-5 inline-flex items-center text-accent-400 text-xs font-semibold hover:text-accent-300 transition-colors cursor-pointer"
                   >
-                    Read Article
+                    Read More
                     <i className="ri-arrow-right-line ml-1"></i>
                   </a>
                 </div>
@@ -111,85 +129,134 @@ export default function Blogs() {
           </section>
         )}
 
-        {/* Category Filter */}
+        {/* Category Filter & Search */}
         <section className="pb-8">
-          <div className="max-w-[1400px] mx-auto px-6 md:px-10">
-            <motion.div
-              className="flex flex-wrap items-center gap-2"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              {blogCategories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setActiveCategory(cat)}
-                  className={`px-4 py-2 rounded-full text-xs font-medium transition-all duration-300 cursor-pointer whitespace-nowrap ${
-                    activeCategory === cat
-                      ? 'bg-gradient-to-r from-primary-500 to-accent-500 text-white shadow-[0_0_20px_rgba(0,194,255,0.2)]'
-                      : 'bg-white/[0.03] text-white/50 hover:text-white hover:bg-white/[0.06] border border-white/[0.05]'
-                  }`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </motion.div>
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 space-y-5">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <motion.div
+                className="flex flex-wrap items-center gap-2"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
+                {blogCategories.map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setActiveCategory(cat)}
+                    className={`px-4 py-2 rounded-full text-xs font-medium transition-all duration-300 cursor-pointer whitespace-nowrap ${
+                      activeCategory === cat
+                        ? 'bg-gradient-to-r from-primary-500 to-accent-500 text-white shadow-[0_0_20px_rgba(0,194,255,0.2)]'
+                        : 'bg-white/[0.03] text-white/50 hover:text-white hover:bg-white/[0.06] border border-white/[0.05]'
+                    }`}
+                  >
+                    {cat === 'All' ? 'All Blogs' : cat}
+                  </button>
+                ))}
+              </motion.div>
+
+              {/* Search Bar */}
+              <div className="relative w-full md:w-72 flex-shrink-0">
+                <i className="ri-search-line absolute left-3.5 top-1/2 -translate-y-1/2 text-white/35 text-sm"></i>
+                <input
+                  type="search"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search articles, topics..."
+                  aria-label="Search blog articles"
+                  className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-white/30 focus:outline-none focus:border-accent-400/40 transition-colors"
+                />
+              </div>
+            </div>
           </div>
         </section>
 
         {/* Blog Grid */}
         <section className="py-8 md:py-12">
           <div className="max-w-[1400px] mx-auto px-6 md:px-10">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {filtered.map((post, i) => (
-                <motion.article
-                  key={post.slug}
-                  className="glass-card-hover rounded-2xl overflow-hidden group cursor-pointer"
-                  initial={{ opacity: 0, y: 25 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: (i % 3) * 0.1, duration: 0.5 }}
-                  whileHover={{ y: -4 }}
-                  onClick={() => navigate(`/blogs/${post.slug}`)}
+            {filtered.length === 0 ? (
+              <div className="glass-card rounded-2xl p-10 text-center">
+                <p className="text-white/60 text-sm mb-4">
+                  No blog articles matched your current filter or search query.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setActiveCategory('All');
+                    setSearchQuery('');
+                  }}
+                  className="glass-btn text-xs cursor-pointer"
                 >
-                  <div className="relative h-48 overflow-hidden">
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      title={post.title}
-                      loading="lazy"
-                      width="400"
-                      height="300"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-dark-500 via-dark-500/30 to-transparent"></div>
-                    <div className="absolute top-3 left-3">
-                      <span className="px-2.5 py-1 rounded-md bg-dark-500/80 backdrop-blur text-accent-400 text-[10px] font-semibold uppercase">
-                        {post.category}
+                  Reset Filters
+                </button>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filtered.map((post, i) => (
+                  <motion.article
+                    key={post.slug}
+                    className="glass-card-hover rounded-2xl overflow-hidden group cursor-pointer flex flex-col justify-between"
+                    initial={{ opacity: 0, y: 25 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: (i % 3) * 0.08, duration: 0.5 }}
+                    whileHover={{ y: -4 }}
+                    onClick={() => navigate(`/blogs/${post.slug}`)}
+                  >
+                    <div>
+                      <div className="relative aspect-[3/2] bg-[#060D1A] overflow-hidden border-b border-white/[0.05]">
+                        <img
+                          src={post.image}
+                          alt={post.imageAlt || post.title}
+                          title={post.title}
+                          loading="lazy"
+                          decoding="async"
+                          width="1200"
+                          height="800"
+                          onError={(e) => {
+                            const fallback = `/images/blogs/${post.slug}.svg`;
+                            if (e.currentTarget.src !== window.location.origin + fallback) {
+                              e.currentTarget.src = fallback;
+                            }
+                          }}
+                          className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-500"
+                        />
+                        <div className="absolute top-3 left-3">
+                          <span className="px-2.5 py-1 rounded-md bg-dark-500/85 backdrop-blur border border-white/10 text-accent-400 text-[10px] font-semibold uppercase tracking-wider">
+                            {post.category}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="p-5 pb-3">
+                        <div className="flex items-center gap-2 mb-2.5">
+                          <span className="text-white/35 text-[11px]">{post.date}</span>
+                          <span className="w-1 h-1 rounded-full bg-white/20"></span>
+                          <span className="text-white/35 text-[11px]">{post.readingTime}</span>
+                        </div>
+                        <h3 className="font-heading font-semibold text-white text-base leading-snug mb-2.5 group-hover:text-accent-300 transition-colors">
+                          {post.title}
+                        </h3>
+                        <p className="text-white/45 text-xs leading-relaxed mb-4 line-clamp-3">
+                          {post.excerpt}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="px-5 pb-5 pt-3 border-t border-white/[0.05] flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <div className="w-6 h-6 rounded-full bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center text-white text-[9px] font-bold">
+                          {post.author.avatar}
+                        </div>
+                        <span className="text-white/45 text-[11px] font-medium">{post.author.name}</span>
+                      </div>
+                      <span className="inline-flex items-center text-accent-400 text-xs font-semibold group-hover:translate-x-0.5 transition-transform">
+                        Read More <i className="ri-arrow-right-s-line ml-0.5"></i>
                       </span>
                     </div>
-                  </div>
-                  <div className="p-5">
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className="text-white/25 text-[10px]">{post.date}</span>
-                      <span className="w-1 h-1 rounded-full bg-white/15"></span>
-                      <span className="text-white/25 text-[10px]">{post.readingTime}</span>
-                    </div>
-                    <h3 className="font-heading font-semibold text-white text-sm leading-snug mb-2 group-hover:text-accent-300 transition-colors">
-                      {post.title}
-                    </h3>
-                    <p className="text-white/30 text-xs leading-relaxed mb-4 line-clamp-2">{post.excerpt}</p>
-                    <div className="flex items-center gap-2">
-                      <div className="w-6 h-6 rounded-full bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center text-white text-[9px] font-bold">
-                        {post.author.avatar}
-                      </div>
-                      <span className="text-white/40 text-[10px] font-medium">{post.author.name}</span>
-                    </div>
-                  </div>
-                </motion.article>
-              ))}
-            </div>
+                  </motion.article>
+                ))}
+              </div>
+            )}
           </div>
         </section>
 
@@ -216,7 +283,10 @@ function NewsletterSection() {
     e.preventDefault();
     const form = e.currentTarget;
     const honeypot = (form.elements.namedItem('company_alt') as HTMLInputElement)?.value;
-    if (honeypot?.trim()) { setStatus('success'); return; }
+    if (honeypot?.trim()) {
+      setStatus('success');
+      return;
+    }
 
     const fd = new FormData(form);
     try {

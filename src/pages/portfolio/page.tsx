@@ -266,14 +266,23 @@ export default function Portfolio() {
                       ></div>
 
                       {/* Image */}
-                      <div className="relative h-48 overflow-hidden">
+                      <div className="relative w-full aspect-[640/427] overflow-hidden bg-[#060D1A] flex-shrink-0">
                         <img
                           src={project.image}
-                          alt={project.name}
-                          className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                          alt={project.imageAlt || `${project.name} — AI Software Technology`}
+                          title={project.name}
+                          width="640"
+                          height="427"
+                          decoding="async"
+                          onError={(e) => {
+                            if (project.fallbackImage && e.currentTarget.src !== project.fallbackImage) {
+                              e.currentTarget.src = project.fallbackImage;
+                            }
+                          }}
+                          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                           loading="lazy"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-dark-500 via-dark-500/25 to-transparent"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-dark-500/85 via-transparent to-transparent pointer-events-none"></div>
                         <div className="absolute top-3 left-3 right-3 flex items-start justify-between gap-2">
                           <span className="px-2.5 py-1 rounded-full bg-dark-500/85 backdrop-blur-md text-accent-400 text-[10px] font-bold uppercase tracking-wider border border-white/10 line-clamp-1">
                             {project.category}

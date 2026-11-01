@@ -65,7 +65,7 @@ export default function SitemapPage() {
   usePageSEO({
     title: 'HTML Sitemap | Complete Directory of Pages — AI Software Technology',
     description:
-      'Browse all 154+ public pages on AI Software Technology (A Brand of Digi India Solutions) — including 25 software services, 42 portfolio projects, 9 case studies, 8 industry verticals, and 53 B2B technology guides.',
+      'Browse all 164+ public pages on AI Software Technology (A Brand of Digi India Solutions) — including 25 software services, 42 portfolio projects, 9 case studies, 8 industry verticals, and 63 B2B technology guides.',
     canonical: 'https://aisoftwaretechnology.in/sitemap',
     schema: {
       '@context': 'https://schema.org',

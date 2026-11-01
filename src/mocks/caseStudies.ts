@@ -8,6 +8,8 @@ export interface CaseStudy {
   duration: string;
   team: string;
   image: string;
+  fallbackImage?: string;
+  imageAlt?: string;
   overview: string;
   challenge: string;
   approach: string;
@@ -36,8 +38,9 @@ export const caseStudies: CaseStudy[] = [
     service: 'custom-software',
     duration: 'Custom Deployment',
     team: 'Order Management & ERP Engineering Team',
-    image:
-      'https://readdy.ai/api/search-image?query=Industrial%20lubricant%20order%20management%20software%20dashboard%20on%20widescreen%20laptop%20showing%20dealer%20orders%2C%20product%20pack%20sizes%2C%20drum%20and%20carton%20inventory%2C%20and%20dispatch%20status%20in%20modern%20dark%20navy%20and%20cyan%20UI%2C%20manufacturing%20distribution%20office%20setting&width=1200&height=700&seq=cs-maxmol&orientation=landscape',
+    image: '/images/portfolio/lubricant-order-management-software.png',
+    fallbackImage: 'https://i.ibb.co/d0x0r17z/Lubricant-ERP-Dashboard-1.png',
+    imageAlt: 'Lubricant Order Management Software — AI Software Technology',
     overview:
       'A web-based B2B order management system engineered for lubricant manufacturing and distribution businesses to streamline dealer order placement, SKU and pack-size selection, centralized order tracking, and warehouse dispatch coordination.',
     challenge:
@@ -91,8 +94,9 @@ export const caseStudies: CaseStudy[] = [
     service: 'web-application-development',
     duration: 'Custom Deployment',
     team: 'Multi-Portal Web Application Team',
-    image:
-      'https://readdy.ai/api/search-image?query=Modern%20astrology%20and%20matrimonial%20web%20platform%20displayed%20on%20laptop%20and%20smartphone%20showing%20horoscope%20compatibility%20matching%2C%20astrologer%20consultation%20cards%2C%20and%20multi-portal%20dashboard%20in%20rich%20indigo%20and%20gold%20UI&width=1200&height=700&seq=cs-astro&orientation=landscape',
+    image: '/images/portfolio/astrology-and-matrimonial-platform.png',
+    fallbackImage: 'https://i.ibb.co/WWt9vRyM/Astrology-and-matrimonial-platform-3.png',
+    imageAlt: 'Astrology and Matrimonial Platform — AI Software Technology',
     overview:
       'A multi-portal astrology consultation and matrimonial matchmaking web platform built with dedicated, role-secured interfaces for end users, professional astrologers, and platform administrators.',
     challenge:
@@ -145,8 +149,9 @@ export const caseStudies: CaseStudy[] = [
     service: 'hrms-software',
     duration: 'Custom Deployment',
     team: 'HRMS & Industrial Software Team',
-    image:
-      'https://readdy.ai/api/search-image?query=Factory%20attendance%20and%20workforce%20management%20software%20dashboard%20on%20laptop%20screen%20showing%20shift%20attendance%20logs%2C%20gate%20pass%20tracking%2C%20and%20department%20headcount%20charts%20in%20modern%20dark%20enterprise%20UI&width=1200&height=700&seq=cs-gatepass&orientation=landscape',
+    image: '/images/portfolio/factory-attendance-workforce-management.png',
+    fallbackImage: 'https://i.ibb.co/21RX1GBN/Factory-workforce-management-dashboard-2.png',
+    imageAlt: 'Factory Attendance and Workforce Management Software — AI Software Technology',
     overview:
       'A web-based factory attendance, digital gate-pass, and workforce monitoring system built for industrial plants and multi-shift organizations to track daily employee presence, shift movements, and attendance logs in real time.',
     challenge:

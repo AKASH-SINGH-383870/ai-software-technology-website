@@ -1078,18 +1078,37 @@ export default function ServiceDetail() {
                         e.preventDefault();
                         navigate(`/case-studies/${cs.slug}`);
                       }}
-                      className="glass-card-hover rounded-2xl p-5 block group"
+                      className="glass-card-hover rounded-2xl overflow-hidden flex flex-col group"
                     >
-                      <span className="inline-block px-2.5 py-0.5 rounded-full bg-accent-500/10 text-accent-400 text-[10px] font-semibold uppercase tracking-wider mb-3">
-                        {cs.industry}
-                      </span>
-                      <h3 className="font-heading text-sm font-bold text-white mb-2 group-hover:text-accent-300 transition-colors line-clamp-2">
-                        {cs.title}
-                      </h3>
-                      <p className="text-xs text-white/40 line-clamp-2 mb-3">{cs.overview}</p>
-                      <span className="text-xs font-semibold text-accent-400 flex items-center gap-1">
-                        Read Case Study <i className="ri-arrow-right-s-line"></i>
-                      </span>
+                      <div className="relative w-full aspect-[640/427] bg-[#060D1A] overflow-hidden border-b border-white/[0.06]">
+                        <img
+                          src={cs.image}
+                          alt={cs.imageAlt || cs.title}
+                          title={cs.title}
+                          width="640"
+                          height="427"
+                          loading="lazy"
+                          decoding="async"
+                          onError={(e) => {
+                            if (cs.fallbackImage && e.currentTarget.src !== cs.fallbackImage) {
+                              e.currentTarget.src = cs.fallbackImage;
+                            }
+                          }}
+                          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                      <div className="p-5 flex flex-col flex-grow">
+                        <span className="inline-block self-start px-2.5 py-0.5 rounded-full bg-accent-500/10 text-accent-400 text-[10px] font-semibold uppercase tracking-wider mb-3">
+                          {cs.industry}
+                        </span>
+                        <h3 className="font-heading text-sm font-bold text-white mb-2 group-hover:text-accent-300 transition-colors line-clamp-2">
+                          {cs.title}
+                        </h3>
+                        <p className="text-xs text-white/40 line-clamp-2 mb-3 flex-grow">{cs.overview}</p>
+                        <span className="text-xs font-semibold text-accent-400 flex items-center gap-1 mt-auto">
+                          Read Case Study <i className="ri-arrow-right-s-line"></i>
+                        </span>
+                      </div>
                     </a>
                   ))}
                 </div>

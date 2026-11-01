@@ -105,14 +105,24 @@ export default function CaseStudies() {
                   >
                     <div className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
                       {/* Image */}
-                      <div className="relative w-full lg:w-[45%] h-56 md:h-64 lg:h-auto lg:min-h-[340px] flex-shrink-0 overflow-hidden">
+                      <div className="relative w-full lg:w-[46%] aspect-[640/427] bg-[#060D1A] flex-shrink-0 overflow-hidden">
                         <img
                           src={study.image}
-                          alt={study.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                          alt={study.imageAlt || study.title}
+                          title={study.title}
+                          width="640"
+                          height="427"
+                          loading="lazy"
+                          decoding="async"
+                          onError={(e) => {
+                            if (study.fallbackImage && e.currentTarget.src !== study.fallbackImage) {
+                              e.currentTarget.src = study.fallbackImage;
+                            }
+                          }}
+                          className="w-full h-full object-contain lg:object-cover object-center group-hover:scale-105 transition-transform duration-700"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-dark-500/80 via-dark-500/20 to-transparent"></div>
-                        <div className="absolute top-4 left-4 flex gap-2">
+                        <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-dark-500/70 via-transparent to-transparent pointer-events-none"></div>
+                        <div className="absolute top-4 left-4 flex flex-wrap gap-2">
                           <span className="px-3 py-1 rounded-full bg-dark-500/80 backdrop-blur-md text-white/70 text-[10px] font-bold uppercase tracking-wider border border-white/[0.06]">
                             {study.industry}
                           </span>

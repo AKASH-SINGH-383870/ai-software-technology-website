@@ -130,12 +130,18 @@ export default function CaseStudyDetail() {
         <section className="relative min-h-[320px] md:min-h-[440px] flex items-end overflow-hidden py-10">
           <img
             src={study.image}
-            alt={study.title}
+            alt={study.imageAlt || study.title}
+            title={study.title}
             loading="eager"
             decoding="async"
-            width="1400"
-            height="760"
-            className="absolute inset-0 w-full h-full object-cover"
+            width="640"
+            height="427"
+            onError={(e) => {
+              if (study.fallbackImage && e.currentTarget.src !== study.fallbackImage) {
+                e.currentTarget.src = study.fallbackImage;
+              }
+            }}
+            className="absolute inset-0 w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-dark-500/50 via-dark-500/75 to-dark-500"></div>
           <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-10 pb-2">
@@ -214,6 +220,29 @@ export default function CaseStudyDetail() {
         {/* Main Case Study Sections */}
         <section className="py-12 md:py-20">
           <div className="max-w-[960px] mx-auto px-4 sm:px-6 md:px-10 space-y-12">
+            {/* Full-Aspect Case Study Banner Visual */}
+            <motion.div
+              className="rounded-2xl overflow-hidden border border-white/10 bg-[#060D1A] shadow-2xl aspect-[640/427]"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <img
+                src={study.image}
+                alt={study.imageAlt || study.title}
+                title={study.title}
+                width="640"
+                height="427"
+                decoding="async"
+                onError={(e) => {
+                  if (study.fallbackImage && e.currentTarget.src !== study.fallbackImage) {
+                    e.currentTarget.src = study.fallbackImage;
+                  }
+                }}
+                className="w-full h-full object-contain"
+              />
+            </motion.div>
+
             {/* 1. Project Overview */}
             <motion.div
               className="glass-card rounded-2xl p-6 sm:p-8 border border-white/[0.08]"
@@ -522,13 +551,23 @@ export default function CaseStudyDetail() {
                     whileHover={{ y: -4 }}
                     onClick={() => { navigate(`/case-studies/${cs.slug}`); window.scrollTo(0, 0); }}
                   >
-                    <div className="relative h-44 overflow-hidden">
+                    <div className="relative w-full aspect-[640/427] bg-[#060D1A] overflow-hidden flex-shrink-0">
                       <img
                         src={cs.image}
-                        alt={cs.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        alt={cs.imageAlt || cs.title}
+                        title={cs.title}
+                        width="640"
+                        height="427"
+                        loading="lazy"
+                        decoding="async"
+                        onError={(e) => {
+                          if (cs.fallbackImage && e.currentTarget.src !== cs.fallbackImage) {
+                            e.currentTarget.src = cs.fallbackImage;
+                          }
+                        }}
+                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-dark-500 via-dark-500/20 to-transparent"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-dark-500/80 via-transparent to-transparent pointer-events-none"></div>
                       <div className="absolute top-3 left-3">
                         <span className="px-2.5 py-1 rounded-md bg-dark-500/85 text-accent-400 text-[10px] font-bold">
                           {cs.industry}

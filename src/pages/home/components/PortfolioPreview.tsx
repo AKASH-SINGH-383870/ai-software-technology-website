@@ -51,17 +51,23 @@ export default function PortfolioPreview() {
                 whileHover={{ y: -6, transition: { duration: 0.25 } }}
               >
                 {/* Image */}
-                <div className="relative h-48 sm:h-52 overflow-hidden">
+                <div className="relative w-full aspect-[640/427] overflow-hidden bg-[#060D1A] flex-shrink-0">
                   <img
                     src={project.image}
-                    alt={project.name}
+                    alt={project.imageAlt || `${project.name} — AI Software Technology`}
                     title={project.name}
                     loading="lazy"
-                    width="400"
-                    height="300"
-                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                    decoding="async"
+                    width="640"
+                    height="427"
+                    onError={(e) => {
+                      if (project.fallbackImage && e.currentTarget.src !== project.fallbackImage) {
+                        e.currentTarget.src = project.fallbackImage;
+                      }
+                    }}
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-dark-500 via-dark-500/20 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-dark-500/85 via-transparent to-transparent pointer-events-none"></div>
                   <div className="absolute top-3.5 left-3.5 right-12">
                     <span className="inline-block px-3 py-1 rounded-full bg-dark-500/85 backdrop-blur-md border border-white/[0.08] text-[11px] text-accent-400 font-medium truncate max-w-full">
                       {project.category}
