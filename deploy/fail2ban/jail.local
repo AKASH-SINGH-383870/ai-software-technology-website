@@ -1,0 +1,54 @@
+# =============================================================================
+# AI SOFTWARE TECHNOLOGY — FAIL2BAN CONFIGURATION
+# Place in: /etc/fail2ban/jail.local
+# Prerequisite: Copy deploy/fail2ban/filter.d/nginx-ais-suspicious.conf to
+#               /etc/fail2ban/filter.d/nginx-ais-suspicious.conf
+# Reload via: sudo fail2ban-client reload && sudo fail2ban-client status
+# =============================================================================
+
+[DEFAULT]
+bantime  = 1h
+findtime = 10m
+maxretry = 5
+banaction = ufw
+backend = auto
+ignoreip = 127.0.0.1/8 ::1
+
+[sshd]
+enabled  = true
+port     = ssh
+logpath  = %(sshd_log)s
+backend  = systemd
+maxretry = 3
+findtime = 10m
+bantime  = 24h
+
+[nginx-http-auth]
+enabled  = true
+port     = http,https
+logpath  = /var/log/nginx/aisoftwaretechnology.error.log
+maxretry = 3
+
+[nginx-botsearch]
+enabled  = true
+port     = http,https
+logpath  = /var/log/nginx/aisoftwaretechnology.access.log
+maxretry = 4
+bantime  = 12h
+
+[nginx-limit-req]
+enabled  = true
+port     = http,https
+logpath  = /var/log/nginx/aisoftwaretechnology.error.log
+maxretry = 10
+findtime = 2m
+bantime  = 1h
+
+[nginx-ais-suspicious]
+enabled  = true
+port     = http,https
+filter   = nginx-ais-suspicious
+logpath  = /var/log/nginx/aisoftwaretechnology.access.log
+maxretry = 6
+findtime = 5m
+bantime  = 12h

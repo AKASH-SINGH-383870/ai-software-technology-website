@@ -32,11 +32,14 @@
   "name": "react",
   "private": true,
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && node -e \"import('jiti').then(m => m.createJiti(import.meta.url)('./scripts/prerender-routes.mjs'))\"",
+    "prerender": "node -e \"import('jiti').then(m => m.createJiti(import.meta.url)('./scripts/prerender-routes.mjs'))\"",
     "dev": "vite",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "type-check": "tsc --noEmit --project tsconfig.app.json"
+    "type-check": "tsc --noEmit --project tsconfig.app.json",
+    "security:audit": "npm audit --omit=dev",
+    "security:build": "npm run type-check && npm run lint && npm run build"
   },
   "type": "module",
   "version": "0.0.0"

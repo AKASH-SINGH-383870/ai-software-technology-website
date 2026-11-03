@@ -9,6 +9,7 @@ import { portfolioProjectsA } from '@/mocks/portfolio';
 import { portfolioProjectsB } from '@/mocks/portfolioExtended';
 import { portfolioProjectsC } from '@/mocks/portfolioNew';
 import { usePageSEO } from '@/hooks/usePageSEO';
+import { sanitizeExternalUrl } from '@/utils/security';
 
 const allProjects = [...portfolioProjectsA, ...portfolioProjectsB, ...portfolioProjectsC];
 
@@ -74,9 +75,37 @@ export default function Portfolio() {
 
   usePageSEO({
     title: 'Software & Web Portfolio | AI Software Technology — A Brand of Digi India Solutions',
-    description: 'Explore AI Software Technology portfolio of delivered projects across custom ERP systems, order management software, multi-portal web platforms, factory attendance & HRMS portals, CRM platforms, SaaS applications, mobile apps, and business web solutions.',
-    keywords: 'software portfolio, AI Software Technology portfolio, custom software projects India, ERP CRM HRMS portfolio, web application portfolio, mobile app portfolio, Digi India Solutions brand',
+    description: 'Explore AI Software Technology portfolio of 42+ delivered projects across custom ERP systems, order management software, multi-portal web platforms, factory attendance & HRMS portals, CRM platforms, SaaS applications, mobile apps, and business web solutions.',
     canonical: 'https://aisoftwaretechnology.in/portfolio',
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: 'Software & Web Portfolio — AI Software Technology',
+        description:
+          'Explore 42+ software and web development portfolio projects delivered by AI Software Technology (A Brand of Digi India Solutions).',
+        url: 'https://aisoftwaretechnology.in/portfolio',
+        isPartOf: { '@id': 'https://aisoftwaretechnology.in/#website' },
+        mainEntity: {
+          '@type': 'ItemList',
+          numberOfItems: allProjects.length,
+          itemListElement: allProjects.slice(0, 15).map((proj, idx) => ({
+            '@type': 'ListItem',
+            position: idx + 1,
+            name: proj.name,
+            url: `https://aisoftwaretechnology.in/portfolio/${proj.slug}`,
+          })),
+        },
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aisoftwaretechnology.in/' },
+          { '@type': 'ListItem', position: 2, name: 'Portfolio', item: 'https://aisoftwaretechnology.in/portfolio' },
+        ],
+      },
+    ],
   });
 
   useEffect(() => {
@@ -334,7 +363,7 @@ export default function Portfolio() {
                         {/* Two Action Buttons: Visit & Case Study */}
                         <div className="grid grid-cols-2 gap-2.5 pt-3 border-t border-white/[0.06]">
                           <a
-                            href={project.url}
+                            href={sanitizeExternalUrl(project.url) || '#'}
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={(e) => e.stopPropagation()}

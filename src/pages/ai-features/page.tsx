@@ -79,9 +79,27 @@ export default function AIFeatures() {
     title: 'AI Automation & Business Intelligence | AI Software Technology',
     description:
       'Explore AI Chatbots, AI Lead Qualification, WhatsApp Automation, and Intelligent Business Workflows built by AI Software Technology (A Brand of Digi India Solutions).',
-    keywords:
-      'AI automation company India, AI business chatbot, AI lead qualification CRM, workflow automation software, AI Software Technology',
     canonical: 'https://aisoftwaretechnology.in/ai-features',
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: 'AI Automation & Business Intelligence — AI Software Technology',
+        description:
+          'Enterprise AI chatbots, project estimation engines, lead qualification, and workflow automation built by AI Software Technology (A Brand of Digi India Solutions).',
+        url: 'https://aisoftwaretechnology.in/ai-features',
+        isPartOf: { '@id': 'https://aisoftwaretechnology.in/#website' },
+        about: { '@id': 'https://aisoftwaretechnology.in/#organization' },
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aisoftwaretechnology.in/' },
+          { '@type': 'ListItem', position: 2, name: 'AI Capabilities', item: 'https://aisoftwaretechnology.in/ai-features' },
+        ],
+      },
+    ],
   });
 
   return (
@@ -200,7 +218,7 @@ export default function AIFeatures() {
                   onClick={() => setActiveFeature(activeFeature === feature.id ? null : feature.id)}
                 >
                   <div className="relative h-44 overflow-hidden">
-                    <img src={feature.image} alt={feature.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <img src={feature.image} alt={`${feature.title} — AI Software Technology`} width="700" height="450" loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                     <div className="absolute inset-0 bg-gradient-to-t from-dark-500 via-dark-500/40 to-transparent"></div>
                     <div className="absolute bottom-3 left-4">
                       <div className="w-10 h-10 rounded-xl bg-accent-500/15 backdrop-blur-sm border border-accent-500/20 flex items-center justify-center mb-2">

@@ -7,6 +7,7 @@ import FloatingCTA from '@/components/feature/FloatingCTA';
 import ScrollToTop from '@/components/feature/ScrollToTop';
 import { blogPosts, blogCategories } from '@/mocks/blog';
 import { usePageSEO } from '@/hooks/usePageSEO';
+import { isValidEmail, checkFormRateLimit } from '@/utils/security';
 
 export default function Blogs() {
   const navigate = useNavigate();
@@ -18,6 +19,35 @@ export default function Blogs() {
     description:
       'Practical guides and B2B insights on Web Development, Cloud Computing, Custom Software, CRM, ERP, HRMS, SaaS architecture, and AI automation from AI Software Technology (A Brand of Digi India Solutions).',
     canonical: 'https://aisoftwaretechnology.in/blogs',
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: 'Software, Web Development & Cloud Computing Blog — AI Software Technology',
+        description:
+          'B2B software engineering, Web Development, Cloud Computing, ERP, CRM, HRMS, and AI automation guides published by AI Software Technology (A Brand of Digi India Solutions).',
+        url: 'https://aisoftwaretechnology.in/blogs',
+        isPartOf: { '@id': 'https://aisoftwaretechnology.in/#website' },
+        mainEntity: {
+          '@type': 'ItemList',
+          numberOfItems: blogPosts.length,
+          itemListElement: blogPosts.slice(0, 20).map((post, idx) => ({
+            '@type': 'ListItem',
+            position: idx + 1,
+            name: post.title,
+            url: `https://aisoftwaretechnology.in/blogs/${post.slug}`,
+          })),
+        },
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aisoftwaretechnology.in/' },
+          { '@type': 'ListItem', position: 2, name: 'Blogs', item: 'https://aisoftwaretechnology.in/blogs' },
+        ],
+      },
+    ],
   });
 
   const filtered = useMemo(() => {
@@ -288,9 +318,29 @@ function NewsletterSection() {
       return;
     }
 
-    const fd = new FormData(form);
+    const emailInput = (form.elements.namedItem('email') as HTMLInputElement | null)?.value?.trim() || '';
+    if (!isValidEmail(emailInput)) {
+      setStatus('error');
+      setErrorMsg('Please enter a valid email address.');
+      return;
+    }
+
+    const rateCheck = checkFormRateLimit('blogs-newsletter', 10000);
+    if (!rateCheck.allowed) {
+      setStatus('error');
+      setErrorMsg(`Please wait ${rateCheck.retryAfterSec} seconds before trying again.`);
+      return;
+    }
+
+    const fd = new FormData();
+    fd.append('email', emailInput);
     try {
-      const res = await fetch('https://readdy.ai/api/form/d9hski8h9dsfbuoi5jqg', { method: 'POST', body: fd });
+      const res = await fetch('https://readdy.ai/api/form/d9hski8h9dsfbuoi5jqg', {
+        method: 'POST',
+        body: fd,
+        credentials: 'omit',
+        referrerPolicy: 'strict-origin-when-cross-origin',
+      });
       const text = await res.text();
       const data = JSON.parse(text);
       if (res.ok && data.code === 'OK') {
@@ -298,7 +348,7 @@ function NewsletterSection() {
         form.reset();
       } else {
         setStatus('error');
-        setErrorMsg(data?.meta?.message || data?.message || 'Something went wrong.');
+        setErrorMsg('Unable to subscribe right now. Please try again later.');
       }
     } catch {
       setStatus('error');
@@ -335,6 +385,7 @@ function NewsletterSection() {
               type="email"
               name="email"
               placeholder="you@company.com"
+              maxLength={254}
               required
               className="flex-1 bg-white/[0.03] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-accent-500/30 focus:ring-1 focus:ring-accent-500/20"
             />

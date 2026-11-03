@@ -7,6 +7,8 @@ interface BreadcrumbItem {
 
 interface BreadcrumbProps {
   items?: BreadcrumbItem[];
+  customLabel?: string;
+  customPath?: string;
 }
 
 const routeNames: Record<string, string> = {
@@ -48,7 +50,7 @@ const routeNames: Record<string, string> = {
   'custom-software-vs-saas': 'Custom Software vs SaaS',
 };
 
-export default function Breadcrumb({ items }: BreadcrumbProps) {
+export default function Breadcrumb({ items, customLabel }: BreadcrumbProps) {
   const location = useLocation();
 
   const breadcrumbs: BreadcrumbItem[] = items || (() => {
@@ -57,8 +59,9 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
     let currentPath = '';
     segments.forEach((seg, idx) => {
       currentPath += `/${seg}`;
-      const label = routeNames[seg] || seg.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
-      result.push(idx === segments.length - 1 ? { label } : { label, path: currentPath });
+      const isLast = idx === segments.length - 1;
+      const label = (isLast && customLabel) || routeNames[seg] || seg.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+      result.push(isLast ? { label } : { label, path: currentPath });
     });
     return result;
   })();

@@ -10,6 +10,7 @@ import {
   openWhatsAppEnquiry,
   getWhatsAppEnquiryUrl,
 } from '@/utils/whatsappEnquiry';
+import { checkFormRateLimit, sanitizeTextInput } from '@/utils/security';
 
 const contactInfo = [
   {
@@ -101,9 +102,27 @@ export default function Contact() {
     title: 'Contact AI Software Technology | Book Free Software Demo | +91 9990390519',
     description:
       'Contact AI Software Technology (A Brand of Digi India Solutions) at House No. 158-159, Pocket-10, Sector-24, Rohini, New Delhi – 110085. Call or WhatsApp +91 9990390519 or email aisoftwaretechnology2026@gmail.com for Custom Software, ERP, CRM, HRMS, SaaS, Mobile Apps, and AI Automation.',
-    keywords:
-      'contact AI Software Technology, book software demo, custom software consultation India, ERP CRM HRMS quote, +91 9990390519, aisoftwaretechnology2026@gmail.com, Digi India Solutions Rohini New Delhi',
     canonical: 'https://aisoftwaretechnology.in/contact',
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'ContactPage',
+        name: 'Contact AI Software Technology — A Brand of Digi India Solutions',
+        description:
+          'Get in touch with AI Software Technology at House No. 158-159, Pocket-10, Sector-24, Rohini, New Delhi – 110085. Call or WhatsApp +91 9990390519 or email aisoftwaretechnology2026@gmail.com.',
+        url: 'https://aisoftwaretechnology.in/contact',
+        isPartOf: { '@id': 'https://aisoftwaretechnology.in/#website' },
+        mainEntity: { '@id': 'https://aisoftwaretechnology.in/#localbusiness' },
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aisoftwaretechnology.in/' },
+          { '@type': 'ListItem', position: 2, name: 'Contact Us', item: 'https://aisoftwaretechnology.in/contact' },
+        ],
+      },
+    ],
   });
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -120,7 +139,7 @@ export default function Contact() {
     const data: Record<string, string> = {};
     formData.forEach((val, key) => {
       if (key !== 'company_alt' && typeof val === 'string') {
-        data[key] = val.trim();
+        data[key] = sanitizeTextInput(val, key === 'message' ? 800 : 254);
       }
     });
 
@@ -142,6 +161,13 @@ export default function Contact() {
       return;
     }
 
+    const rateCheck = checkFormRateLimit('contact-form', 8000);
+    if (!rateCheck.allowed) {
+      setStatus('error');
+      setErrorMsg(`Please wait ${rateCheck.retryAfterSec} seconds before submitting another enquiry.`);
+      return;
+    }
+
     setStatus('loading');
 
     // Open WhatsApp Click-to-Chat immediately on user gesture
@@ -152,11 +178,17 @@ export default function Contact() {
 
     // Also preserve non-blocking background form logging if available
     try {
+      const controller = new AbortController();
+      const timeoutId = window.setTimeout(() => controller.abort(), 6000);
       await fetch('https://readdy.ai/api/form/d9hs9fghpes2mi34rs40', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(data),
+        credentials: 'omit',
+        referrerPolicy: 'strict-origin-when-cross-origin',
+        signal: controller.signal,
       });
+      window.clearTimeout(timeoutId);
     } catch {
       // Background logging is optional; WhatsApp Click-to-Chat is primary
     }
@@ -259,6 +291,7 @@ export default function Contact() {
                       <input
                         type="text"
                         name="name"
+                        maxLength={100}
                         required
                         className="w-full bg-white/[0.03] border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-accent-400/40 focus:bg-white/[0.05] transition-all"
                         placeholder="Rahul Sharma"
@@ -269,6 +302,7 @@ export default function Contact() {
                       <input
                         type="email"
                         name="email"
+                        maxLength={254}
                         required
                         className="w-full bg-white/[0.03] border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-accent-400/40 focus:bg-white/[0.05] transition-all"
                         placeholder="rahul@example.com"
@@ -282,6 +316,7 @@ export default function Contact() {
                       <input
                         type="tel"
                         name="phone"
+                        maxLength={20}
                         required
                         className="w-full bg-white/[0.03] border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-accent-400/40 focus:bg-white/[0.05] transition-all"
                         placeholder="+91 9876543210"
@@ -292,6 +327,7 @@ export default function Contact() {
                       <input
                         type="text"
                         name="company"
+                        maxLength={150}
                         className="w-full bg-white/[0.03] border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-accent-400/40 focus:bg-white/[0.05] transition-all"
                         placeholder="Your Company Name"
                       />
@@ -334,6 +370,7 @@ export default function Contact() {
                       <input
                         type="text"
                         name="city"
+                        maxLength={100}
                         className="w-full bg-white/[0.03] border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-accent-400/40 focus:bg-white/[0.05] transition-all"
                         placeholder="New Delhi, India"
                       />

@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 export interface PageSEOProps {
   title: string;
   description: string;
-  keywords?: string;
   ogTitle?: string;
   ogDescription?: string;
   ogImage?: string;
@@ -94,7 +93,7 @@ export function usePageSEO({
     }
     link.setAttribute('href', resolvedCanonical);
 
-    // Optional Page-Level JSON-LD Schema
+    // Optional Page-Level JSON-LD Schema (safe DOM textContent + escaped angle brackets)
     const resolvedSchema = schema || jsonLd;
     let schemaScript = document.getElementById('page-seo-jsonld') as HTMLScriptElement | null;
     if (resolvedSchema) {
@@ -104,7 +103,7 @@ export function usePageSEO({
         schemaScript.type = 'application/ld+json';
         document.head.appendChild(schemaScript);
       }
-      schemaScript.textContent = JSON.stringify(resolvedSchema);
+      schemaScript.textContent = JSON.stringify(resolvedSchema).replace(/</g, '\\u003c');
     } else if (schemaScript) {
       schemaScript.remove();
     }

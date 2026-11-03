@@ -8,6 +8,12 @@ import ScrollToTop from '@/components/feature/ScrollToTop';
 import Breadcrumb from '@/components/feature/Breadcrumb';
 import { blogPosts } from '@/mocks/blog';
 import { usePageSEO } from '@/hooks/usePageSEO';
+import {
+  sanitizeExternalUrl,
+  openExternalUrlSafely,
+  isValidEmail,
+  checkFormRateLimit,
+} from '@/utils/security';
 
 function renderInlineFormatting(text: string): React.ReactNode {
   // Parse markdown links [Label](/path) and bold **text**
@@ -19,11 +25,12 @@ function renderInlineFormatting(text: string): React.ReactNode {
       const match = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
       if (match) {
         const [, label, href] = match;
-        if (href.startsWith('/')) {
+        const safeHref = sanitizeExternalUrl(href);
+        if (safeHref.startsWith('/') && !safeHref.startsWith('//')) {
           return (
             <Link
               key={idx}
-              to={href}
+              to={safeHref}
               className="text-accent-400 hover:text-accent-300 underline underline-offset-4 font-medium transition-colors"
             >
               {label}
@@ -33,7 +40,7 @@ function renderInlineFormatting(text: string): React.ReactNode {
         return (
           <a
             key={idx}
-            href={href}
+            href={safeHref}
             target="_blank"
             rel="noopener noreferrer"
             className="text-accent-400 hover:text-accent-300 underline underline-offset-4 font-medium transition-colors"
@@ -90,6 +97,7 @@ export default function BlogDetail() {
     ogImageAlt: post?.imageAlt || post?.title,
     ogType: 'article',
     canonical: post ? `https://aisoftwaretechnology.in/blogs/${post.slug}` : 'https://aisoftwaretechnology.in/blogs',
+    noindex: !post,
     schema: post
       ? [
           {
@@ -99,6 +107,7 @@ export default function BlogDetail() {
             description: resolvedDescription,
             author: { '@type': 'Organization', name: post.author.name },
             datePublished: post.date,
+            dateModified: post.date,
             image: post.image.startsWith('/')
               ? `https://aisoftwaretechnology.in${post.image}`
               : post.image,
@@ -256,7 +265,9 @@ export default function BlogDetail() {
       linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
       facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
     };
-    window.open(links[platform], '_blank', 'width=600,height=400');
+    if (links[platform]) {
+      openExternalUrlSafely(links[platform]);
+    }
   };
 
   const handleSubscribe = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -267,9 +278,27 @@ export default function BlogDetail() {
       setStatus('success');
       return;
     }
-    const fd = new FormData(form);
+    const emailInput = (form.elements.namedItem('email') as HTMLInputElement | null)?.value?.trim() || '';
+    if (!isValidEmail(emailInput)) {
+      setStatus('error');
+      setErrorMsg('Please enter a valid email address.');
+      return;
+    }
+    const rateCheck = checkFormRateLimit('blog-detail-newsletter', 10000);
+    if (!rateCheck.allowed) {
+      setStatus('error');
+      setErrorMsg(`Please wait ${rateCheck.retryAfterSec}s before trying again.`);
+      return;
+    }
+    const fd = new FormData();
+    fd.append('email', emailInput);
     try {
-      const res = await fetch('https://readdy.ai/api/form/d9hski8h9dsfbuoi5jqg', { method: 'POST', body: fd });
+      const res = await fetch('https://readdy.ai/api/form/d9hski8h9dsfbuoi5jqg', {
+        method: 'POST',
+        body: fd,
+        credentials: 'omit',
+        referrerPolicy: 'strict-origin-when-cross-origin',
+      });
       const text = await res.text();
       const data = JSON.parse(text);
       if (res.ok && data.code === 'OK') {
@@ -277,7 +306,7 @@ export default function BlogDetail() {
         form.reset();
       } else {
         setStatus('error');
-        setErrorMsg(data?.meta?.message || data?.message || 'Something went wrong.');
+        setErrorMsg('Unable to subscribe right now. Please try again later.');
       }
     } catch {
       setStatus('error');
@@ -790,6 +819,7 @@ export default function BlogDetail() {
                       type="email"
                       name="email"
                       placeholder="you@company.com"
+                      maxLength={254}
                       required
                       className="w-full bg-white/[0.03] border border-white/[0.08] rounded-lg px-3 py-2 text-xs text-white placeholder-white/20 mb-2 focus:outline-none focus:border-accent-500/30"
                     />

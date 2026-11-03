@@ -5,6 +5,7 @@ import Footer from '@/components/feature/Footer';
 import ScrollToTop from '@/components/feature/ScrollToTop';
 import { caseStudies } from '@/mocks/caseStudies';
 import { usePageSEO } from '@/hooks/usePageSEO';
+import { sanitizeExternalUrl } from '@/utils/security';
 
 export default function CaseStudies() {
   const navigate = useNavigate();
@@ -13,9 +14,36 @@ export default function CaseStudies() {
     title: 'Software Case Studies | AI Software Technology — ERP, CRM, HRMS & Automation Implementations',
     description:
       'Explore software architecture and implementation case studies from AI Software Technology (A Brand of Digi India Solutions) across Custom ERP, Sales CRM, HRMS & Payroll, Healthcare HMS, Education ERP, and AI Workflow Automation.',
-    keywords:
-      'software case studies, ERP implementation case study, CRM software case study, HRMS payroll software case study, AI Software Technology case studies, custom software development India',
     canonical: 'https://aisoftwaretechnology.in/case-studies',
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: 'Software Implementation Case Studies — AI Software Technology',
+        description:
+          'Detailed software architecture and implementation case studies by AI Software Technology (A Brand of Digi India Solutions).',
+        url: 'https://aisoftwaretechnology.in/case-studies',
+        isPartOf: { '@id': 'https://aisoftwaretechnology.in/#website' },
+        mainEntity: {
+          '@type': 'ItemList',
+          numberOfItems: caseStudies.length,
+          itemListElement: caseStudies.map((cs, idx) => ({
+            '@type': 'ListItem',
+            position: idx + 1,
+            name: cs.title,
+            url: `https://aisoftwaretechnology.in/case-studies/${cs.slug}`,
+          })),
+        },
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aisoftwaretechnology.in/' },
+          { '@type': 'ListItem', position: 2, name: 'Case Studies', item: 'https://aisoftwaretechnology.in/case-studies' },
+        ],
+      },
+    ],
   });
 
   return (
@@ -168,9 +196,9 @@ export default function CaseStudies() {
                         <div className="mt-5 pt-4 border-t border-white/[0.06] flex flex-wrap items-center justify-between gap-3">
                           <span className="text-white/40 text-xs">{study.team}</span>
                           <div className="flex items-center gap-2.5">
-                            {study.liveUrl && (
+                            {study.liveUrl && sanitizeExternalUrl(study.liveUrl) && (
                               <a
-                                href={study.liveUrl}
+                                href={sanitizeExternalUrl(study.liveUrl)}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 onClick={(e) => e.stopPropagation()}

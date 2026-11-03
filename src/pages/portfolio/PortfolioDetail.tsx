@@ -11,6 +11,7 @@ import { portfolioProjectsB } from '@/mocks/portfolioExtended';
 import { portfolioProjectsC } from '@/mocks/portfolioNew';
 import type { PortfolioProject } from '@/mocks/portfolio';
 import { usePageSEO } from '@/hooks/usePageSEO';
+import { sanitizeExternalUrl } from '@/utils/security';
 
 const allProjects: PortfolioProject[] = [...portfolioProjectsA, ...portfolioProjectsB, ...portfolioProjectsC];
 
@@ -20,6 +21,39 @@ export default function PortfolioDetail() {
   const project = slug ? allProjects.find((p) => p.slug === slug) : undefined;
   const [activeGallery, setActiveGallery] = useState(0);
   const [activeTab, setActiveTab] = useState<'overview' | 'process' | 'results'>('overview');
+
+  const projectSchema = project
+    ? [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'CreativeWork',
+          name: project.name,
+          description: project.description,
+          url: `https://aisoftwaretechnology.in/portfolio/${project.slug}`,
+          image: project.image,
+          creator: {
+            '@type': 'Organization',
+            name: 'AI Software Technology',
+            url: 'https://aisoftwaretechnology.in',
+            parentOrganization: {
+              '@type': 'Organization',
+              name: 'Digi India Solutions',
+            },
+          },
+          about: { '@type': 'Thing', name: project.industry },
+          keywords: project.technologies.join(', '),
+        },
+        {
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aisoftwaretechnology.in/' },
+            { '@type': 'ListItem', position: 2, name: 'Portfolio', item: 'https://aisoftwaretechnology.in/portfolio' },
+            { '@type': 'ListItem', position: 3, name: project.name, item: `https://aisoftwaretechnology.in/portfolio/${project.slug}` },
+          ],
+        },
+      ]
+    : undefined;
 
   usePageSEO({
     title: project
@@ -31,10 +65,12 @@ export default function PortfolioDetail() {
     ogTitle: project ? `${project.name} | AI Software Technology Portfolio` : 'Portfolio | AI Software Technology',
     ogDescription: project?.description,
     ogImage: project?.image,
+    ogImageAlt: project ? project.imageAlt || `${project.name} — ${project.category} Project by AI Software Technology` : undefined,
     canonical: project
       ? `https://aisoftwaretechnology.in/portfolio/${project.slug}`
       : 'https://aisoftwaretechnology.in/portfolio',
     noindex: !project,
+    schema: projectSchema,
   });
 
   useEffect(() => {
@@ -72,41 +108,10 @@ export default function PortfolioDetail() {
   const nextProject = projectIndex < allProjects.length - 1 ? allProjects[projectIndex + 1] : null;
 
   const allGalleryImages = [project.image, project.mobileImage, project.dashboardImage, ...project.gallery];
-
-  const projectSchema = [
-    {
-      '@context': 'https://schema.org',
-      '@type': 'CreativeWork',
-      name: project.name,
-      description: project.description,
-      url: `https://aisoftwaretechnology.in/portfolio/${project.slug}`,
-      image: project.image,
-      creator: {
-        '@type': 'Organization',
-        name: 'AI Software Technology',
-        url: 'https://aisoftwaretechnology.in',
-        parentOrganization: {
-          '@type': 'Organization',
-          name: 'Digi India Solutions',
-        },
-      },
-      about: { '@type': 'Thing', name: project.industry },
-      keywords: project.technologies.join(', '),
-    },
-    {
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aisoftwaretechnology.in/' },
-        { '@type': 'ListItem', position: 2, name: 'Portfolio', item: 'https://aisoftwaretechnology.in/portfolio' },
-        { '@type': 'ListItem', position: 3, name: project.name, item: `https://aisoftwaretechnology.in/portfolio/${project.slug}` },
-      ],
-    },
-  ];
+  const safeProjectUrl = sanitizeExternalUrl(project.url);
 
   return (
     <div className="min-h-screen bg-dark-500 text-white overflow-x-hidden">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(projectSchema) }}></script>
       <Navbar />
 
       <main>
@@ -121,7 +126,11 @@ export default function PortfolioDetail() {
             <motion.img
               key={activeGallery}
               src={allGalleryImages[activeGallery]}
-              alt={project.imageAlt || `${project.name} — AI Software Technology`}
+              alt={project.imageAlt || `${project.name} — ${project.category} Project by AI Software Technology`}
+              width="1400"
+              height="520"
+              loading="eager"
+              decoding="async"
               onError={(e) => {
                 if (project.fallbackImage && e.currentTarget.src !== project.fallbackImage) {
                   e.currentTarget.src = project.fallbackImage;
@@ -214,7 +223,7 @@ export default function PortfolioDetail() {
                   </button>
                 )}
                 <a
-                  href={project.url}
+                  href={safeProjectUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-accent-500/15 hover:bg-accent-500/25 text-accent-400 text-xs font-semibold transition-all duration-300 cursor-pointer"
@@ -381,13 +390,46 @@ export default function PortfolioDetail() {
           </div>
         </section>
 
+        {/* Related Software Services */}
+        <section className="py-10 border-t border-white/[0.05] bg-dark-500">
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 text-center">
+            <h2 className="font-heading text-lg md:text-xl font-bold text-white mb-4">
+              Explore Related Software &amp; Web Development Services
+            </h2>
+            <div className="flex flex-wrap justify-center gap-3">
+              {[
+                { label: 'Custom Software Development', href: '/services/custom-software' },
+                { label: 'Website & Web App Development', href: '/services/website-development' },
+                { label: 'ERP Software Solutions', href: '/services/erp-solutions' },
+                { label: 'CRM & Lead Management', href: '/services/crm-solutions' },
+                { label: 'HRMS & Attendance Software', href: '/services/hrms-software' },
+                { label: 'UI/UX Design Services', href: '/services/ui-ux-design' },
+                { label: 'All Software Case Studies', href: '/case-studies' },
+              ].map((srv) => (
+                <a
+                  key={srv.href}
+                  href={srv.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate(srv.href);
+                  }}
+                  className="px-4 py-2 rounded-xl bg-white/[0.03] hover:bg-accent-500/10 border border-white/[0.06] hover:border-accent-400/25 text-xs text-white/65 hover:text-accent-300 transition-all"
+                >
+                  {srv.label} →
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Next / Prev Navigation */}
         <section className="py-10 md:py-14 bg-dark-500">
           <div className="max-w-[1400px] mx-auto px-6 md:px-10">
             <div className="flex items-center justify-between gap-4">
               {prevProject ? (
-                <button
-                  onClick={() => { navigate(`/portfolio/${prevProject.slug}`); window.scrollTo(0, 0); }}
+                <a
+                  href={`/portfolio/${prevProject.slug}`}
+                  onClick={(e) => { e.preventDefault(); navigate(`/portfolio/${prevProject.slug}`); window.scrollTo(0, 0); }}
                   className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/[0.02] hover:bg-white/[0.05] border border-white/[0.04] hover:border-white/[0.08] transition-all duration-300 cursor-pointer group"
                 >
                   <i className="ri-arrow-left-line text-white/40 group-hover:text-white/70 transition-colors"></i>
@@ -395,12 +437,13 @@ export default function PortfolioDetail() {
                     <div className="text-white/20 text-[9px] uppercase tracking-wider font-bold">Previous</div>
                     <div className="text-white/50 text-xs group-hover:text-white/70 transition-colors max-w-[160px] truncate">{prevProject.name}</div>
                   </div>
-                </button>
+                </a>
               ) : <div></div>}
 
               {nextProject && (
-                <button
-                  onClick={() => { navigate(`/portfolio/${nextProject.slug}`); window.scrollTo(0, 0); }}
+                <a
+                  href={`/portfolio/${nextProject.slug}`}
+                  onClick={(e) => { e.preventDefault(); navigate(`/portfolio/${nextProject.slug}`); window.scrollTo(0, 0); }}
                   className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/[0.02] hover:bg-white/[0.05] border border-white/[0.04] hover:border-white/[0.08] transition-all duration-300 cursor-pointer group"
                 >
                   <div className="text-right">
@@ -408,7 +451,7 @@ export default function PortfolioDetail() {
                     <div className="text-white/50 text-xs group-hover:text-white/70 transition-colors max-w-[160px] truncate">{nextProject.name}</div>
                   </div>
                   <i className="ri-arrow-right-line text-white/40 group-hover:text-white/70 transition-colors"></i>
-                </button>
+                </a>
               )}
             </div>
           </div>
@@ -484,10 +527,11 @@ function OverviewTab({ project }: { project: PortfolioProject }) {
       <div className="mb-10 rounded-2xl overflow-hidden border border-white/[0.08] bg-[#060D1A] aspect-[640/427]">
         <img
           src={project.image}
-          alt={project.imageAlt || `${project.name} — AI Software Technology`}
+          alt={project.imageAlt || `${project.name} — ${project.category} Project by AI Software Technology`}
           title={project.name}
           width="640"
           height="427"
+          loading="lazy"
           decoding="async"
           onError={(e) => {
             if (project.fallbackImage && e.currentTarget.src !== project.fallbackImage) {

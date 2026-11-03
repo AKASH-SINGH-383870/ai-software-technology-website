@@ -116,7 +116,7 @@ export default function TestimonialsCarousel() {
               {/* Client Image */}
               <div className="relative mx-auto mb-6">
                 <div className="w-20 h-20 rounded-2xl overflow-hidden mx-auto border-2 border-white/[0.08]">
-                  <img src={tst.image} alt={tst.name} className="w-full h-full object-cover" />
+                  <img src={tst.image} alt={`${tst.name} — ${tst.role}`} width="80" height="80" loading="lazy" decoding="async" className="w-full h-full object-cover" />
                 </div>
                 <div className="absolute -bottom-1 -right-1 w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center text-sm">
                   {tst.logo}

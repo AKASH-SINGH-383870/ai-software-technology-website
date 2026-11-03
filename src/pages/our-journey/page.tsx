@@ -138,9 +138,27 @@ export default function OurJourney() {
     title: 'Our Journey | AI Software Technology — A Brand of Digi India Solutions',
     description:
       'Explore the evolution of AI Software Technology, a dedicated custom software development brand of Digi India Solutions, delivering ERP, CRM, HRMS, SaaS, Mobile Apps, and AI Automation.',
-    keywords:
-      'AI Software Technology journey, Digi India Solutions brand story, custom software company timeline, ERP CRM HRMS company India',
     canonical: 'https://aisoftwaretechnology.in/our-journey',
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'AboutPage',
+        name: 'Our Journey & Milestones — AI Software Technology (A Brand of Digi India Solutions)',
+        description:
+          'Timeline and milestones of Digi India Solutions and its dedicated custom software engineering brand, AI Software Technology.',
+        url: 'https://aisoftwaretechnology.in/our-journey',
+        isPartOf: { '@id': 'https://aisoftwaretechnology.in/#website' },
+        about: { '@id': 'https://aisoftwaretechnology.in/#organization' },
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aisoftwaretechnology.in/' },
+          { '@type': 'ListItem', position: 2, name: 'Our Journey', item: 'https://aisoftwaretechnology.in/our-journey' },
+        ],
+      },
+    ],
   });
 
   // Animate stats when visible

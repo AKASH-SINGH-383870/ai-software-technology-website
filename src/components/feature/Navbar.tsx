@@ -118,6 +118,8 @@ export default function Navbar() {
                 title="AI Software Technology — A Brand of Digi India Solutions"
                 width="160"
                 height="48"
+                loading="eager"
+                decoding="async"
                 className="h-10 sm:h-11 md:h-12 w-auto object-contain transition-all duration-300 group-hover:brightness-110"
               />
               <div className="hidden xl:flex flex-col border-l border-white/10 pl-2.5">
@@ -293,7 +295,11 @@ export default function Navbar() {
                     onError={(e) => {
                       e.currentTarget.src = '/logo.png';
                     }}
-                    alt="AI Software Technology"
+                    alt="AI Software Technology — A Brand of Digi India Solutions"
+                    width="115"
+                    height="36"
+                    loading="lazy"
+                    decoding="async"
                     className="h-9 w-auto object-contain"
                   />
                   <div>

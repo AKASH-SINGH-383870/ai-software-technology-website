@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { AppRoutes } from "./router";
 import { I18nextProvider } from "react-i18next";
@@ -12,7 +13,9 @@ function App() {
       <BrowserRouter basename={__BASE_PATH__}>
         <Interactive3DBackground variant="global" />
         <AnimatedCursor />
-        <AppRoutes />
+        <Suspense fallback={<div className="min-h-screen bg-dark-500" />}>
+          <AppRoutes />
+        </Suspense>
         <StickyContactBar />
       </BrowserRouter>
     </I18nextProvider>

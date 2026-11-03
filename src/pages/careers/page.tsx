@@ -17,9 +17,27 @@ export default function Careers() {
     title: 'Careers at AI Software Technology | Software Engineering & Product Roles',
     description:
       'Join AI Software Technology (A Brand of Digi India Solutions) in New Delhi. Explore open roles in Full-Stack Engineering, AI Automation, Mobile Apps, UI/UX Design, and Business Analysis.',
-    keywords:
-      'careers AI Software Technology, software developer jobs Delhi, React Node.js jobs Rohini, Digi India Solutions careers',
     canonical: 'https://aisoftwaretechnology.in/careers',
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: 'Careers at AI Software Technology — A Brand of Digi India Solutions',
+        description:
+          'Software engineering, AI automation, UI/UX design, and product development careers at AI Software Technology in New Delhi, India.',
+        url: 'https://aisoftwaretechnology.in/careers',
+        isPartOf: { '@id': 'https://aisoftwaretechnology.in/#website' },
+        about: { '@id': 'https://aisoftwaretechnology.in/#organization' },
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aisoftwaretechnology.in/' },
+          { '@type': 'ListItem', position: 2, name: 'Careers', item: 'https://aisoftwaretechnology.in/careers' },
+        ],
+      },
+    ],
   });
 
   const filtered = activeDept === 'All'

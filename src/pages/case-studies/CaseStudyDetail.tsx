@@ -7,6 +7,7 @@ import ScrollToTop from '@/components/feature/ScrollToTop';
 import Breadcrumb from '@/components/feature/Breadcrumb';
 import { caseStudies } from '@/mocks/caseStudies';
 import { usePageSEO } from '@/hooks/usePageSEO';
+import { sanitizeExternalUrl } from '@/utils/security';
 
 export default function CaseStudyDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -23,10 +24,12 @@ export default function CaseStudyDetail() {
     ogTitle: study ? `${study.title} — Case Study` : 'Case Studies — AI Software Technology',
     ogDescription: study?.overview,
     ogImage: study?.image,
+    ogImageAlt: study ? study.imageAlt || study.title : undefined,
     ogType: 'article',
     canonical: study
       ? `https://aisoftwaretechnology.in/case-studies/${study.slug}`
       : 'https://aisoftwaretechnology.in/case-studies',
+    noindex: !study,
     jsonLd: study
       ? [
           {
@@ -76,7 +79,7 @@ export default function CaseStudyDetail() {
               <div className="w-20 h-20 mx-auto rounded-2xl bg-white/[0.03] flex items-center justify-center mb-6">
                 <i className="ri-file-search-line text-3xl text-white/30"></i>
               </div>
-              <h2 className="font-heading text-2xl font-bold text-white mb-2">Case Study Not Found</h2>
+              <h1 className="font-heading text-2xl font-bold text-white mb-2">Case Study Not Found</h1>
               <p className="text-white/40 text-sm mb-6">The case study you are looking for does not exist.</p>
               <button onClick={() => navigate('/case-studies')} className="glass-btn cursor-pointer">
                 View All Case Studies
@@ -90,34 +93,10 @@ export default function CaseStudyDetail() {
     );
   }
 
-  const caseStudySchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: study.title,
-    description: study.overview,
-    url: `https://aisoftwaretechnology.in/case-studies/${study.slug}`,
-    image: study.image,
-    author: {
-      '@type': 'Organization',
-      name: 'AI Software Technology',
-      url: 'https://aisoftwaretechnology.in',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'AI Software Technology',
-      url: 'https://aisoftwaretechnology.in',
-      parentOrganization: {
-        '@type': 'Organization',
-        name: 'Digi India Solutions',
-      },
-    },
-    about: { '@type': 'Thing', name: study.industry },
-    keywords: study.tags.join(', '),
-  };
+  const safeLiveUrl = study.liveUrl ? sanitizeExternalUrl(study.liveUrl) : '';
 
   return (
     <div className="min-h-screen bg-dark-500 text-white overflow-x-hidden">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudySchema) }}></script>
       <Navbar />
 
       <main>
@@ -202,9 +181,9 @@ export default function CaseStudyDetail() {
                 </div>
               </div>
 
-              {study.liveUrl && (
+              {safeLiveUrl && safeLiveUrl !== '#' && (
                 <a
-                  href={study.liveUrl}
+                  href={safeLiveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-accent-500 text-dark-500 hover:bg-accent-400 text-xs font-bold transition-all duration-300 shadow-[0_0_20px_rgba(0,194,255,0.25)] cursor-pointer"
@@ -233,6 +212,7 @@ export default function CaseStudyDetail() {
                 title={study.title}
                 width="640"
                 height="427"
+                loading="lazy"
                 decoding="async"
                 onError={(e) => {
                   if (study.fallbackImage && e.currentTarget.src !== study.fallbackImage) {
@@ -419,7 +399,7 @@ export default function CaseStudyDetail() {
             </motion.div>
 
             {/* 9. Project Visit Link */}
-            {study.liveUrl && (
+            {safeLiveUrl && (
               <motion.div
                 className="glass-card rounded-2xl p-6 sm:p-8 border border-accent-400/25 bg-gradient-to-r from-primary-500/10 via-dark-600 to-accent-500/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
                 initial={{ opacity: 0, y: 25 }}
@@ -432,10 +412,10 @@ export default function CaseStudyDetail() {
                     9. Live Deployment Link
                   </span>
                   <h3 className="font-heading font-bold text-white text-lg">Explore the Live Application</h3>
-                  <p className="text-white/55 text-xs sm:text-sm mt-1 break-all">{study.liveUrl}</p>
+                  <p className="text-white/55 text-xs sm:text-sm mt-1 break-all">{safeLiveUrl}</p>
                 </div>
                 <a
-                  href={study.liveUrl}
+                  href={safeLiveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent-500 text-dark-500 hover:bg-accent-400 font-bold text-xs sm:text-sm transition-all duration-300 flex-shrink-0 cursor-pointer"
@@ -463,17 +443,17 @@ export default function CaseStudyDetail() {
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {study.relatedServices.map((srv) => (
-                    <button
+                    <a
                       key={srv.slug}
-                      type="button"
-                      onClick={() => { navigate(`/services/${srv.slug}`); window.scrollTo(0, 0); }}
+                      href={`/services/${srv.slug}`}
+                      onClick={(e) => { e.preventDefault(); navigate(`/services/${srv.slug}`); window.scrollTo(0, 0); }}
                       className="flex items-center justify-between p-4 rounded-xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.08] hover:border-accent-400/30 text-left transition-all duration-300 group cursor-pointer"
                     >
                       <span className="text-sm font-semibold text-white/85 group-hover:text-accent-300 transition-colors">
                         {srv.name}
                       </span>
                       <i className="ri-arrow-right-up-line text-accent-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
-                    </button>
+                    </a>
                   ))}
                 </div>
               </motion.div>
@@ -541,15 +521,16 @@ export default function CaseStudyDetail() {
                 .filter((c) => c.slug !== study.slug)
                 .slice(0, 3)
                 .map((cs, i) => (
-                  <motion.div
+                  <motion.a
                     key={cs.id}
+                    href={`/case-studies/${cs.slug}`}
                     className="glass-card-hover rounded-2xl overflow-hidden cursor-pointer flex flex-col"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1, duration: 0.5 }}
                     whileHover={{ y: -4 }}
-                    onClick={() => { navigate(`/case-studies/${cs.slug}`); window.scrollTo(0, 0); }}
+                    onClick={(e) => { e.preventDefault(); navigate(`/case-studies/${cs.slug}`); window.scrollTo(0, 0); }}
                   >
                     <div className="relative w-full aspect-[640/427] bg-[#060D1A] overflow-hidden flex-shrink-0">
                       <img
@@ -575,16 +556,16 @@ export default function CaseStudyDetail() {
                       </div>
                     </div>
                     <div className="p-5 flex flex-col flex-grow">
-                      <h4 className="font-heading font-semibold text-white text-sm mb-2 group-hover:text-accent-300 transition-colors duration-300">
+                      <h3 className="font-heading font-semibold text-white text-sm mb-2 group-hover:text-accent-300 transition-colors duration-300">
                         {cs.title}
-                      </h4>
+                      </h3>
                       <p className="text-white/45 text-xs line-clamp-2 mb-4 flex-grow">{cs.overview}</p>
                       <span className="text-accent-400 text-xs font-semibold inline-flex items-center gap-1">
                         Read Case Study
                         <i className="ri-arrow-right-line"></i>
                       </span>
                     </div>
-                  </motion.div>
+                  </motion.a>
                 ))}
             </div>
           </div>

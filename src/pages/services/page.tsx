@@ -14,9 +14,37 @@ export default function Services() {
 
   usePageSEO({
     title: 'Custom Software Development Services | ERP, CRM, HRMS, SaaS & Mobile Apps | AI Software Technology',
-    description: 'Explore 30+ custom software development services by AI Software Technology — A Brand of Digi India Solutions. Custom ERP, CRM, HRMS, SaaS applications, mobile apps, industry-specific software, and AI automation. Call +91 9990390519.',
-    keywords: 'custom software development services, ERP software development, CRM software development, HRMS software development, SaaS application development, mobile app development India, hospital management software, school ERP software, AI automation solutions, AI Software Technology',
+    description: 'Explore 25+ custom software development services by AI Software Technology — A Brand of Digi India Solutions. Custom ERP, CRM, HRMS, SaaS applications, mobile apps, industry-specific software, and AI automation. Call +91 9990390519.',
     canonical: 'https://aisoftwaretechnology.in/services',
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: 'Custom Software Development Services — AI Software Technology',
+        description:
+          'Complete catalog of 25 custom software development, ERP, CRM, HRMS, SaaS, mobile app, web development, cloud deployment, and AI automation services by AI Software Technology (A Brand of Digi India Solutions).',
+        url: 'https://aisoftwaretechnology.in/services',
+        isPartOf: { '@id': 'https://aisoftwaretechnology.in/#website' },
+        mainEntity: {
+          '@type': 'ItemList',
+          numberOfItems: servicesData.length,
+          itemListElement: servicesData.map((srv, idx) => ({
+            '@type': 'ListItem',
+            position: idx + 1,
+            name: srv.name,
+            url: `https://aisoftwaretechnology.in/services/${srv.slug}`,
+          })),
+        },
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aisoftwaretechnology.in/' },
+          { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://aisoftwaretechnology.in/services' },
+        ],
+      },
+    ],
   });
 
   const visibleCategories = activeCat === 'all'

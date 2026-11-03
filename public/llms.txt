@@ -1,17 +1,17 @@
 # AI Software Technology — A Brand of Digi India Solutions
 
-> AI Software Technology is the custom software development and business technology brand of Digi India Solutions, based in Rohini Sector-24, New Delhi, India. Tagline: "Your Business. Our Technology. Let's Build Together."
+> AI Software Technology is the custom software development and business technology brand of Digi India Solutions, based at House No. 158-159, Pocket-10, Sector-24, Rohini, New Delhi, Delhi – 110085, India. Tagline: "Your Business. Our Technology. Let's Build Together."
 
 ## Official Entity Information
 - **Brand Name:** AI Software Technology
 - **Parent Organization:** Digi India Solutions (Brand Relationship: A Brand of Digi India Solutions)
 - **Production Website:** https://aisoftwaretechnology.in
 - **Primary Business Category:** Custom Software Development & Business Technology Solutions
-- **Headquarters:** Rohini Sector-24, New Delhi, Delhi - 110085, India
+- **Headquarters:** House No. 158-159, Pocket-10, Sector-24, Rohini, New Delhi, Delhi – 110085, India
 - **Official Phone & WhatsApp:** +91 9990390519 (https://wa.me/919990390519)
 - **Official Email:** aisoftwaretechnology2026@gmail.com
 
-## Core Software Engineering Capabilities
+## Core Software Engineering Capabilities (All 25 Services)
 - [Custom Software Development](https://aisoftwaretechnology.in/services/custom-software): Tailor-made web applications, operational portals, approval workflows, and admin dashboards.
 - [ERP Software Development](https://aisoftwaretechnology.in/services/erp-solutions): Multi-branch inventory, procurement, production (BOM), GST billing, and MIS reporting.
 - [CRM Software Development](https://aisoftwaretechnology.in/services/crm-solutions): Lead capture, telecaller allocation, sales pipelines, follow-up reminders, and quotations.
@@ -19,27 +19,63 @@
 - [SaaS Application Development](https://aisoftwaretechnology.in/services/saas-development): Multi-tenant SaaS architecture, subscription billing, RBAC, and cloud deployment.
 - [Mobile App Development](https://aisoftwaretechnology.in/services/mobile-app-development): Android, iOS, Flutter, and React Native business and customer apps.
 - [Website & Web App Development](https://aisoftwaretechnology.in/services/website-development): B2B websites, multi-portal platforms, and customer self-service portals.
-- [Attendance & Workforce Management Software](https://aisoftwaretechnology.in/services/attendance-workforce-software): Factory shift tracking, gate-pass management, and biometric attendance.
-- [Order Management Software](https://aisoftwaretechnology.in/services/order-management-software): Dealer order booking, distributor portals, SKU catalog, and dispatch tracking.
+- [AI Automation Solutions](https://aisoftwaretechnology.in/services/ai-automation): Conversational AI assistants, document extraction, and workflow automation.
+- [WhatsApp Business Automation](https://aisoftwaretechnology.in/services/whatsapp-automation): Automated inquiry responses, order updates, and CRM follow-ups.
 - [Inventory Management Software](https://aisoftwaretechnology.in/services/inventory-management-software): Multi-warehouse stock control, batch tracking, and reorder alerts.
 - [Billing & GST Invoicing Software](https://aisoftwaretechnology.in/services/billing-gst-software): GST-compliant invoicing, quotations, ledger reconciliation, and payment tracking.
+- [Order Management Software](https://aisoftwaretechnology.in/services/order-management-software): Dealer order booking, distributor portals, SKU catalog, and dispatch tracking.
 - [Manufacturing ERP Software](https://aisoftwaretechnology.in/services/manufacturing-software): Bill of Materials (BOM), work orders, shop-floor tracking, and QC.
 - [Hospital & Clinic Management Software](https://aisoftwaretechnology.in/services/hospital-management-software): Patient registration, OPD/IPD billing, e-prescriptions, lab, and pharmacy.
 - [Hotel & Restaurant Management Software](https://aisoftwaretechnology.in/services/hotel-management-software): Room reservation, front desk, housekeeping, KOT, and POS billing.
 - [Logistics & Transport Software](https://aisoftwaretechnology.in/services/logistics-software): Consignment booking, LR/bilty generation, fleet tracking, and POD management.
 - [Field Sales & Employee Tracking Software](https://aisoftwaretechnology.in/services/field-sales-tracking-software): GPS visit verification, beat planning, mobile order taking, and expense claims.
+- [Attendance & Workforce Management Software](https://aisoftwaretechnology.in/services/attendance-workforce-software): Factory shift tracking, gate-pass management, and biometric attendance.
 - [Retail POS & Billing Software](https://aisoftwaretechnology.in/services/retail-pos-software): Barcode billing, split payments, inventory sync, and customer loyalty.
-- [AI Automation Solutions](https://aisoftwaretechnology.in/services/ai-automation): Conversational AI assistants, document extraction, and workflow automation.
-- [WhatsApp Business Automation](https://aisoftwaretechnology.in/services/whatsapp-automation): Automated inquiry responses, order updates, and CRM follow-ups.
 - [E-Commerce Development](https://aisoftwaretechnology.in/services/ecommerce-development): B2B and B2C online stores, catalog management, and payment gateway integration.
 - [API Development & System Integration](https://aisoftwaretechnology.in/services/api-development-integration): REST APIs, webhooks, payment gateways, and ERP/CRM/Tally connectors.
 - [Software Maintenance & Support](https://aisoftwaretechnology.in/services/software-maintenance-support): Bug fixes, security patching, database optimization, and feature upgrades.
+- [Cloud Deployment & Server Setup](https://aisoftwaretechnology.in/services/cloud-solutions): AWS, Microsoft Azure, Google Cloud, VPS provisioning, Docker, and CI/CD pipelines.
+- [UI/UX Design Services](https://aisoftwaretechnology.in/services/ui-ux-design): Enterprise dashboard design systems, interactive Figma prototypes, and mobile UX.
+- [SEO & Digital Marketing Support](https://aisoftwaretechnology.in/services/digital-marketing): Technical SEO, local business optimization, and B2B lead generation.
 
-## Live Featured Case Studies
+## Industry Verticals Served (8 Industries)
+- [Healthcare & Hospital Software](https://aisoftwaretechnology.in/industries/healthcare)
+- [Finance & Banking Software](https://aisoftwaretechnology.in/industries/finance)
+- [Manufacturing ERP & IoT Software](https://aisoftwaretechnology.in/industries/manufacturing)
+- [Education & School ERP](https://aisoftwaretechnology.in/industries/education)
+- [Retail & POS Software](https://aisoftwaretechnology.in/industries/retail)
+- [Hospitality & Hotel Software](https://aisoftwaretechnology.in/industries/hospitality)
+- [Construction Management Software](https://aisoftwaretechnology.in/industries/construction)
+- [Real Estate CRM & Property Software](https://aisoftwaretechnology.in/industries/real-estate)
+
+## Live Featured Case Studies & Reference Implementations
 - [Lubricant Order Management Software](https://aisoftwaretechnology.in/case-studies/lubricant-order-management-software) — Live Project: http://order.maxmol.in/
 - [Astrology & Matrimonial Multi-Portal Platform](https://aisoftwaretechnology.in/case-studies/astrology-matrimonial-platform) — Live Project: https://astromilaan.ai.studio/
 - [Factory Attendance & Workforce Management Software](https://aisoftwaretechnology.in/case-studies/factory-attendance-management-software) — Live Project: https://gatepass-orcin.vercel.app/admin/attendance
+- [Multi-Clinic Hospital Management System (HMS)](https://aisoftwaretechnology.in/case-studies/medicare-patient-platform)
+- [Sales CRM, Lead Pipeline & WhatsApp Automation](https://aisoftwaretechnology.in/case-studies/shopnow-ecommerce-scale)
+- [Multi-Warehouse ERP, Inventory & GST Billing](https://aisoftwaretechnology.in/case-studies/logichain-erp-transformation)
+- [AI Workflow Automation & Intelligent Chatbots](https://aisoftwaretechnology.in/case-studies/brandvista-ai-marketing)
+- [End-to-End HRMS, Biometric Attendance & Payroll](https://aisoftwaretechnology.in/case-studies/finsecure-payment-platform)
+- [School, Coaching & Institute ERP with Mobile App](https://aisoftwaretechnology.in/case-studies/edulearn-gamified-platform)
+
+## Architecture Comparisons & Featured Guides
+- [Custom Software vs SaaS Comparison](https://aisoftwaretechnology.in/comparisons/custom-software-vs-saas)
+- [React vs Angular Frontend Comparison](https://aisoftwaretechnology.in/comparisons/react-vs-angular)
+- [Flutter vs React Native Mobile App Comparison](https://aisoftwaretechnology.in/comparisons/flutter-vs-react-native)
+- [Web Development Trends in 2027](https://aisoftwaretechnology.in/blogs/web-development-trends-2027)
+- [React vs Next.js for Business Websites](https://aisoftwaretechnology.in/blogs/react-vs-nextjs-business-website)
+- [Website Development Cost in India in 2027](https://aisoftwaretechnology.in/blogs/website-development-cost-india-2027)
+- [Why Every Growing Business Needs a Custom Web Application](https://aisoftwaretechnology.in/blogs/benefits-of-custom-web-applications)
+- [Website Speed Optimization Guide](https://aisoftwaretechnology.in/blogs/website-speed-optimization-guide)
+- [What Is Cloud Computing? Complete Guide for Businesses](https://aisoftwaretechnology.in/blogs/cloud-computing-guide-for-businesses)
+- [AWS vs Microsoft Azure vs Google Cloud](https://aisoftwaretechnology.in/blogs/aws-vs-azure-vs-google-cloud)
+- [10 Benefits of Cloud Computing for Small and Medium Businesses](https://aisoftwaretechnology.in/blogs/benefits-of-cloud-computing-for-small-business)
+- [Cloud Security Best Practices](https://aisoftwaretechnology.in/blogs/cloud-security-best-practices)
+- [Cloud Migration Strategy Guide](https://aisoftwaretechnology.in/blogs/cloud-migration-strategy-guide)
 
 ## Discovery & Indexing References
 - XML Sitemap: https://aisoftwaretechnology.in/sitemap.xml
 - HTML Sitemap: https://aisoftwaretechnology.in/sitemap
+- Project Cost Calculator: https://aisoftwaretechnology.in/calculators
+- Contact & WhatsApp Enquiry: https://aisoftwaretechnology.in/contact

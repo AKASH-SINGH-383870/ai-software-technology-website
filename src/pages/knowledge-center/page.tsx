@@ -48,9 +48,27 @@ export default function KnowledgeCenter() {
     title: 'Knowledge Center | AI Software Technology — Guides, Case Studies & Documentation',
     description:
       'Explore software architecture guides, ERP/CRM/HRMS documentation, case studies, and technical resources from AI Software Technology (A Brand of Digi India Solutions).',
-    keywords:
-      'software knowledge center, ERP CRM guides, HRMS documentation, custom software whitepapers, AI Software Technology',
     canonical: 'https://aisoftwaretechnology.in/knowledge-center',
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: 'Knowledge Center — AI Software Technology',
+        description:
+          'Technical whitepapers, software architecture guides, ERP/CRM/HRMS documentation, case studies, and engineering resources by AI Software Technology.',
+        url: 'https://aisoftwaretechnology.in/knowledge-center',
+        isPartOf: { '@id': 'https://aisoftwaretechnology.in/#website' },
+        about: { '@id': 'https://aisoftwaretechnology.in/#organization' },
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aisoftwaretechnology.in/' },
+          { '@type': 'ListItem', position: 2, name: 'Knowledge Center', item: 'https://aisoftwaretechnology.in/knowledge-center' },
+        ],
+      },
+    ],
   });
 
   const renderBlogs = () => (
@@ -67,7 +85,7 @@ export default function KnowledgeCenter() {
           onClick={() => navigate(`/blogs/${post.slug}`)}
         >
           <div className="relative h-40 overflow-hidden">
-            <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <img src={post.image} alt={post.imageAlt || post.title} width="640" height="360" loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
             <div className="absolute top-3 left-3">
               <span className="px-2.5 py-1 rounded-full bg-dark-500/80 backdrop-blur-sm text-accent-400 text-[10px] font-medium">{post.category}</span>
             </div>
@@ -104,7 +122,7 @@ export default function KnowledgeCenter() {
           onClick={() => navigate(`/case-studies/${cs.slug}`)}
         >
           <div className="grid grid-cols-1 sm:grid-cols-[1.2fr_1fr]">
-            <img src={cs.image} alt={cs.title} className="w-full h-40 sm:h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <img src={cs.image} alt={cs.imageAlt || cs.title} width="640" height="427" loading="lazy" decoding="async" className="w-full h-40 sm:h-full object-cover group-hover:scale-105 transition-transform duration-700" />
             <div className="p-5 flex flex-col justify-center">
               <span className="text-accent-400 text-[10px] font-medium mb-1">{cs.industry}</span>
               <h4 className="font-heading font-semibold text-white text-xs mb-2 line-clamp-2">{cs.title}</h4>
@@ -132,9 +150,10 @@ export default function KnowledgeCenter() {
           viewport={{ once: true }}
           transition={{ delay: i * 0.06, duration: 0.4 }}
           whileHover={{ y: -4 }}
+          onClick={() => navigate(`/portfolio/${proj.slug}`)}
         >
           <div className="relative h-40 overflow-hidden">
-            <img src={proj.image} alt={proj.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <img src={proj.image} alt={proj.imageAlt || proj.name} width="640" height="427" loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
             <div className="absolute top-3 left-3">
               <span className="px-2.5 py-1 rounded-full bg-dark-500/80 backdrop-blur-sm text-accent-400 text-[10px] font-medium">{proj.category}</span>
             </div>

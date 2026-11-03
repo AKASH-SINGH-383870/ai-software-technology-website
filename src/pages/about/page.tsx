@@ -14,9 +14,27 @@ export default function About() {
     title: 'About AI Software Technology | Custom Software Development Brand of Digi India Solutions',
     description:
       'AI Software Technology is a specialized software development brand of Digi India Solutions, created to help businesses replace manual operations and disconnected tools with powerful, easy-to-use digital systems including ERP, CRM, HRMS, SaaS and AI automation.',
-    keywords:
-      'About AI Software Technology, A Brand of Digi India Solutions, custom software development company India, ERP CRM HRMS software company Delhi, business workflow software',
     canonical: 'https://aisoftwaretechnology.in/about',
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'AboutPage',
+        name: 'About AI Software Technology — A Brand of Digi India Solutions',
+        description:
+          'AI Software Technology is the custom software development and business technology brand of Digi India Solutions in New Delhi, India.',
+        url: 'https://aisoftwaretechnology.in/about',
+        isPartOf: { '@id': 'https://aisoftwaretechnology.in/#website' },
+        mainEntity: { '@id': 'https://aisoftwaretechnology.in/#organization' },
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aisoftwaretechnology.in/' },
+          { '@type': 'ListItem', position: 2, name: 'About Us', item: 'https://aisoftwaretechnology.in/about' },
+        ],
+      },
+    ],
   });
 
   return (

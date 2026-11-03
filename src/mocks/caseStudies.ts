@@ -91,7 +91,7 @@ export const caseStudies: CaseStudy[] = [
     title: 'Astrology & Matrimonial Platform — Multi-Portal Web Application with User, Astrologer & Admin Dashboards',
     client: 'AstroMilaan — Multi-Portal Web Platform',
     industry: 'Custom Web Application / Multi-Portal Platform',
-    service: 'web-application-development',
+    service: 'website-development',
     duration: 'Custom Deployment',
     team: 'Multi-Portal Web Application Team',
     image: '/images/portfolio/astrology-and-matrimonial-platform.png',
@@ -202,11 +202,12 @@ export const caseStudies: CaseStudy[] = [
     title: 'Multi-Clinic Hospital Management System (HMS) & Patient CRM Architecture',
     client: 'Multi-Clinic Healthcare Network',
     industry: 'Healthcare & Diagnostics',
-    service: 'hospital-clinic-management-software',
+    service: 'hospital-management-software',
     duration: '16 Weeks',
     team: 'Architecture & Full-Stack Team',
     image:
       'https://readdy.ai/api/search-image?query=Modern%20telemedicine%20platform%20on%20multiple%20devices%20showing%20video%20consultation%20interface%2C%20medical%20dashboard%20with%20patient%20data%2C%20clean%20healthcare%20UI%20design%20with%20teal%20and%20white%20colors%2C%20professional%20medical%20tech%20environment%2C%20warm%20ambient%20lighting%2C%20high%20detail%20mockup&width=1200&height=700&seq=cs-medicare&orientation=landscape',
+    imageAlt: 'Multi-Clinic Hospital Management System (HMS) & Patient CRM Architecture — AI Software Technology',
     overview:
       'A centralized web-based Hospital & Clinic Management System (HMS) engineered for multi-location clinics to unify patient registration, OPD/IPD billing, pathology lab reporting, pharmacy stock, and automated follow-up reminders.',
     challenge:
@@ -259,6 +260,7 @@ export const caseStudies: CaseStudy[] = [
     team: 'CRM & Automation Team',
     image:
       'https://readdy.ai/api/search-image?query=Ecommerce%20platform%20dashboard%20on%20large%20screen%20showing%20product%20management%20and%20sales%20analytics%2C%20modern%20retail%20UI%20with%20warm%20orange%20accents%2C%20fashion%20and%20electronics%20products%20displayed%2C%20bright%20contemporary%20office%2C%20high%20detail%20business%20photography&width=1200&height=700&seq=cs-shopnow&orientation=landscape',
+    imageAlt: 'Sales CRM, Lead Pipeline & WhatsApp Automation Platform — AI Software Technology',
     overview:
       'A centralized Custom CRM & Lead Management System designed for sales-driven teams to capture multi-channel enquiries, automate telecaller allocation, track follow-up pipelines, and generate quotations.',
     challenge:
@@ -311,6 +313,7 @@ export const caseStudies: CaseStudy[] = [
     team: 'ERP Systems Team',
     image:
       'https://readdy.ai/api/search-image?query=Logistics%20ERP%20dashboard%20on%20ultrawide%20monitor%20showing%20fleet%20tracking%20map%20and%20supply%20chain%20analytics%2C%20dark%20blue%20and%20orange%20theme%2C%20shipping%20containers%20visible%20through%20office%20window%2C%20industrial%20corporate%20setting%2C%20high%20detail%20professional%20photography&width=1200&height=700&seq=cs-logichain&orientation=landscape',
+    imageAlt: 'Multi-Warehouse ERP, Inventory, Purchase & GST Billing System — AI Software Technology',
     overview:
       'A modular Custom ERP Platform connecting procurement, multi-location warehouse inventory, production planning (BOM), GST invoicing, and executive MIS reporting in one unified database.',
     challenge:
@@ -364,6 +367,7 @@ export const caseStudies: CaseStudy[] = [
     team: 'AI & Workflow Engineering Team',
     image:
       'https://readdy.ai/api/search-image?query=AI%20marketing%20dashboard%20on%20modern%20screen%20showing%20colorful%20campaign%20analytics%20charts%20and%20content%20generation%20interface%2C%20creative%20agency%20workspace%20with%20mood%20boards%2C%20warm%20vibrant%20lighting%2C%20high%20energy%20atmosphere%2C%20high%20detail%20modern%20photography&width=1200&height=700&seq=cs-brandvista&orientation=landscape',
+    imageAlt: 'AI Workflow Automation, Intelligent Chatbots & Business Process Integration — AI Software Technology',
     overview:
       'An AI-enabled workflow automation layer combining conversational AI assistants, automated document/data extraction, and scheduled MIS reporting integrated with core business software.',
     challenge:
@@ -416,6 +420,7 @@ export const caseStudies: CaseStudy[] = [
     team: 'HRMS Product Engineering Team',
     image:
       'https://readdy.ai/api/search-image?query=Financial%20technology%20dashboard%20on%20screens%20showing%20real-time%20payment%20transaction%20data%20and%20security%20metrics%2C%20dark%20theme%20with%20gold%20and%20teal%20accents%2C%20server%20room%20with%20blinking%20lights%2C%20secure%20banking%20environment%2C%20high%20detail%20fintech%20photography&width=1200&height=700&seq=cs-finsecure&orientation=landscape',
+    imageAlt: 'End-to-End HRMS, Biometric Attendance, Shift Roster & Payroll Software — AI Software Technology',
     overview:
       'A comprehensive HRMS & Payroll Management System featuring employee lifecycle records, biometric and geo-fenced attendance synchronization, shift rosters, statutory compliance, and Employee Self-Service (ESS) portals.',
     challenge:
@@ -463,11 +468,12 @@ export const caseStudies: CaseStudy[] = [
     title: 'School, Coaching & Institute ERP with Parent-Student Mobile App',
     client: 'Educational Institution & Coaching Network',
     industry: 'Education & EdTech',
-    service: 'school-management-software',
+    service: 'erp-solutions',
     duration: '16 Weeks',
     team: 'EdTech & Mobile Engineering Team',
     image:
       'https://readdy.ai/api/search-image?query=Educational%20mobile%20app%20on%20tablet%20showing%20colorful%20gamified%20learning%20interface%20with%20progress%20badges%2C%20children%20learning%20in%20bright%20classroom%2C%20interactive%20quiz%20screens%2C%20warm%20natural%20light%2C%20modern%20EdTech%20environment%2C%20high%20detail%20photography&width=1200&height=700&seq=cs-edulearn&orientation=landscape',
+    imageAlt: 'School, Coaching & Institute ERP with Parent-Student Mobile App — AI Software Technology',
     overview:
       'An integrated School & Coaching Institute Management ERP paired with Android and iOS apps for parents, students, and teachers — unifying admissions, fee billing, attendance alerts, homework, and exam report cards.',
     challenge:

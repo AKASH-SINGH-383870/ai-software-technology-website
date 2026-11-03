@@ -10,6 +10,7 @@ import {
   openWhatsAppEnquiry,
   getWhatsAppEnquiryUrl,
 } from '@/utils/whatsappEnquiry';
+import { checkFormRateLimit } from '@/utils/security';
 
 const baseCalcOptions = {
   website: {
@@ -166,9 +167,27 @@ export default function Calculators() {
     title: 'Software Project Cost Calculator | AI Software Technology',
     description:
       'Estimate scope and investment for Custom Software, ERP, CRM, HRMS, Mobile Apps, and Web Applications with AI Software Technology (A Brand of Digi India Solutions).',
-    keywords:
-      'software cost calculator India, ERP CRM cost estimator, custom software quote, mobile app cost calculator, AI Software Technology',
     canonical: 'https://aisoftwaretechnology.in/calculators',
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: 'Software Project Cost Calculator — AI Software Technology',
+        description:
+          'Interactive software project cost and scope estimator for Custom Software, ERP, CRM, HRMS, Mobile Apps, Web Applications, and AI Automation.',
+        url: 'https://aisoftwaretechnology.in/calculators',
+        isPartOf: { '@id': 'https://aisoftwaretechnology.in/#website' },
+        about: { '@id': 'https://aisoftwaretechnology.in/#organization' },
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aisoftwaretechnology.in/' },
+          { '@type': 'ListItem', position: 2, name: 'Cost Calculators', item: 'https://aisoftwaretechnology.in/calculators' },
+        ],
+      },
+    ],
   });
 
   const [selections, setSelections] = useState<Record<string, number>>({});
@@ -220,9 +239,15 @@ export default function Calculators() {
   const maxBudget = total * 1.15;
   const budgetRangeLabel = `₹${(minBudget / 100000).toFixed(1)}L - ₹${(maxBudget / 100000).toFixed(1)}L (Est. ₹${(total / 100000).toFixed(1)}L)`;
 
-  const handleEstimateSubmit = (e: FormEvent) => {
+  const handleEstimateSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormError('');
+
+    const form = e.currentTarget;
+    const honeypot = (form.elements.namedItem('company_alt') as HTMLInputElement | null)?.value?.trim();
+    if (honeypot) {
+      return;
+    }
 
     const summary = getSelectedSummary();
     const combinedRequirements = requirements.trim()
@@ -243,6 +268,12 @@ export default function Calculators() {
     const validation = validateEnquiryForm(payload);
     if (!validation.valid) {
       setFormError(validation.error || 'Please fill in all required fields.');
+      return;
+    }
+
+    const rateCheck = checkFormRateLimit('calculator-estimate', 8000);
+    if (!rateCheck.allowed) {
+      setFormError(`Please wait ${rateCheck.retryAfterSec} seconds before submitting another quote request.`);
       return;
     }
 
@@ -376,12 +407,22 @@ export default function Calculators() {
                   </p>
 
                   <form onSubmit={handleEstimateSubmit} className="space-y-3" noValidate>
+                    <input
+                      type="text"
+                      name="company_alt"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      aria-hidden="true"
+                      readOnly
+                      className="hp-field"
+                    />
                     <div>
                       <input
                         type="text"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Your Full Name *"
+                        maxLength={100}
                         required
                         className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-white/25 focus:outline-none focus:border-accent-400/40"
                       />
@@ -392,6 +433,7 @@ export default function Calculators() {
                         value={mobile}
                         onChange={(e) => setMobile(e.target.value)}
                         placeholder="Mobile / WhatsApp Number *"
+                        maxLength={20}
                         required
                         className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-white/25 focus:outline-none focus:border-accent-400/40"
                       />
@@ -402,6 +444,7 @@ export default function Calculators() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Email Address *"
+                        maxLength={254}
                         required
                         className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-white/25 focus:outline-none focus:border-accent-400/40"
                       />
@@ -412,6 +455,7 @@ export default function Calculators() {
                         value={companyName}
                         onChange={(e) => setCompanyName(e.target.value)}
                         placeholder="Company Name (Optional)"
+                        maxLength={150}
                         className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-white/25 focus:outline-none focus:border-accent-400/40"
                       />
                     </div>
@@ -421,6 +465,7 @@ export default function Calculators() {
                         value={requirements}
                         onChange={(e) => setRequirements(e.target.value)}
                         placeholder="Brief project requirements or modules needed *"
+                        maxLength={800}
                         required
                         className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-white/25 focus:outline-none focus:border-accent-400/40 resize-none"
                       />

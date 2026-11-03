@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { portfolioProjectsA } from '@/mocks/portfolio';
+import { sanitizeExternalUrl } from '@/utils/security';
 
 const featuredProjects = portfolioProjectsA.slice(0, 6);
 
@@ -39,6 +40,7 @@ export default function PortfolioPreview() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {featuredProjects.map((project, i) => {
             const caseStudyTarget = project.caseStudyUrl || `/portfolio/${project.slug}`;
+            const safeProjectUrl = sanitizeExternalUrl(project.url) || '#';
             return (
               <motion.div
                 key={project.id}
@@ -74,7 +76,7 @@ export default function PortfolioPreview() {
                     </span>
                   </div>
                   <a
-                    href={project.url}
+                    href={safeProjectUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
@@ -105,7 +107,7 @@ export default function PortfolioPreview() {
                   </div>
                   <div className="grid grid-cols-2 gap-2.5 pt-3 border-t border-white/[0.06]">
                     <a
-                      href={project.url}
+                      href={safeProjectUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}

@@ -40,7 +40,9 @@ export default function IndustryDetail({ data }: Props) {
     ogTitle: data ? data.meta.title : 'Industry Solutions | AI Software Technology',
     ogDescription: data?.meta.description,
     ogImage: data?.heroImage,
+    ogImageAlt: data ? `${data.title} Software Solutions — AI Software Technology` : undefined,
     canonical: data ? data.meta.canonicalUrl : 'https://aisoftwaretechnology.in/industries',
+    noindex: !data,
     jsonLd: data
       ? [
           {
@@ -58,6 +60,18 @@ export default function IndustryDetail({ data }: Props) {
               url: 'https://aisoftwaretechnology.in',
               telephone: '+91-9990390519',
               email: 'aisoftwaretechnology2026@gmail.com',
+              parentOrganization: {
+                '@type': 'Organization',
+                name: 'Digi India Solutions',
+              },
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: 'House No. 158-159, Pocket-10, Sector-24, Rohini',
+                addressLocality: 'New Delhi',
+                addressRegion: 'Delhi',
+                postalCode: '110085',
+                addressCountry: 'IN',
+              },
             },
             areaServed: [
               { '@type': 'City', name: 'New Delhi' },

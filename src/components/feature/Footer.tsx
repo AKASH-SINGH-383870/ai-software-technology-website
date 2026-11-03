@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { isValidEmail, checkFormRateLimit } from '@/utils/security';
 
 const footerServices = [
   { name: 'Custom Software Development', path: '/services/custom-software' },
@@ -38,7 +39,7 @@ const footerResources = [
 const footerIndustries = [
   { name: 'Healthcare', path: '/industries/healthcare' },
   { name: 'Education', path: '/industries/education' },
-  { name: 'Real Estate', path: '/industries/realestate' },
+  { name: 'Real Estate', path: '/industries/real-estate' },
   { name: 'Retail & E-Commerce', path: '/industries/retail' },
   { name: 'Finance & Banking', path: '/industries/finance' },
   { name: 'Hospitality', path: '/industries/hospitality' },
@@ -53,17 +54,28 @@ export default function Footer() {
   const [subError, setSubError] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubscribe = async (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!email) return;
+    const trimmedEmail = email.trim();
+    if (!isValidEmail(trimmedEmail)) {
+      setSubError(true);
+      return;
+    }
+    const rateCheck = checkFormRateLimit('footer-newsletter', 10000);
+    if (!rateCheck.allowed) {
+      setSubError(true);
+      return;
+    }
     setSubError(false);
     try {
       const formBody = new URLSearchParams();
-      formBody.append('email', email);
+      formBody.append('email', trimmedEmail);
       const res = await fetch('https://readdy.ai/api/form/d9hski8h9dsfbuoi5jqg', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: formBody.toString(),
+        credentials: 'omit',
+        referrerPolicy: 'strict-origin-when-cross-origin',
       });
       if (res.ok) {
         setSubscribed(true);
@@ -173,6 +185,7 @@ export default function Footer() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
+                    maxLength={254}
                     required
                     className="flex-1 px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-sm text-white placeholder-white/25 focus:outline-none focus:border-accent-400/40 transition-colors min-w-0"
                   />

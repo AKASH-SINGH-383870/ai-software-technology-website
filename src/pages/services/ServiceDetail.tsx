@@ -16,6 +16,7 @@ import {
   openWhatsAppEnquiry,
   getWhatsAppEnquiryUrl,
 } from '@/utils/whatsappEnquiry';
+import { checkFormRateLimit } from '@/utils/security';
 
 const SERVICE_SLUG_ALIASES: Record<string, string> = {
   'inventory-billing-software': 'inventory-management-software',
@@ -112,7 +113,9 @@ export default function ServiceDetail() {
     ogTitle: service ? `${service.name} — AI Software Technology` : 'Services — AI Software Technology',
     ogDescription: service?.heroDesc || 'Custom software development and business technology solutions.',
     ogImage: service?.bannerImage,
+    ogImageAlt: service ? service.imageAlt || `${service.name} Services — AI Software Technology` : undefined,
     canonical: service ? `https://aisoftwaretechnology.in/services/${service.slug}` : 'https://aisoftwaretechnology.in/services',
+    noindex: !service,
     jsonLd: service
       ? [
           {
@@ -121,7 +124,9 @@ export default function ServiceDetail() {
             name: service.name,
             description: service.heroDesc,
             url: `https://aisoftwaretechnology.in/services/${service.slug}`,
-            image: service.bannerImage,
+            image: service.bannerImage.startsWith('/')
+              ? `https://aisoftwaretechnology.in${service.bannerImage}`
+              : service.bannerImage,
             serviceType: service.name,
             provider: {
               '@type': 'ProfessionalService',
@@ -130,9 +135,13 @@ export default function ServiceDetail() {
               url: 'https://aisoftwaretechnology.in',
               telephone: '+91-9990390519',
               email: 'aisoftwaretechnology2026@gmail.com',
+              parentOrganization: {
+                '@type': 'Organization',
+                name: 'Digi India Solutions',
+              },
               address: {
                 '@type': 'PostalAddress',
-                streetAddress: 'Rohini Sector-24',
+                streetAddress: 'House No. 158-159, Pocket-10, Sector-24, Rohini',
                 addressLocality: 'New Delhi',
                 addressRegion: 'Delhi',
                 postalCode: '110085',
@@ -174,12 +183,16 @@ export default function ServiceDetail() {
   });
 
   useEffect(() => {
+    if (slug && resolvedSlug && slug !== resolvedSlug) {
+      navigate(`/services/${resolvedSlug}`, { replace: true });
+      return;
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setOpenFaq(0);
     setActiveTab('features');
     setEnqError('');
     setEnqWaOpened(false);
-  }, [slug]);
+  }, [slug, resolvedSlug, navigate]);
 
   if (!service) {
     return (
@@ -202,9 +215,15 @@ export default function ServiceDetail() {
     );
   }
 
-  const handleServiceEnquirySubmit = (e: FormEvent) => {
+  const handleServiceEnquirySubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setEnqError('');
+
+    const form = e.currentTarget;
+    const honeypot = (form.elements.namedItem('company_alt') as HTMLInputElement | null)?.value?.trim();
+    if (honeypot) {
+      return;
+    }
 
     const payload = {
       name: enqName,
@@ -220,6 +239,12 @@ export default function ServiceDetail() {
     const validation = validateEnquiryForm(payload);
     if (!validation.valid) {
       setEnqError(validation.error || 'Please fill in all required fields.');
+      return;
+    }
+
+    const rateCheck = checkFormRateLimit(`service-enquiry-${service.slug}`, 8000);
+    if (!rateCheck.allowed) {
+      setEnqError(`Please wait ${rateCheck.retryAfterSec} seconds before submitting another enquiry.`);
       return;
     }
 
@@ -244,33 +269,6 @@ export default function ServiceDetail() {
       <Breadcrumb />
 
       <main>
-        {/* JSON-LD Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'Service',
-              name: service.name,
-              description: service.heroDesc,
-              provider: {
-                '@type': 'Organization',
-                name: 'AI Software Technology',
-                legalName: 'Digi India Solutions',
-                parentOrganization: {
-                  '@type': 'Organization',
-                  name: 'Digi India Solutions',
-                },
-                url: 'https://aisoftwaretechnology.in',
-                telephone: '+91-99903-90519',
-                email: 'aisoftwaretechnology2026@gmail.com',
-              },
-              url: `https://aisoftwaretechnology.in/services/${service.slug}`,
-              areaServed: 'Worldwide',
-            }),
-          }}
-        />
-
         {/* Service-Specific Banner Hero Section */}
         <section className="relative min-h-[420px] md:min-h-[480px] flex items-center py-12 md:py-20 overflow-hidden border-b border-white/[0.06]">
           {/* Ambient Dark Gradient Backdrop (avoids placing duplicate text over the banner image's title) */}
@@ -821,6 +819,15 @@ export default function ServiceDetail() {
               </div>
 
               <form onSubmit={handleServiceEnquirySubmit} className="space-y-4" noValidate>
+                <input
+                  type="text"
+                  name="company_alt"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  readOnly
+                  className="hp-field"
+                />
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-white/45 text-xs mb-1.5">Full Name *</label>
@@ -829,6 +836,7 @@ export default function ServiceDetail() {
                       value={enqName}
                       onChange={(e) => setEnqName(e.target.value)}
                       placeholder="Rahul Sharma"
+                      maxLength={100}
                       required
                       className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-accent-400/40"
                     />
@@ -840,6 +848,7 @@ export default function ServiceDetail() {
                       value={enqMobile}
                       onChange={(e) => setEnqMobile(e.target.value)}
                       placeholder="+91 9876543210"
+                      maxLength={20}
                       required
                       className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-accent-400/40"
                     />
@@ -854,6 +863,7 @@ export default function ServiceDetail() {
                       value={enqEmail}
                       onChange={(e) => setEnqEmail(e.target.value)}
                       placeholder="rahul@example.com"
+                      maxLength={254}
                       required
                       className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-accent-400/40"
                     />
@@ -865,6 +875,7 @@ export default function ServiceDetail() {
                       value={enqCompany}
                       onChange={(e) => setEnqCompany(e.target.value)}
                       placeholder="Your Business Name"
+                      maxLength={150}
                       className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-accent-400/40"
                     />
                   </div>
@@ -891,6 +902,7 @@ export default function ServiceDetail() {
                     value={enqMessage}
                     onChange={(e) => setEnqMessage(e.target.value)}
                     placeholder={`Describe your requirements for ${service.name}...`}
+                    maxLength={1000}
                     required
                     className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-accent-400/40 resize-none"
                   />
@@ -1004,9 +1016,13 @@ export default function ServiceDetail() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {otherServices.map((s) => (
-                <div
+                <a
                   key={s.slug}
-                  onClick={() => navigate(`/services/${s.slug}`)}
+                  href={`/services/${s.slug}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate(`/services/${s.slug}`);
+                  }}
                   className="glass-card-hover rounded-2xl overflow-hidden flex flex-col justify-between group cursor-pointer"
                 >
                   <div>
@@ -1044,7 +1060,7 @@ export default function ServiceDetail() {
                       Learn More <i className="ri-arrow-right-s-line"></i>
                     </span>
                   </div>
-                </div>
+                </a>
               ))}
             </div>
             {relatedCaseStudies.length > 0 && (

@@ -34,6 +34,10 @@ export default function LoadingScreen() {
                 e.currentTarget.src = '/logo.png';
               }}
               alt="AI Software Technology — A Brand of Digi India Solutions"
+              width="64"
+              height="64"
+              loading="eager"
+              decoding="async"
               className="h-16 w-auto object-contain mb-3"
             />
             <span className="font-heading font-bold text-white text-sm tracking-wide">AI SOFTWARE TECHNOLOGY</span>

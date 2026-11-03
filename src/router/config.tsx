@@ -1,34 +1,36 @@
-import type { RouteObject } from "react-router-dom";
+import { lazy } from "react";
+import { Navigate, type RouteObject } from "react-router-dom";
 import NotFound from "../pages/NotFound";
 import Home from "../pages/home/page";
-import About from "../pages/about/page";
-import Contact from "../pages/contact/page";
-import Services from "../pages/services/page";
-import ServiceDetail from "../pages/services/ServiceDetail";
-import Portfolio from "../pages/portfolio/page";
-import PortfolioDetail from "../pages/portfolio/PortfolioDetail";
-import Industries from "../pages/industries/page";
-import CaseStudies from "../pages/case-studies/page";
-import CaseStudyDetail from "../pages/case-studies/CaseStudyDetail";
-import BlogDetail from "../pages/blogs/detail/page";
-import Blogs from "../pages/blogs/page";
-import Careers from "../pages/careers/page";
-import Calculators from "../pages/calculators/page";
-import Healthcare from "../pages/industries/healthcare/page";
-import FinanceIndustry from "../pages/industries/finance/page";
-import Manufacturing from "../pages/industries/manufacturing/page";
-import Education from "../pages/industries/education/page";
-import Retail from "../pages/industries/retail/page";
-import Hospitality from "../pages/industries/hospitality/page";
-import Construction from "../pages/industries/construction/page";
-import RealEstate from "../pages/industries/realestate/page";
-import AIFeatures from "../pages/ai-features/page";
-import ReactVsAngular from "../pages/comparisons/react-vs-angular/page";
-import FlutterVsReactNative from "../pages/comparisons/flutter-vs-react-native/page";
-import CustomSoftwareVsSaaS from "../pages/comparisons/custom-software-vs-saas/page";
-import KnowledgeCenter from "../pages/knowledge-center/page";
-import SitemapPage from "../pages/sitemap/page";
-import OurJourney from "../pages/our-journey/page";
+
+const About = lazy(() => import("../pages/about/page"));
+const Contact = lazy(() => import("../pages/contact/page"));
+const Services = lazy(() => import("../pages/services/page"));
+const ServiceDetail = lazy(() => import("../pages/services/ServiceDetail"));
+const Portfolio = lazy(() => import("../pages/portfolio/page"));
+const PortfolioDetail = lazy(() => import("../pages/portfolio/PortfolioDetail"));
+const Industries = lazy(() => import("../pages/industries/page"));
+const CaseStudies = lazy(() => import("../pages/case-studies/page"));
+const CaseStudyDetail = lazy(() => import("../pages/case-studies/CaseStudyDetail"));
+const BlogDetail = lazy(() => import("../pages/blogs/detail/page"));
+const Blogs = lazy(() => import("../pages/blogs/page"));
+const Careers = lazy(() => import("../pages/careers/page"));
+const Calculators = lazy(() => import("../pages/calculators/page"));
+const Healthcare = lazy(() => import("../pages/industries/healthcare/page"));
+const FinanceIndustry = lazy(() => import("../pages/industries/finance/page"));
+const Manufacturing = lazy(() => import("../pages/industries/manufacturing/page"));
+const Education = lazy(() => import("../pages/industries/education/page"));
+const Retail = lazy(() => import("../pages/industries/retail/page"));
+const Hospitality = lazy(() => import("../pages/industries/hospitality/page"));
+const Construction = lazy(() => import("../pages/industries/construction/page"));
+const RealEstate = lazy(() => import("../pages/industries/realestate/page"));
+const AIFeatures = lazy(() => import("../pages/ai-features/page"));
+const ReactVsAngular = lazy(() => import("../pages/comparisons/react-vs-angular/page"));
+const FlutterVsReactNative = lazy(() => import("../pages/comparisons/flutter-vs-react-native/page"));
+const CustomSoftwareVsSaaS = lazy(() => import("../pages/comparisons/custom-software-vs-saas/page"));
+const KnowledgeCenter = lazy(() => import("../pages/knowledge-center/page"));
+const SitemapPage = lazy(() => import("../pages/sitemap/page"));
+const OurJourney = lazy(() => import("../pages/our-journey/page"));
 
 const routes: RouteObject[] = [
   {
@@ -125,7 +127,7 @@ const routes: RouteObject[] = [
   },
   {
     path: "/industries/realestate",
-    element: <RealEstate />,
+    element: <Navigate to="/industries/real-estate" replace />,
   },
   {
     path: "/ai-features",

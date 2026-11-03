@@ -39,7 +39,7 @@ const allItems: SearchResult[] = [
   // Industries
   { title: 'Healthcare & Hospital Software', desc: 'Hospital management, clinic systems, lab & pharmacy software', path: '/industries/healthcare', category: 'Industries', icon: 'ri-heart-pulse-line' },
   { title: 'Education & School ERP', desc: 'School management, coaching systems, LMS & student portals', path: '/industries/education', category: 'Industries', icon: 'ri-graduation-cap-line' },
-  { title: 'Real Estate & Property CRM', desc: 'Property CRM, lead management & broker portals', path: '/industries/realestate', category: 'Industries', icon: 'ri-home-4-line' },
+  { title: 'Real Estate & Property CRM', desc: 'Property CRM, lead management & broker portals', path: '/industries/real-estate', category: 'Industries', icon: 'ri-home-4-line' },
   { title: 'Retail & E-Commerce', desc: 'POS software, inventory billing & omnichannel commerce', path: '/industries/retail', category: 'Industries', icon: 'ri-store-2-line' },
   { title: 'Finance & Accounting', desc: 'Financial dashboards, billing & compliance platforms', path: '/industries/finance', category: 'Industries', icon: 'ri-bank-line' },
   { title: 'Hospitality & Hotel Software', desc: 'Hotel management, restaurant POS & reservation systems', path: '/industries/hospitality', category: 'Industries', icon: 'ri-hotel-line' },
